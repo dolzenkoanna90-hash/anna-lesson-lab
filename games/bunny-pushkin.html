@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Морковные приключения Зайчика — Творчество А. С. Пушкина, 6 класс</title>
+<style>
+:root{--bear-width:450px}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:'Century Gothic','Futura','Segoe UI',sans-serif;cursor:crosshair;background:linear-gradient(180deg,#e8edf2 0%,#c5cdd6 40%,#a8b4c0 100%);color:#4a5568}
+#scene{position:fixed;inset:0;overflow:hidden}
+#landscape{display:none}
+#flakes,#ambient{position:absolute;inset:0;pointer-events:none}
+.ambient{position:absolute;top:-40px;user-select:none;color:rgba(255,255,255,.4);animation:ambientFall linear infinite;pointer-events:none}
+@keyframes ambientFall{from{transform:translateY(-10vh) rotate(0deg)}to{transform:translateY(120vh) rotate(250deg)}}
+#ground{position:absolute;bottom:0;left:-4%;width:108%;height:80px;border-radius:50% 50% 0 0 / 30px 30px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(200,210,220,.95));pointer-events:none}
+.falling{position:absolute;top:0;left:0;width:72px;height:72px;display:flex;align-items:center;justify-content:center;font-size:72px;line-height:1;color:#f0f4f8;opacity:.88;text-shadow:0 0 15px rgba(255,255,255,.7),0 0 30px rgba(255,255,255,.3);will-change:transform;user-select:none}
+.falling.task{filter:drop-shadow(0 0 14px rgba(200,50,50,.6))}
+.falling.task::before{content:'';position:absolute;width:88px;height:88px;border:3px solid rgba(200,50,50,.6);border-radius:50%;animation:pulse 1.2s infinite;pointer-events:none}
+@keyframes pulse{50%{transform:scale(1.22);opacity:.25}}
+#bearWrap{position:absolute;right:3%;bottom:2%;width:450px;height:550px;pointer-events:none;will-change:left}
+#bearFloat{width:100%;height:100%;animation:levitate 4s ease-in-out infinite alternate;transform-origin:center bottom}
+#bear{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 10px 12px rgba(56,64,80,.13))}
+#bearFloat.catch{animation:catchAnim .4s ease-out!important}
+@keyframes levitate{from{transform:translateY(0)}to{transform:translateY(-18px)}}
+@keyframes catchAnim{50%{transform:scale(1.06) translateY(-8px)}}
+.counter{position:fixed;top:15px;z-index:10;background:#fff;border-radius:15px;padding:10px 18px;box-shadow:0 5px 18px rgba(0,0,0,.09);text-align:center;min-width:125px}
+.counter.left{left:16px}.counter.right{right:16px}
+.counter .label{font-size:11px}.counter .number{font-size:24px;font-weight:700;margin-top:2px}.counter.right .number{color:#c0392b}
+#fullscreen{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;background:#fff;border:0;border-radius:12px;padding:8px 16px;font:13px 'Century Gothic','Futura','Segoe UI',sans-serif;box-shadow:0 5px 18px rgba(0,0,0,.09);color:#4a5568;cursor:pointer}
+#hint{position:fixed;bottom:13px;left:50%;transform:translateX(-50%);z-index:9;background:#fff;border-radius:12px;padding:6px 16px;font-size:13px;white-space:nowrap;box-shadow:0 5px 18px rgba(0,0,0,.09);max-width:94vw;text-align:center}
+#toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:30;background:#fff;padding:12px 22px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,.12);font-size:16px;animation:toastIn .25s ease-out;pointer-events:none}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+.particle{position:fixed;font-size:24px;z-index:8;pointer-events:none;animation:particleFly 1s ease-out forwards}
+@keyframes particleFly{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-80px) scale(0)}}
+#overlay{position:fixed;inset:0;z-index:40;display:none;justify-content:center;align-items:center;padding:15px;background:rgba(0,0,0,.3);backdrop-filter:blur(3px)}
+#overlay.show{display:flex}
+#modal{width:550px;max-width:85vw;min-height:320px;border-radius:30px;padding:35px 30px 30px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);text-align:center;animation:modalIn .4s ease-out;max-height:92dvh;overflow-y:auto}
+@keyframes modalIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+#modal h2{font-size:22px;color:#4a5568;margin:0 0 8px}
+#taskNumber{font-size:14px;color:#6b7280;margin-bottom:16px}
+#question{font-size:clamp(21px,2.5vw,32px);line-height:1.28;background:#f0f4f8;border-radius:20px;padding:20px 30px;margin-bottom:20px;overflow-wrap:anywhere}
+#answers{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.answer{border:2px solid #dce3ea;background:#fff;border-radius:25px;padding:14px 35px;font:20px 'Century Gothic','Futura','Segoe UI',sans-serif;color:#4a5568;cursor:pointer;transition:background .2s,border-color .2s;max-width:100%}
+.answer:hover{background:#f0f4f8}.answer.correct{background:#d7f3df;border-color:#299e56;color:#126e35}.answer.wrong{background:#ffe2e2;border-color:#d84848;color:#9d2424}.answer:disabled{cursor:default}
+#feedback{font-size:16px;min-height:23px;margin-top:14px}
+#winArt{display:block;max-width:100%;width:420px;max-height:150px;object-fit:contain;margin:8px auto 18px}
+#restart{font:20px 'Century Gothic','Futura','Segoe UI',sans-serif;border:0;border-radius:25px;background:#c0392b;color:white;padding:14px 35px;cursor:pointer}
+@media(max-width:700px){#bearWrap{width: min(450px,65vw);height:min(550px,79vw)}.counter{top:10px;padding:8px 10px;min-width:88px}.counter.left{left:8px}.counter.right{right:8px}.counter .label{font-size:10px}.counter .number{font-size:20px}#fullscreen{top:73px}#hint{font-size:11px;white-space:normal;bottom:8px}#modal{max-width:90vw;padding:26px 18px 24px}#question{padding:15px}.answer{font-size:17px;padding:11px 18px}}
+@media(prefers-reduced-motion:reduce){#bearFloat{animation:none}}
+
+body{background:linear-gradient(180deg,#ebeee3,#d5e3d5 55%,#a4bfaa);color:#173f32}
+#landscape{display:none}
+#scene{background:radial-gradient(ellipse at 20% 20%,#fff8dfb0,transparent 55%),linear-gradient(160deg,transparent 55%,#517c6455)}
+#ground{background:linear-gradient(#dae7cc,#9fb68a)}
+#bearWrap{width:min(360px,48vw);height:min(440px,59vw)}
+.falling{opacity:1;text-shadow:none}.falling svg{width:72px;height:72px}
+.falling.task{filter:drop-shadow(0 0 9px #d7b35d)}
+.falling.task::before{border-color:#be9538}
+.counter.right .number,#modal h2{color:#185342}
+#question{background:#edf2e8}#modal{border:2px solid #bda364}
+#restart{background:#185342}#hint{white-space:normal;width:max-content;max-width:94vw}
+#winArt{max-height:220px} .ambient{color:#fff9dd}
+@media(max-width:700px){#bearWrap{width:65vw;height:79vw}#hint{font-size:11px}}
+</style>
+</head>
+<body>
+<div id="scene">
+<div id="landscape"></div><div id="ambient"></div><div id="flakes"></div><div id="ground"></div>
+<div id="bearWrap"><div id="bearFloat"><img id="bear" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20450%20550%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22fur%22%3E%3Cstop%20stop-color%3D%22%23fffdf5%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23cbd8d2%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22vest%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23246552%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230d352b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cellipse%20cx%3D%22226%22%20cy%3D%22520%22%20rx%3D%22145%22%20ry%3D%2219%22%20fill%3D%22%23163c2e%22%20opacity%3D%22.16%22%2F%3E%3Cg%20stroke%3D%22%23b4c5bc%22%20stroke-width%3D%223%22%3E%3Cellipse%20cx%3D%22164%22%20cy%3D%22127%22%20rx%3D%2243%22%20ry%3D%22116%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%28-12%20164%20127%29%22%2F%3E%3Cellipse%20cx%3D%22289%22%20cy%3D%22124%22%20rx%3D%2241%22%20ry%3D%22114%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%2812%20289%20124%29%22%2F%3E%3C%2Fg%3E%3Cellipse%20cx%3D%22164%22%20cy%3D%22119%22%20rx%3D%2221%22%20ry%3D%2281%22%20fill%3D%22%23eac6bf%22%20transform%3D%22rotate%28-12%20164%20119%29%22%2F%3E%3Cellipse%20cx%3D%22289%22%20cy%3D%22118%22%20rx%3D%2220%22%20ry%3D%2280%22%20fill%3D%22%23eac6bf%22%20transform%3D%22rotate%2812%20289%20118%29%22%2F%3E%3Cellipse%20cx%3D%22225%22%20cy%3D%22399%22%20rx%3D%22120%22%20ry%3D%22113%22%20fill%3D%22url%28%23fur%29%22%2F%3E%3Cellipse%20cx%3D%22225%22%20cy%3D%22388%22%20rx%3D%22108%22%20ry%3D%22101%22%20fill%3D%22url%28%23vest%29%22%2F%3E%3Cpath%20d%3D%22M180%20304%20L225%20350%20271%20304%22%20fill%3D%22%23f7efd9%22%20stroke%3D%22%23c3a56a%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%22225%22%20cy%3D%22379%22%20r%3D%226%22%20fill%3D%22%23d0b16d%22%2F%3E%3Ccircle%20cx%3D%22225%22%20cy%3D%22411%22%20r%3D%226%22%20fill%3D%22%23d0b16d%22%2F%3E%3Cellipse%20cx%3D%22225%22%20cy%3D%22254%22%20rx%3D%22123%22%20ry%3D%22104%22%20fill%3D%22url%28%23fur%29%22%20stroke%3D%22%23b4c5bc%22%20stroke-width%3D%223%22%2F%3E%3Cellipse%20cx%3D%22181%22%20cy%3D%22244%22%20rx%3D%2213%22%20ry%3D%2219%22%20fill%3D%22%2323372f%22%2F%3E%3Cellipse%20cx%3D%22269%22%20cy%3D%22244%22%20rx%3D%2213%22%20ry%3D%2219%22%20fill%3D%22%2323372f%22%2F%3E%3Ccircle%20cx%3D%22185%22%20cy%3D%22238%22%20r%3D%225%22%20fill%3D%22white%22%2F%3E%3Ccircle%20cx%3D%22273%22%20cy%3D%22238%22%20r%3D%225%22%20fill%3D%22white%22%2F%3E%3Cellipse%20cx%3D%22153%22%20cy%3D%22280%22%20rx%3D%2224%22%20ry%3D%2212%22%20fill%3D%22%23edc3b7%22%20opacity%3D%22.7%22%2F%3E%3Cellipse%20cx%3D%22297%22%20cy%3D%22280%22%20rx%3D%2224%22%20ry%3D%2212%22%20fill%3D%22%23edc3b7%22%20opacity%3D%22.7%22%2F%3E%3Cellipse%20cx%3D%22203%22%20cy%3D%22284%22%20rx%3D%2231%22%20ry%3D%2224%22%20fill%3D%22%23fffdf5%22%2F%3E%3Cellipse%20cx%3D%22247%22%20cy%3D%22284%22%20rx%3D%2231%22%20ry%3D%2224%22%20fill%3D%22%23fffdf5%22%2F%3E%3Cpath%20d%3D%22M213%20270%20Q225%20261%20237%20270%20L225%20281Z%22%20fill%3D%22%23b77978%22%2F%3E%3Cpath%20d%3D%22M225%20280v13m0%200q-17%2013-28-1m28%201q17%2013%2028-1%22%20fill%3D%22none%22%20stroke%3D%22%23685b51%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Crect%20x%3D%22216%22%20y%3D%22300%22%20width%3D%2218%22%20height%3D%2217%22%20rx%3D%224%22%20fill%3D%22white%22%2F%3E%3Cellipse%20cx%3D%22137%22%20cy%3D%22495%22%20rx%3D%2265%22%20ry%3D%2229%22%20fill%3D%22url%28%23fur%29%22%2F%3E%3Cellipse%20cx%3D%22311%22%20cy%3D%22495%22%20rx%3D%2265%22%20ry%3D%2229%22%20fill%3D%22url%28%23fur%29%22%2F%3E%3Cpath%20d%3D%22M115%20379%20Q225%20341%20338%20379%20L318%20471%20Q224%20496%20133%20471Z%22%20fill%3D%22%23bc9058%22%20stroke%3D%22%2386623c%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M140%20389Q224%20365%20312%20389M138%20412Q224%20388%20320%20412M141%20438Q224%20417%20315%20438M162%20377l12%20102m28-109%205%20113m28-113-5%20113m37-109-12%20102m40-96-17%2090%22%20fill%3D%22none%22%20stroke%3D%22%23e4c28b%22%20stroke-width%3D%225%22%2F%3E%3Cellipse%20cx%3D%22112%22%20cy%3D%22381%22%20rx%3D%2228%22%20ry%3D%2241%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%28-25%20112%20381%29%22%2F%3E%3Cellipse%20cx%3D%22338%22%20cy%3D%22381%22%20rx%3D%2228%22%20ry%3D%2241%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%2825%20338%20381%29%22%2F%3E%3C%2Fsvg%3E" alt="Зайчик в изумрудном жилете с корзинкой"></div></div>
+</div>
+<div class="counter left"><div class="label">🥕 Очки</div><div id="snowCount" class="number">0</div></div>
+<button id="fullscreen" type="button">На весь экран</button>
+<div class="counter right"><div class="label">🎁 Решено заданий</div><div id="tasksCount" class="number">0 из 12</div></div>
+<div id="hint">🐰 Двигай мышью или пальцем: лови морковки! Золотое кольцо — вопрос по Пушкину.</div>
+<div id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div id="modal"><h2 id="modalTitle">📖 Ответь на вопрос!</h2><div id="taskNumber"></div><div id="question"></div><div id="answers"></div><div id="feedback" aria-live="polite"></div></div>
+</div>
+<script>
+"use strict";
+const CARROT='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><path d="M44 28Q24 23 23 42L13 73Q12 77 18 74L50 52Q66 37 44 28Z" fill="#ef8b30" stroke="#bb591e" stroke-width="2"/><path d="M40 30Q38 13 48 8M47 31Q66 14 68 23M44 29Q58 4 62 6" fill="none" stroke="#448454" stroke-width="7" stroke-linecap="round"/><path d="m27 41 9 4m-16 9 7 3m12-23 9 5" stroke="#c36a25" stroke-width="3" stroke-linecap="round"/></svg>';
+const SUBJECT="Литература", GRADE=6, TOPIC="Творчество А. С. Пушкина", TOTAL=12;
+const questions=[
+{q:"Как называется роман А. С. Пушкина о Владимире и Троекуровых?",a:["«Дубровский»","«Капитанская дочка»","«Евгений Онегин»"],correct:0},
+{q:"Как зовут молодого Дубровского?",a:["Владимир","Андрей Гаврилович","Кирила Петрович"],correct:0},
+{q:"Кто был отцом Владимира Дубровского?",a:["Андрей Гаврилович Дубровский","Кирила Петрович Троекуров","Князь Верейский"],correct:0},
+{q:"Как звали дочь Кирилы Петровича Троекурова?",a:["Марья Кириловна","Татьяна Ларина","Дуня Вырина"],correct:0},
+{q:"Кем выдавал себя Владимир Дубровский в доме Троекурова?",a:["Учителем-французом Дефоржем","Молодым офицером","Земским судьёй"],correct:0},
+{q:"Какое событие стало причиной ссоры Дубровского-старшего с Троекуровым?",a:["Оскорбление псарём Дубровского","Отказ Марьи выйти замуж","Пропажа семейного портрета"],correct:0},
+{q:"Каким образом Троекуров завладел имением Дубровских?",a:["Через судебное решение","Купил имение у Владимира","Получил его по завещанию"],correct:0},
+{q:"Кому Троекуров решил выдать замуж Марью Кириловну?",a:["Князю Верейскому","Владимиру Дубровскому","Учителю Дефоржу"],correct:0},
+{q:"К кому обращается лирический герой стихотворения «Узник»?",a:["К молодому орлу","К вещему Олегу","К дорожному ямщику"],correct:0},
+{q:"Кто предсказывает князю Олегу судьбу в «Песни о вещем Олеге»?",a:["Кудесник","Дружинник","Князь Игорь"],correct:0},
+{q:"Что, по предсказанию, должно стать причиной гибели князя Олега?",a:["Его конь","Вражеская стрела","Морская буря"],correct:0},
+{q:"Какое настроение особенно заметно в стихотворении «Зимняя дорога»?",a:["Грусть и тоска","Торжество победы","Шутливое веселье"],correct:0}
+];
+const $=id=>document.getElementById(id), flakes=[], symbols=["❄","❅","❆","✻","✼","❋"];
+let collected=0,tasksCompleted=0,taskModalOpen=false,currentTask=null,locked=false,pausedAt=0,last=performance.now(),spawnClock=0;
+let bearX=0, targetX=0, bearMoved=false, active=true;
+const bearWrap=$("bearWrap"),bearFloat=$("bearFloat"),bearEl=$("bear"),overlay=$("overlay");
+
+function initAmbient(){const box=$("ambient");for(let i=0;i<20;i++){const e=document.createElement("div");e.className="ambient";e.textContent="✦";e.style.left=(Math.random()*100)+"%";e.style.fontSize=(10+Math.random()*16)+"px";e.style.animationDuration=(12+Math.random()*19)+"s";e.style.animationDelay=(-Math.random()*24)+"s";box.appendChild(e)}}
+function setBearX(x){const half=bearWrap.getBoundingClientRect().width/2;targetX=Math.min(innerWidth-half,Math.max(half,x));bearMoved=true}
+function onPointer(e){if(taskModalOpen||!active)return;setBearX(e.clientX)}
+document.addEventListener("pointermove",onPointer,{passive:true});
+document.addEventListener("pointerdown",onPointer,{passive:true});
+document.addEventListener("touchmove",e=>{if(e.touches[0])onPointer(e.touches[0])},{passive:true});
+function updateBear(){let w=bearWrap.getBoundingClientRect().width;if(!bearMoved){targetX=innerWidth-w/2-innerWidth*.03;bearMoved=true;bearX=targetX}bearX+=(targetX-bearX)*.19;bearWrap.style.left=(bearX-w/2)+"px";bearWrap.style.right="auto"}
+function spawnSnow(){if(taskModalOpen||!active)return;const task=Math.random()<.5&&tasksCompleted<TOTAL;const el=document.createElement("div");el.className="falling"+(task?" task":"");el.innerHTML=CARROT;el.setAttribute("aria-label",task?"Морковка с вопросом":"Морковка");const obj={el,task,x:36+Math.random()*Math.max(10,innerWidth-72),y:-95,speed:(innerHeight+170)/(9+Math.random()*9),phase:Math.random()*6.28,spin:Math.random()*360,born:performance.now()};el.style.transform="translate("+obj.x+"px,-95px)";$("flakes").appendChild(el);flakes.push(obj)}
+function popParticles(x,y){const emojis=["✨","🥕","💫","🥕","🌟"];for(let i=0;i<5;i++){const n=document.createElement("span");n.className="particle";n.textContent=emojis[i];n.style.left=(x-10+(Math.random()-.5)*75)+"px";n.style.top=(y+(Math.random()-.5)*45)+"px";document.body.appendChild(n);setTimeout(()=>n.remove(),1000)}}
+let toastTimeout;
+function toast(msg){const old=$("toast");if(old)old.remove();const n=document.createElement("div");n.id="toast";n.textContent=msg;document.body.appendChild(n);clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>n.remove(),1400)}
+function catchSnow(s){const idx=flakes.indexOf(s);if(idx>=0)flakes.splice(idx,1);s.el.remove();bearFloat.classList.remove("catch");void bearFloat.offsetWidth;bearFloat.classList.add("catch");setTimeout(()=>bearFloat.classList.remove("catch"),400);
+ if(s.task){openQuestion()}else{collected++;$("snowCount").textContent=collected;popParticles(s.x,s.y);toast("🥕 Морковка поймана! +1")}}
+function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(!taskModalOpen&&active){updateBear();spawnClock+=dt;if(spawnClock>1.75){spawnClock=0;spawnSnow()}
+ const b=bearWrap.getBoundingClientRect(),bx=b.left+b.width/2,by=b.top+b.height*.70,threshold=b.width*.24;
+ for(let i=flakes.length-1;i>=0;i--){const s=flakes[i];s.y+=s.speed*dt;const sway=Math.sin((now-s.born)/1100+s.phase)*35;const x=s.x+sway;const rotation=s.spin+(now-s.born)*.016;s.el.style.transform=`translate(${x}px,${s.y}px) rotate(${rotation}deg)`;const sx=x+36,sy=s.y+36;
+ if(Math.hypot(sx-bx,sy-by)<threshold){catchSnow(s);if(taskModalOpen)break}
+ else if(s.y>innerHeight+90){s.el.remove();flakes.splice(i,1)}
+ }}requestAnimationFrame(tick)}
+function shuffleAnswers(q){return q.a.map((txt,i)=>({txt,right:i===q.correct})).sort(()=>Math.random()-.5)}
+function openQuestion(){taskModalOpen=true;pausedAt=performance.now();locked=false;currentTask=questions[tasksCompleted];$("modalTitle").textContent="📖 Ответь на вопрос!";$("taskNumber").textContent=`Задание ${tasksCompleted+1} из ${TOTAL}`;$("question").textContent=currentTask.q;$("feedback").textContent="";$("answers").replaceChildren();for(const option of shuffleAnswers(currentTask)){const b=document.createElement("button");b.type="button";b.className="answer";b.textContent=option.txt;b.addEventListener("click",()=>answer(b,option.right));$("answers").appendChild(b)}overlay.classList.add("show")}
+function answer(button,correct){if(locked)return;locked=true;const all=[...$("answers").children];all.forEach(b=>b.disabled=true);if(correct){button.classList.add("correct");$("feedback").textContent="Молодец! +5 очков";collected+=5;tasksCompleted++;$("snowCount").textContent=collected;$("tasksCount").textContent=`${tasksCompleted} из ${TOTAL}`;setTimeout(()=>{if(tasksCompleted===TOTAL)showWin();else closeQuestion()},1200)}else{button.classList.add("wrong");const valid=all.find(b=>b.textContent===currentTask.a[currentTask.correct]);if(valid)valid.classList.add("correct");$("feedback").textContent="Не совсем верно. Посмотри правильный ответ!";setTimeout(closeQuestion,2000)}}
+function closeQuestion(){overlay.classList.remove("show");taskModalOpen=false;locked=false;let elapsed=performance.now()-pausedAt;flakes.forEach(s=>s.born+=elapsed)}
+function showWin(){active=false;taskModalOpen=true;$("modalTitle").textContent="🐰 Поздравляем!";$("taskNumber").textContent="";$("question").textContent=`Поздравляем! Ты решил все ${TOTAL} заданий!`;$("answers").replaceChildren();$("feedback").replaceChildren();const img=document.createElement("img");img.id="winArt";img.src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20450%20550%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22fur%22%3E%3Cstop%20stop-color%3D%22%23fffdf5%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23cbd8d2%22%2F%3E%3C%2FradialGradient%3E%3ClinearGradient%20id%3D%22vest%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23246552%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230d352b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cellipse%20cx%3D%22226%22%20cy%3D%22520%22%20rx%3D%22145%22%20ry%3D%2219%22%20fill%3D%22%23163c2e%22%20opacity%3D%22.16%22%2F%3E%3Cg%20stroke%3D%22%23b4c5bc%22%20stroke-width%3D%223%22%3E%3Cellipse%20cx%3D%22164%22%20cy%3D%22127%22%20rx%3D%2243%22%20ry%3D%22116%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%28-12%20164%20127%29%22%2F%3E%3Cellipse%20cx%3D%22289%22%20cy%3D%22124%22%20rx%3D%2241%22%20ry%3D%22114%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%2812%20289%20124%29%22%2F%3E%3C%2Fg%3E%3Cellipse%20cx%3D%22164%22%20cy%3D%22119%22%20rx%3D%2221%22%20ry%3D%2281%22%20fill%3D%22%23eac6bf%22%20transform%3D%22rotate%28-12%20164%20119%29%22%2F%3E%3Cellipse%20cx%3D%22289%22%20cy%3D%22118%22%20rx%3D%2220%22%20ry%3D%2280%22%20fill%3D%22%23eac6bf%22%20transform%3D%22rotate%2812%20289%20118%29%22%2F%3E%3Cellipse%20cx%3D%22225%22%20cy%3D%22399%22%20rx%3D%22120%22%20ry%3D%22113%22%20fill%3D%22url%28%23fur%29%22%2F%3E%3Cellipse%20cx%3D%22225%22%20cy%3D%22388%22%20rx%3D%22108%22%20ry%3D%22101%22%20fill%3D%22url%28%23vest%29%22%2F%3E%3Cpath%20d%3D%22M180%20304%20L225%20350%20271%20304%22%20fill%3D%22%23f7efd9%22%20stroke%3D%22%23c3a56a%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%22225%22%20cy%3D%22379%22%20r%3D%226%22%20fill%3D%22%23d0b16d%22%2F%3E%3Ccircle%20cx%3D%22225%22%20cy%3D%22411%22%20r%3D%226%22%20fill%3D%22%23d0b16d%22%2F%3E%3Cellipse%20cx%3D%22225%22%20cy%3D%22254%22%20rx%3D%22123%22%20ry%3D%22104%22%20fill%3D%22url%28%23fur%29%22%20stroke%3D%22%23b4c5bc%22%20stroke-width%3D%223%22%2F%3E%3Cellipse%20cx%3D%22181%22%20cy%3D%22244%22%20rx%3D%2213%22%20ry%3D%2219%22%20fill%3D%22%2323372f%22%2F%3E%3Cellipse%20cx%3D%22269%22%20cy%3D%22244%22%20rx%3D%2213%22%20ry%3D%2219%22%20fill%3D%22%2323372f%22%2F%3E%3Ccircle%20cx%3D%22185%22%20cy%3D%22238%22%20r%3D%225%22%20fill%3D%22white%22%2F%3E%3Ccircle%20cx%3D%22273%22%20cy%3D%22238%22%20r%3D%225%22%20fill%3D%22white%22%2F%3E%3Cellipse%20cx%3D%22153%22%20cy%3D%22280%22%20rx%3D%2224%22%20ry%3D%2212%22%20fill%3D%22%23edc3b7%22%20opacity%3D%22.7%22%2F%3E%3Cellipse%20cx%3D%22297%22%20cy%3D%22280%22%20rx%3D%2224%22%20ry%3D%2212%22%20fill%3D%22%23edc3b7%22%20opacity%3D%22.7%22%2F%3E%3Cellipse%20cx%3D%22203%22%20cy%3D%22284%22%20rx%3D%2231%22%20ry%3D%2224%22%20fill%3D%22%23fffdf5%22%2F%3E%3Cellipse%20cx%3D%22247%22%20cy%3D%22284%22%20rx%3D%2231%22%20ry%3D%2224%22%20fill%3D%22%23fffdf5%22%2F%3E%3Cpath%20d%3D%22M213%20270%20Q225%20261%20237%20270%20L225%20281Z%22%20fill%3D%22%23b77978%22%2F%3E%3Cpath%20d%3D%22M225%20280v13m0%200q-17%2013-28-1m28%201q17%2013%2028-1%22%20fill%3D%22none%22%20stroke%3D%22%23685b51%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Crect%20x%3D%22216%22%20y%3D%22300%22%20width%3D%2218%22%20height%3D%2217%22%20rx%3D%224%22%20fill%3D%22white%22%2F%3E%3Cellipse%20cx%3D%22137%22%20cy%3D%22495%22%20rx%3D%2265%22%20ry%3D%2229%22%20fill%3D%22url%28%23fur%29%22%2F%3E%3Cellipse%20cx%3D%22311%22%20cy%3D%22495%22%20rx%3D%2265%22%20ry%3D%2229%22%20fill%3D%22url%28%23fur%29%22%2F%3E%3Cpath%20d%3D%22M115%20379%20Q225%20341%20338%20379%20L318%20471%20Q224%20496%20133%20471Z%22%20fill%3D%22%23bc9058%22%20stroke%3D%22%2386623c%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M140%20389Q224%20365%20312%20389M138%20412Q224%20388%20320%20412M141%20438Q224%20417%20315%20438M162%20377l12%20102m28-109%205%20113m28-113-5%20113m37-109-12%20102m40-96-17%2090%22%20fill%3D%22none%22%20stroke%3D%22%23e4c28b%22%20stroke-width%3D%225%22%2F%3E%3Cellipse%20cx%3D%22112%22%20cy%3D%22381%22%20rx%3D%2228%22%20ry%3D%2241%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%28-25%20112%20381%29%22%2F%3E%3Cellipse%20cx%3D%22338%22%20cy%3D%22381%22%20rx%3D%2228%22%20ry%3D%2241%22%20fill%3D%22url%28%23fur%29%22%20transform%3D%22rotate%2825%20338%20381%29%22%2F%3E%3C%2Fsvg%3E";img.alt="Зайчик с корзинкой";$("feedback").appendChild(img);const btn=document.createElement("button");btn.id="restart";btn.textContent="Играть ещё раз";btn.onclick=()=>location.reload();$("answers").appendChild(btn);overlay.classList.add("show")}
+$("fullscreen").addEventListener("click",async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){toast("Полноэкранный режим недоступен")}});
+document.addEventListener("fullscreenchange",()=>$("fullscreen").textContent=document.fullscreenElement?"Выйти из полного экрана":"На весь экран");
+initAmbient();updateBear();spawnSnow();requestAnimationFrame(tick);
+</script></body></html>
