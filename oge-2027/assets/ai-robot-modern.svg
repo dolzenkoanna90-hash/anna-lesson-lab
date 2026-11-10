@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+<title id="title">Современный ИИ-репетитор</title><desc id="desc">Белый дружелюбный робот с бирюзовыми светящимися глазами, планшетом и золотистыми элементами</desc>
+<defs>
+<linearGradient id="white" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#fff"/><stop offset=".43" stop-color="#edf6f1"/><stop offset=".78" stop-color="#b7cbc5"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0b7"/><stop offset=".38" stop-color="#e0b867"/><stop offset=".7" stop-color="#9f7133"/><stop offset="1" stop-color="#f6df9b"/></linearGradient>
+<linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111f28"/><stop offset=".6" stop-color="#052932"/><stop offset="1" stop-color="#00574b"/></linearGradient>
+<radialGradient id="aura"><stop stop-color="#6bdacb" stop-opacity=".46"/><stop offset="1" stop-color="#18aa90" stop-opacity="0"/></radialGradient>
+<linearGradient id="tablet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#115b4a"/><stop offset="1" stop-color="#002d29"/></linearGradient>
+<filter id="shadow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="12"/></filter>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7" result="a"/><feMerge><feMergeNode in="a"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="320" cy="330" rx="290" ry="290" fill="url(#aura)"/>
+<ellipse cx="333" cy="577" rx="214" ry="28" fill="#031f1c" opacity=".28" filter="url(#shadow)"/>
+<!-- floating digital sparkles -->
+<g stroke="#ebc570" stroke-width="5" stroke-linecap="round" opacity=".95"><path d="M69 180v38M50 199h38M526 354v28M512 368h28"/><path d="M522 87v20M512 97h20" opacity=".65"/></g>
+<g transform="translate(505 68)"><path d="M45 3C20 2 2 23 2 47c0 17 9 27 20 38h45c10-11 19-24 19-38C86 22 69 3 45 3Z" fill="#ffdc81" opacity=".20" stroke="#ffd986" stroke-width="5"/><path d="M28 79h34M31 91h28M37 102h16" stroke="#f4cc75" stroke-width="6" stroke-linecap="round"/><path d="M35 78 27 46M56 78 65 46" stroke="#ffdf98" stroke-width="4"/><circle cx="45" cy="45" r="4" fill="#fff2a5" filter="url(#glow)"/></g>
+<!-- shoulders -->
+<path d="M147 490c0-83 64-123 169-123s173 41 177 123l11 87H131Z" fill="url(#white)" stroke="#d9ba77" stroke-width="8"/>
+<path d="M177 491c17-65 67-96 139-96" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round" opacity=".78"/>
+<path d="M463 485c-11-44-35-66-67-79" fill="none" stroke="#b1c8c0" stroke-width="11" opacity=".7"/>
+<!-- neck -->
+<rect x="280" y="351" width="80" height="58" rx="22" fill="#1e3540" stroke="url(#gold)" stroke-width="6"/>
+<!-- head side units -->
+<circle cx="148" cy="241" r="57" fill="url(#gold)" stroke="#fff6d7" stroke-width="7"/>
+<circle cx="492" cy="241" r="57" fill="url(#gold)" stroke="#fff6d7" stroke-width="7"/>
+<circle cx="148" cy="241" r="36" fill="url(#screen)" stroke="#e5d38d" stroke-width="6"/>
+<circle cx="492" cy="241" r="36" fill="url(#screen)" stroke="#e5d38d" stroke-width="6"/>
+<g fill="none" stroke="#67f2df" stroke-width="6" filter="url(#glow)"><circle cx="148" cy="241" r="17"/><circle cx="492" cy="241" r="17"/></g>
+<!-- body and visor -->
+<rect x="156" y="92" width="328" height="300" rx="145" fill="url(#white)" stroke="url(#gold)" stroke-width="10"/>
+<path d="M206 133Q330 84 447 143" stroke="#fff" stroke-width="15" stroke-linecap="round" fill="none" opacity=".9"/>
+<rect x="179" y="143" width="282" height="209" rx="94" fill="url(#screen)" stroke="#385e5e" stroke-width="7"/>
+<path d="M193 216q13-45 50-57" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".17"/>
+<!-- face -->
+<g fill="none" stroke="#88ffeb" stroke-linecap="round" stroke-width="13" filter="url(#glow)"><path d="M238 247q24-31 49 0"/><path d="M352 247q24-31 49 0"/><path d="M285 297q37 30 74-2"/></g>
+<ellipse cx="208" cy="288" rx="15" ry="11" fill="#edacb0" opacity=".35"/><ellipse cx="432" cy="288" rx="15" ry="11" fill="#edacb0" opacity=".35"/>
+<!-- chest emblem -->
+<circle cx="350" cy="465" r="36" fill="#0b5748" stroke="url(#gold)" stroke-width="6"/>
+<path d="m350 445 19 11v22l-19 11-19-11v-22Z" fill="none" stroke="#c2fff0" stroke-width="5"/><circle cx="350" cy="467" r="5" fill="#b8ffea"/>
+<!-- tablet arm -->
+<path d="M162 469q-54 18-67 72" fill="none" stroke="url(#white)" stroke-width="41" stroke-linecap="round"/><path d="M157 465q-52 11-63 65" fill="none" stroke="#d6b76a" stroke-width="6" stroke-linecap="round"/>
+<g transform="translate(72 433) rotate(-8 117 94)"><rect width="235" height="163" rx="20" fill="#173b3b" stroke="url(#gold)" stroke-width="9"/><rect x="13" y="13" width="209" height="137" rx="12" fill="url(#tablet)"/><rect x="30" y="27" width="122" height="15" rx="7" fill="#c9e5d4" opacity=".35"/><rect x="30" y="55" width="172" height="12" rx="6" fill="#8dc7ae" opacity=".34"/><rect x="30" y="82" width="154" height="12" rx="6" fill="#8dc7ae" opacity=".34"/><rect x="30" y="109" width="93" height="12" rx="6" fill="#e3c477" opacity=".64"/><circle cx="199" cy="119" r="15" fill="#bbd6b2"/><path d="m193 120 5 5 9-12" fill="none" stroke="#115e48" stroke-width="3"/></g>
+<!-- right arm and hand -->
+<path d="M488 472q40-18 51-89" fill="none" stroke="url(#white)" stroke-width="43" stroke-linecap="round"/><path d="M488 472q40-18 51-89" fill="none" stroke="#d6b76a" stroke-width="6" stroke-linecap="round"/>
+<g transform="translate(514 336) rotate(-8)"><rect x="0" y="8" width="49" height="70" rx="23" fill="url(#white)" stroke="#d0ab69" stroke-width="5"/><rect x="11" y="-39" width="23" height="75" rx="11" fill="url(#white)" stroke="#d0ab69" stroke-width="4"/><path d="M3 42q-20-16-22-4t26 33" fill="url(#white)" stroke="#c39f5d" stroke-width="4"/></g>
+</svg>
