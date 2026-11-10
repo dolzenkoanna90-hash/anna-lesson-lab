@@ -1,25 +1,627 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123d44"><title>Тайна Морфемного леса — квест, 5 класс</title><style>
 :root{--ink:#163448;--navy:#102e44;--cyan:#a3f0f2;--pink:#ff7b9b;--gold:#ffcb64;--lime:#b5fa9c;--paper:#fffef2}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:radial-gradient(circle at 18% 10%,#8ef4fa 0,transparent 35%),radial-gradient(circle at 85% 22%,#ffd2f2 0,transparent 35%),linear-gradient(130deg,#d5fff2,#e9e0ff 52%,#fff5cf);min-height:100vh}button{font:inherit;cursor:pointer}button:focus-visible{outline:4px solid #e44d93;outline-offset:3px}.wrap{max-width:1080px;margin:auto;padding:20px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:950;font-size:clamp(18px,3vw,27px);color:#17446a}.tiny{font-size:13px;color:#476074}.pill{border:2px solid #fff;background:#ffffffd8;border-radius:60px;padding:8px 13px;box-shadow:0 5px 12px #41617d1c}.hero{position:relative;overflow:hidden;margin-top:18px;padding:clamp(24px,5vw,50px);border-radius:38px;background:linear-gradient(125deg,#0e5960,#2d73a8 48%,#875ac0);color:white;box-shadow:0 18px 40px #3d487d44}.hero:after{content:'✦  ✨   ✦';position:absolute;right:24px;top:20px;color:#ffe5a4;font-size:35px;transform:rotate(-12deg)}h1{font-size:clamp(31px,6vw,58px);line-height:1.08;max-width:760px;margin:10px 0}h2{font-size:clamp(23px,4vw,35px)}.hero p{font-size:clamp(16px,2.3vw,21px);max-width:650px}.mascot{font-size:66px;display:inline-block;filter:drop-shadow(0 8px 7px #0004);animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:19px}.btn{border:none;border-radius:18px;font-weight:850;padding:13px 22px;box-shadow:0 7px 0 #0002;transition:.18s}.btn:active{transform:translateY(4px);box-shadow:0 3px 0 #0002}.primary{background:var(--gold);color:#3c2f35}.secondary{background:#fff;color:#124a63}.hidden{display:none!important}.card{padding:25px;border:3px solid #ffffff;border-radius:30px;background:#ffffffcf;box-shadow:0 12px 30px #64829d2b;margin-top:19px}.sectiontitle{font-weight:950;font-size:clamp(24px,4vw,34px);margin:4px 0 12px}.muted{color:#526a7b}.map{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.place{border:3px solid #fff;background:linear-gradient(150deg,#e6fcff,#d7f9ed);border-radius:26px;padding:18px 10px;min-height:166px;text-align:center;position:relative;box-shadow:0 7px 0 #83a7a744}.place:nth-child(2){background:linear-gradient(140deg,#ffe4ae,#ffd0d4)}.place:nth-child(3){background:linear-gradient(140deg,#dcd1ff,#bbf4fc)}.place:nth-child(4){background:linear-gradient(140deg,#fdf3b8,#b8f5cd)}.place:nth-child(5){background:linear-gradient(140deg,#ffdbed,#d1dcff)}.place .icon{font-size:48px;display:block}.place strong{display:block;margin-top:8px}.place.done:after{content:'✓';position:absolute;top:6px;right:8px;background:#2caa7a;color:white;border-radius:100%;padding:1px 8px;font-size:20px}.difficulty{display:flex;gap:10px;flex-wrap:wrap}.dif{border:2px solid #8fc4bc;border-radius:17px;padding:11px 18px;background:white;font-weight:800}.dif[aria-pressed=true]{background:#164d65;color:white;border-color:#164d65}.progress{height:16px;border-radius:20px;background:#d9e7ef;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#57cbd3,#a5de65,#ffca62);width:0;transition:width .4s}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}.option{border:3px solid #b8dfe6;background:white;text-align:left;border-radius:20px;padding:16px;font-weight:800;min-height:64px}.option:hover:not(:disabled){border-color:#387aab;background:#eefaff}.option:disabled{cursor:default}.option.right{background:#d3ffe4;border-color:#2dba77}.option.wrong{background:#ffe0e5;border-color:#f56378}.question{font-weight:900;font-size:clamp(20px,3.5vw,30px);margin:15px 0}.feedback{padding:18px;border-radius:19px;background:#ebf9ed;border-left:6px solid #45b46d;margin-top:15px;font-size:17px;line-height:1.5}.feedback.bad{background:#fff2d9;border-left-color:#e99a36}.badge{background:#fff5ba;padding:7px 14px;border-radius:25px;font-weight:900;display:inline-block}.footer{text-align:center;margin:25px;color:#4e6072;font-size:13px}.certificate{border:8px double #dca249;background:linear-gradient(120deg,#fffdf0,#d8fcf0);text-align:center;padding:30px;border-radius:25px}.certificate h2{color:#145766;font-size:clamp(28px,5vw,45px)}.certstars{font-size:55px}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.mini{border:1px solid #b5d8dd;border-radius:12px;padding:7px 12px;background:#fff}.sr{position:absolute;left:-10000px}@media(max-width:730px){.map{grid-template-columns:repeat(2,1fr)}.place:last-child{grid-column:1/-1}.answers{grid-template-columns:1fr}.card{padding:17px}.hero{border-radius:27px}.wrap{padding:12px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}@media print{.top,.actions,.footer,.toolbar,.map,.difficulty{display:none!important}.certificate{display:block!important}body{background:white}}
-</style></head><body><main class="wrap"><div class="top"><div class="brand">🌈 Мастерская учителя · 5 класс</div><div class="toolbar"><button id="sound" class="mini" aria-pressed="true">🔊 Звук: вкл.</button><button id="voice" class="mini" aria-pressed="false">🗣️ Читать: выкл.</button><button id="reset" class="mini">↻ Сбросить прогресс</button></div></div>
-<section class="hero"><span class="mascot" aria-hidden="true">🤖</span><div class="tiny" style="color:#e2ffdf;font-weight:900">ИНТЕРАКТИВНЫЙ КВЕСТ ПО РУССКОМУ ЯЗЫКУ</div><h1>Тайна Морфемного леса</h1><p>Волшебник перепутал части слов! Помоги роботу Морфику пройти пять испытаний, собрать кристаллы и вернуть лесу краски.</p><div class="actions"><button id="start" class="btn primary">✨ Начать приключение</button><button id="how" class="btn secondary">📖 Правила игры</button></div></section>
-<section id="rules" class="card hidden"><h2>📖 Как играть</h2><p>Выбери сложность, затем пройди пять мест: окончание, корень, приставка, суффикс и полный разбор слова. После каждого ответа Морфик объяснит правило. При ошибке можно вернуться и потренироваться ещё раз.</p><p><strong>Лёгкий</strong> — 3 задания на уровень; <strong>средний</strong> — 4; <strong>сложный</strong> — 5. Правильный ответ даёт кристалл 💎. Ошибки не отнимают баллы.</p></section>
-<section id="game" class="hidden"><div class="card"><div class="sectiontitle">🗺️ Карта Морфемного леса</div><p class="muted">Пройденные станции отмечены галочкой. Можно возвращаться и переигрывать.</p><div id="map" class="map"></div><h3>Выбери сложность</h3><div class="difficulty"><button class="dif" data-d="easy" aria-pressed="true">🌱 Лёгкий</button><button class="dif" data-d="medium" aria-pressed="false">🌿 Средний</button><button class="dif" data-d="hard" aria-pressed="false">🌋 Сложный</button></div></div><div id="task" class="card hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><span id="leveltag" class="badge"></span><strong id="counter"></strong><span id="gems">💎 0</span></div><div class="progress" style="margin:16px 0"><div id="bar" class="fill"></div></div><h2 id="tasktitle" class="sectiontitle"></h2><div id="question" class="question"></div><div id="answers" class="answers"></div><div id="feedback" role="status" aria-live="polite" class="hidden feedback"></div><div class="actions"><button id="next" class="btn primary hidden">Продолжить →</button><button id="back" class="btn secondary">← На карту</button></div></div><div id="end" class="card hidden"><div class="certificate"><div class="certstars">🏆🌈💎</div><h2>Сертификат исследователя слов</h2><p>Робот Морфик благодарит тебя за спасение Морфемного леса!</p><h3 id="certscore"></h3><p>Ты научился находить части слова и проверять свои ответы.</p><p>«Морфемика — тайна, которую можно разгадать!»</p><div class="actions" style="justify-content:center"><button id="print" class="btn primary">🖨️ Распечатать</button><button id="again" class="btn secondary">↻ Пройти заново</button></div></div></div></section><div class="footer">© Мастерская учителя · Для занятий в 5 классе. Работает без интернета. Важные ответы проверены по школьной модели разбора.</div></main>
+
+/* Сказочный объёмный сад: свет, глубина, лепестки и сияние без внешних ресурсов. */
+:root{--ink:#382a41;--gold:#ffd773;--paper:#fff9e9}
+body{background:radial-gradient(ellipse at 7% 15%,#fce5ff 0,transparent 40%),radial-gradient(ellipse at 94% 27%,#d8fcbd 0,transparent 37%),linear-gradient(#92d8ee 0%,#dcf9dc 38%,#91bf70 100%);background-attachment:fixed}
+.wrap{max-width:1180px}
+.top{background:#fff9efcc;border:2px solid #fff;border-radius:26px;padding:13px 18px;box-shadow:0 12px 28px #296f4d3a}
+.brand{color:#62306e;text-shadow:0 1px #fff}
+.hero{isolation:isolate;border:5px solid #ffedb9;background:radial-gradient(ellipse at 89% 24%,#e9b8f2b7 0,transparent 29%),radial-gradient(ellipse at 18% 80%,#d7ffaad0 0,transparent 46%),linear-gradient(135deg,#6851a0,#7db8d9 42%,#5da776 100%);box-shadow:0 13px 0 #9c6b9c,0 23px 40px #473b6a60}
+.hero:before{content:'🌸 🌿 🦋 🌷 🌼 🍄 ✨';position:absolute;z-index:-1;right:4%;bottom:4%;width:43%;font-size:clamp(33px,6vw,74px);line-height:2;text-shadow:0 7px 7px #284d4133;transform:rotate(-5deg)}
+.hero:after{content:'✨ ✦ ✨';right:20px;top:18px;animation:twinkle 2.3s ease-in-out infinite}
+.hero h1{color:#fff8e5;text-shadow:0 3px #8a4f98,0 6px 20px #29374baa;max-width:650px}
+.hero p{max-width:600px;text-shadow:0 1px 3px #2c344a99}
+.mascot{filter:drop-shadow(0 10px 6px #342e5790)}
+.card{border:4px solid #fff4cd;background:linear-gradient(130deg,#fffcf2ef,#fef1e7e8);box-shadow:0 10px 0 #e5c696,0 20px 35px #3d694d30}
+.sectiontitle{color:#75307b}
+.map{position:relative;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;padding:25px 12px 34px;border-radius:38px;background:radial-gradient(circle at 16% 20%,#fff5cb 0,transparent 18%),radial-gradient(circle at 75% 60%,#fface0 0,transparent 25%),linear-gradient(140deg,#aee3a1,#d7f3ad 52%,#8ec8a3);border:5px ridge #c6a165;box-shadow:inset 0 0 35px #27674938,0 12px 0 #827044,0 22px 36px #486b5552}
+.map:before{content:'🌻  🌸    🌿    🦋     🌷   🌼';position:absolute;left:0;right:0;bottom:2px;text-align:center;white-space:nowrap;overflow:hidden;font-size:25px;pointer-events:none}
+.place{min-height:190px;background:linear-gradient(125deg,#fffdf4,#efdaff 62%,#b9efcb)!important;border:4px solid #fffbe5;border-bottom:7px solid #e9b96c;border-radius:35% 36% 26px 26px;box-shadow:0 7px 0 #ae8f6b,0 15px 19px #37594152,inset 0 5px 12px #fff, inset -6px -7px 19px #d9bfe777;transform:translateY(0);transition:transform .2s,filter .2s,box-shadow .2s;overflow:hidden;color:#44305c}
+.place:before{content:'✨';position:absolute;top:9px;left:11px;animation:twinkle 2.6s infinite}
+.place:nth-child(2n){background:linear-gradient(140deg,#fff9d8,#ffd7e6 63%,#d4f8de)!important}
+.place:nth-child(3n){background:linear-gradient(140deg,#e5efff,#dbcbff 63%,#ffedc2)!important}
+.place:hover,.place:focus-visible{transform:translateY(-6px) rotate(-1deg);filter:brightness(1.05);box-shadow:0 12px 0 #b08d66,0 25px 30px #37594168}
+.place .icon{font-size:60px;filter:drop-shadow(0 7px 4px #633c6945);animation:bob 3s ease-in-out infinite}
+.place.done{background:linear-gradient(135deg,#d6ffd3,#fff6c3)!important;box-shadow:0 4px 0 #91b579,0 0 22px #ffefa3}
+.place.done:after{box-shadow:0 0 12px #fff783;animation:twinkle 1.5s infinite}
+.btn{border:2px solid #fff8cb;border-bottom:5px solid #c8a566;box-shadow:0 6px 0 #754d6780,0 12px 16px #51394a30}
+.primary{background:linear-gradient(#fff4a6,#ffc956);color:#573252}
+.secondary{background:linear-gradient(#fff,#f4dafa);color:#63336e}
+.badge{background:linear-gradient(#fff8c6,#ffe195);border:2px solid white;box-shadow:0 4px 0 #dbb56e;color:#684067}
+.progress{height:18px;border:2px solid #fff;background:#dfcfbe}
+.fill{background:linear-gradient(90deg,#76cb68,#ffe37a,#e6a1ea)}
+.option{position:relative;min-height:78px;font-size:clamp(17px,2vw,21px);background:linear-gradient(135deg,#fffef8,#f4ebff);border:3px solid #d4a8dd;border-bottom-width:7px;box-shadow:0 6px 13px #91608a30;transition:transform .15s,background .2s}
+.option:hover:not(:disabled){transform:translateY(-3px);background:#fff7d2;border-color:#cc88be}
+.option.right{background:linear-gradient(145deg,#d8ffd4,#efffe4);box-shadow:0 0 18px #88e88b;animation:answerGlow .55s ease-out}
+.option.wrong{background:linear-gradient(135deg,#ffe2dc,#fff0e9)}
+.feedback{border:3px solid #a7dba4;box-shadow:0 8px 0 #c4e0b9}
+.question{color:#613579}
+.certificate{border:10px ridge #dfbb70;background:radial-gradient(circle at 90% 20%,#fff3ba,transparent 35%),linear-gradient(130deg,#fff9e5,#e6ffd1,#f7dcff);box-shadow:0 0 26px #f1d36c}
+.fx-layer{position:fixed;inset:0;pointer-events:none;z-index:999;overflow:hidden}
+.sparkle{position:absolute;top:45%;left:50%;font-size:clamp(24px,4vw,48px);animation:burst .9s ease-out forwards;filter:drop-shadow(0 0 9px #fff6a0)}
+@keyframes burst{0%{opacity:0;transform:translate(0,0) scale(.3)}20%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.5) rotate(55deg)}}
+@keyframes answerGlow{50%{box-shadow:0 0 45px #fff5ab;transform:scale(1.025)}}
+@keyframes twinkle{50%{opacity:.35;filter:brightness(1.5)}}
+@media(max-width:820px){.map{grid-template-columns:repeat(2,minmax(0,1fr))}.place:last-child{grid-column:1/-1}.place{min-height:150px}.hero:before{opacity:.45}}
+@media(max-width:430px){.map{padding:12px 9px 28px;gap:11px}.place{min-height:143px;padding:12px 6px}.place .icon{font-size:43px}.place strong{font-size:14px}.hero:before{display:none}}
+@media(prefers-reduced-motion:reduce){.sparkle{display:none}.place:hover{transform:none}}
+</style></head><body><div id="fx" class="fx-layer" aria-hidden="true"></div><main class="wrap"><div class="top"><div class="brand">🌈 Мастерская учителя · 5 класс</div><div class="toolbar"><button id="sound" class="mini" aria-pressed="true">🔊 Звук: вкл.</button><button id="voice" class="mini" aria-pressed="false">🗣️ Читать: выкл.</button><button id="reset" class="mini">↻ Сбросить прогресс</button></div></div>
+<section class="hero"><span class="mascot" aria-hidden="true">🤖</span><div class="tiny" style="color:#e2ffdf;font-weight:900">ИНТЕРАКТИВНЫЙ КВЕСТ ПО РУССКОМУ ЯЗЫКУ</div><h1>Тайна Морфемного леса</h1><p>Волшебник перепутал части слов! Помоги роботу Морфику пройти пять испытаний по 10 слов, собрать кристаллы и вернуть лесу краски.</p><div class="actions"><button id="start" class="btn primary">✨ Начать приключение</button><button id="how" class="btn secondary">📖 Правила игры</button></div></section>
+<section id="rules" class="card hidden"><h2>📖 Как играть</h2><p>Пройди пять мест: окончание, корень, приставка, суффикс и полный разбор слова. После каждого ответа Морфик объяснит правило. При ошибке можно вернуться и потренироваться ещё раз.</p><p>На каждой станции — 10 слов. Первые задания проще, затем встречаются более трудные слова с чередованием звуков и несколькими приставками. Правильный ответ даёт кристалл 💎. Ошибки не отнимают баллы.</p></section>
+<section id="game" class="hidden"><div class="card"><div class="sectiontitle">🗺️ Тропинки волшебного сада</div><p class="muted">🌼 Выбирай дорожку. На каждой остановке — десять слов. Цветы и фонарики загораются при верном ответе.</p><p class="muted">Пройденные станции отмечены галочкой. Можно возвращаться и переигрывать.</p><div id="map" class="map"></div><p class="badge">🌱 → 🌿 → 🌳 Каждая станция: 10 слов, сложность растёт</p></div><div id="task" class="card hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><span id="leveltag" class="badge"></span><strong id="counter"></strong><span id="gems">💎 0</span></div><div class="progress" style="margin:16px 0"><div id="bar" class="fill"></div></div><h2 id="tasktitle" class="sectiontitle"></h2><div id="question" class="question"></div><div id="answers" class="answers"></div><div id="feedback" role="status" aria-live="polite" class="hidden feedback"></div><div class="actions"><button id="next" class="btn primary hidden">Продолжить →</button><button id="back" class="btn secondary">← На карту</button></div></div><div id="end" class="card hidden"><div class="certificate"><div class="certstars">🏆🌈💎</div><h2>Сертификат исследователя слов</h2><p>Робот Морфик благодарит тебя за спасение Морфемного леса!</p><h3 id="certscore"></h3><p>Ты научился находить части слова и проверять свои ответы.</p><p>«Морфемика — тайна, которую можно разгадать!»</p><div class="actions" style="justify-content:center"><button id="print" class="btn primary">🖨️ Распечатать</button><button id="again" class="btn secondary">↻ Пройти заново</button></div></div></div></section><div class="footer">© Мастерская учителя · Для занятий в 5 классе. Работает без интернета. Важные ответы проверены по школьной модели разбора.</div></main>
 <script>
 'use strict';const stations=[{name:'Лес окончаний',icon:'🌲',title:'Найди окончание',hint:'Окончание помогает изменять форму слова. Нулевое окончание есть у изменяемого слова, если оно не выражено буквами.'},{name:'Пещера корней',icon:'🪨',title:'Отыщи корень',hint:'Корень — общая значимая часть родственных слов. Проверяй и смысл, и написание.'},{name:'Мост приставок',icon:'🌉',title:'Найди приставку',hint:'Приставка стоит перед корнем и помогает образовать новое слово.'},{name:'Башня суффиксов',icon:'🏰',title:'Найди суффикс',hint:'Суффикс обычно стоит после корня и перед окончанием; он помогает образовать новые слова.'},{name:'Кристалл Морфемики',icon:'💎',title:'Собери слово по частям',hint:'Определи окончание, найди основу, подбери родственные слова, выдели приставки и суффиксы.'}];
 // Ответы и объяснения составлены для школьной модели морфемного разбора.
 const bank=[
-[{q:'Какое окончание в форме слова «книга»?',a:['-а','-иг-','нулевое','-га'],k:0,e:'Книга — книги — книгой. Меняется часть -а: это окончание.'},{q:'Какое окончание в слове «травой»?',a:['-ой','-ой- вместе с корнем','нулевое','-в'],k:0,e:'Трава — травой — траве: окончание -ой.'},{q:'Какое окончание у слова «лес» (именительный падеж, ед. ч.)?',a:['-с','нулевое','-ес','нет окончания, слово неизменяемое'],k:1,e:'Лес — леса — лесом: слово изменяется, но в форме «лес» окончание нулевое.'},{q:'Какое окончание в слове «окно»?',a:['-но','-о','нулевое','-кно'],k:1,e:'Окно — окна — окном. Окончание -о.'},{q:'Какое окончание в слове «зелёными»?',a:['-ыми','-ми','-и','нулевое'],k:0,e:'Зелёный — зелёными — зелёных. В форме «зелёными» окончание -ыми.'}],
-[{q:'Какой корень в слове «лесник»?',a:['лес-','лесн-','-ник-','ле-'],k:0,e:'Лес, лесной, лесник — однокоренные слова с корнем лес-.'},{q:'Какой корень в слове «горка»?',a:['гор-','горк-','-ка-','ор-'],k:0,e:'Гора, горный, горка — корень гор-.'},{q:'Какая пара является однокоренной?',a:['вода — водный','гора — гореть','нос — носить','рис — рисовать'],k:0,e:'Вода и водный связаны общим значением воды и корнем вод-. Одинаковые буквы без общего смысла ещё не делают слова родственными.'},{q:'Какой корень в слове «морской»?',a:['мор-','морск-','-ск-','морс-'],k:0,e:'Море — морской — моряк: корень мор-.'},{q:'В какой паре слова НЕ однокоренные?',a:['нос — носить','снег — снежный','сад — садик','лес — лесной'],k:0,e:'Нос (часть лица) и носить (перемещать) не имеют общего лексического значения, несмотря на совпадение букв.'}],
-[{q:'Какую приставку имеет слово «подписать»?',a:['под-','по-','п-','нет приставки'],k:0,e:'Под-пис-а-ть: приставка под-. Сравни: писать, записать, переписать.'},{q:'Какую приставку имеет слово «запеть»?',a:['за-','зап-','нет приставки','-петь'],k:0,e:'За-пе-ть: приставка за-. Сравни: петь — запеть.'},{q:'Какую приставку имеет слово «переписать»?',a:['пере-','пер-','по-','нет приставки'],k:0,e:'Пере-пис-а-ть: приставка пере-.'},{q:'Какую приставку имеет слово «приехать»?',a:['при-','пр-','про-','нет приставки'],k:0,e:'При-ех-а-ть: приставка при-.'},{q:'Какую приставку имеет слово «выбежать»?',a:['вы-','в-','беж-','нет приставки'],k:0,e:'Вы-беж-а-ть: приставка вы-. Сравни: бежать, прибежать.'}],
-[{q:'Какой суффикс в слове «домик»?',a:['-ик-','-мик-','-к-','нет суффикса'],k:0,e:'Дом-ик-∅: суффикс -ик- придаёт уменьшительное значение.'},{q:'Какой суффикс в слове «лесник»?',a:['-ник-','-ик-','-н-','-лес-'],k:0,e:'Лес-ник-∅: суффикс -ник- образует название лица.'},{q:'Какой суффикс в слове «берёзка»?',a:['-к-','-ка-','-ёз-','нулевой'],k:0,e:'Берёз-к-а: суффикс -к-, окончание -а.'},{q:'Какой суффикс в слове «зимний»?',a:['-н-','-ний-','-ий','нет суффикса'],k:0,e:'Зим-н-ий: корень зим-, суффикс -н-, окончание -ий.'},{q:'Какой суффикс в слове «рыбак»?',a:['-ак-','-бак-','-к-','нет суффикса'],k:0,e:'Рыб-ак-∅: корень рыб-, суффикс -ак-, нулевое окончание.'}],
-[{q:'Выбери разбор слова «подснежник».',a:['под-снеж-ник-∅','под-сне-жник-∅','подснеж-ник-∅','под-снеж-н-ик'],k:0,e:'Под-снеж-ник-∅: приставка под-, корень снеж- (снег — снежный), суффикс -ник-, нулевое окончание.'},{q:'Выбери разбор слова «записка».',a:['за-пис-к-а','запис-к-а','за-пи-ска','за-писк-а'],k:0,e:'За-пис-к-а: приставка за-, корень пис-, суффикс -к-, окончание -а.'},{q:'Выбери разбор слова «лесник».',a:['лес-ник-∅','ле-сник-∅','лес-н-ик','лесни-к'],k:0,e:'Лес-ник-∅: корень лес-, суффикс -ник-, нулевое окончание.'},{q:'Выбери разбор слова «подводный».',a:['под-вод-н-ый','по-двод-н-ый','подвод-н-ый','под-вод-ный'],k:0,e:'Под-вод-н-ый: приставка под-, корень вод-, суффикс -н-, окончание -ый.'},{q:'Выбери разбор слова «приморский».',a:['при-мор-ск-ий','при-морс-к-ий','примор-ск-ий','при-мор-ский'],k:0,e:'При-мор-ск-ий: приставка при-, корень мор-, суффикс -ск-, окончание -ий.'}]
+ [
+  {
+   "q": "Найди окончание в слове «книга».",
+   "a": [
+    "-а",
+    "-га",
+    "нулевое",
+    "-ига"
+   ],
+   "k": 0,
+   "e": "Книга — книги — книгой. Изменяется -а: это окончание."
+  },
+  {
+   "q": "Найди окончание в слове «травой».",
+   "a": [
+    "-ой",
+    "-й",
+    "-вой",
+    "нулевое"
+   ],
+   "k": 0,
+   "e": "Трава — травой — траве. Окончание формы «травой» — -ой."
+  },
+  {
+   "q": "Найди окончание в слове «окно».",
+   "a": [
+    "-но",
+    "нулевое",
+    "-о",
+    "-кно"
+   ],
+   "k": 2,
+   "e": "Окно — окна — окном: меняется окончание -о."
+  },
+  {
+   "q": "Есть ли окончание в слове «лес»?",
+   "a": [
+    "Нет: слово неизменяемое",
+    "Окончание -с",
+    "Нулевое окончание",
+    "Окончание -ес"
+   ],
+   "k": 2,
+   "e": "Лес — леса — лесом. Слово изменяется, но в форме «лес» окончание нулевое."
+  },
+  {
+   "q": "Какое окончание в слове «берёзами»?",
+   "a": [
+    "-ми",
+    "-ами",
+    "-и",
+    "-зами"
+   ],
+   "k": 1,
+   "e": "Берёза — берёзами — берёзах: окончание -ами."
+  },
+  {
+   "q": "Какое окончание в слове «тетрадями»?",
+   "a": [
+    "-ями",
+    "-ами",
+    "-ми",
+    "нулевое"
+   ],
+   "k": 0,
+   "e": "Тетрадь — тетрадями — тетрадях: окончание -ями."
+  },
+  {
+   "q": "Какое окончание в слове «красивому»?",
+   "a": [
+    "-му",
+    "-ому",
+    "-у",
+    "-ивому"
+   ],
+   "k": 1,
+   "e": "Красивый — красивого — красивому: окончание -ому."
+  },
+  {
+   "q": "Какое окончание в слове «маленьких»?",
+   "a": [
+    "-ких",
+    "-их",
+    "-х",
+    "-еньких"
+   ],
+   "k": 1,
+   "e": "Маленький — маленького — маленьких: окончание -их."
+  },
+  {
+   "q": "Какое окончание в слове «перелесками»?",
+   "a": [
+    "-ками",
+    "-ми",
+    "-ами",
+    "-и"
+   ],
+   "k": 2,
+   "e": "Перелесок — перелески — перелесками: окончание -ами."
+  },
+  {
+   "q": "Какое окончание в слове «подснежниками»?",
+   "a": [
+    "-никами",
+    "-ми",
+    "-ами",
+    "нулевое"
+   ],
+   "k": 2,
+   "e": "Подснежник — подснежниками — подснежниках: окончание -ами."
+  }
+ ],
+ [
+  {
+   "q": "Найди корень в слове «лесник».",
+   "a": [
+    "лес-",
+    "лесн-",
+    "-ник-",
+    "ле-"
+   ],
+   "k": 0,
+   "e": "Лес — лесник — лесной. Общая значимая часть — лес-."
+  },
+  {
+   "q": "Найди корень в слове «горка».",
+   "a": [
+    "горк-",
+    "гор-",
+    "-ка-",
+    "ор-"
+   ],
+   "k": 1,
+   "e": "Гора — горка — горный: корень гор-."
+  },
+  {
+   "q": "Найди корень в слове «морской».",
+   "a": [
+    "мор-",
+    "морск-",
+    "морс-",
+    "-ск-"
+   ],
+   "k": 0,
+   "e": "Море — моряк — морской: корень мор-."
+  },
+  {
+   "q": "Найди корень в слове «водяной».",
+   "a": [
+    "вод-",
+    "водян-",
+    "-ян-",
+    "во-"
+   ],
+   "k": 0,
+   "e": "Вода — водный — водяной: корень вод-."
+  },
+  {
+   "q": "Найди корень в слове «снежинка».",
+   "a": [
+    "снег-",
+    "снеж-",
+    "снежин-",
+    "-инк-"
+   ],
+   "k": 1,
+   "e": "Снег — снежный — снежинка: в корне чередуются г и ж; здесь корень снеж-."
+  },
+  {
+   "q": "Найди корень в слове «дорожка».",
+   "a": [
+    "дор-",
+    "дорож-",
+    "дорожк-",
+    "-к-"
+   ],
+   "k": 1,
+   "e": "Дорога — дорожный — дорожка: г чередуется с ж; корень дорож-."
+  },
+  {
+   "q": "Найди корень в слове «приморский».",
+   "a": [
+    "примор-",
+    "морс-",
+    "мор-",
+    "-ск-"
+   ],
+   "k": 2,
+   "e": "Море — морской — приморский: корень мор-."
+  },
+  {
+   "q": "Найди корень в слове «перелесок».",
+   "a": [
+    "перелес-",
+    "лес-",
+    "лесок-",
+    "-ок-"
+   ],
+   "k": 1,
+   "e": "Лес — лесок — перелесок: корень лес-."
+  },
+  {
+   "q": "Найди корень в слове «подосиновик».",
+   "a": [
+    "осин-",
+    "подосин-",
+    "-овик-",
+    "оси-"
+   ],
+   "k": 0,
+   "e": "Осина — осиновый — подосиновик: корень осин-."
+  },
+  {
+   "q": "Найди корень в слове «предрассветный».",
+   "a": [
+    "рассвет-",
+    "свет-",
+    "предрас-",
+    "-вет-"
+   ],
+   "k": 1,
+   "e": "Свет — светлый — рассвет — предрассветный: корень свет-. Перед ним две приставки."
+  }
+ ],
+ [
+  {
+   "q": "Найди приставку в слове «запеть».",
+   "a": [
+    "нет приставки",
+    "за-",
+    "зап-",
+    "-пе-"
+   ],
+   "k": 1,
+   "e": "Петь — запеть: приставка за-."
+  },
+  {
+   "q": "Найди приставку в слове «подписать».",
+   "a": [
+    "по-",
+    "-пис-",
+    "под-",
+    "нет приставки"
+   ],
+   "k": 2,
+   "e": "Писать — подписать: приставка под-."
+  },
+  {
+   "q": "Найди приставку в слове «переписать».",
+   "a": [
+    "пере-",
+    "пер-",
+    "по-",
+    "нет приставки"
+   ],
+   "k": 0,
+   "e": "Писать — переписать: приставка пере-."
+  },
+  {
+   "q": "Найди приставку в слове «приехать».",
+   "a": [
+    "при-",
+    "пр-",
+    "про-",
+    "-ех-"
+   ],
+   "k": 0,
+   "e": "Ехать — приехать: приставка при-."
+  },
+  {
+   "q": "Найди приставку в слове «выбежать».",
+   "a": [
+    "в-",
+    "вы-",
+    "-беж-",
+    "нет приставки"
+   ],
+   "k": 1,
+   "e": "Бежать — выбежать: приставка вы-."
+  },
+  {
+   "q": "Найди приставку в слове «безветренный».",
+   "a": [
+    "без-",
+    "бе-",
+    "бес-",
+    "нет приставки"
+   ],
+   "k": 0,
+   "e": "Ветер — ветреный — безветренный: приставка без-."
+  },
+  {
+   "q": "Найди приставку в слове «приоткрыть».",
+   "a": [
+    "про-",
+    "при-",
+    "пр-",
+    "от-"
+   ],
+   "k": 1,
+   "e": "Открыть — приоткрыть: приставка при- придаёт значение неполноты действия."
+  },
+  {
+   "q": "Найди приставку в слове «предсказать».",
+   "a": [
+    "пре-",
+    "пред-",
+    "под-",
+    "нет приставки"
+   ],
+   "k": 1,
+   "e": "Сказать — предсказать: приставка пред-."
+  },
+  {
+   "q": "Сколько приставок в слове «предрассветный»?",
+   "a": [
+    "Одна",
+    "Ни одной",
+    "Две",
+    "Три"
+   ],
+   "k": 2,
+   "e": "Пред-рас-свет-н-ый: две приставки — пред- и рас-."
+  },
+  {
+   "q": "Какие приставки в слове «переподготовка»?",
+   "a": [
+    "пере- и под-",
+    "пер- и по-",
+    "только пере-",
+    "только под-"
+   ],
+   "k": 0,
+   "e": "Пере-под-готов-к-а: перед корнем готов- стоят приставки пере- и под-."
+  }
+ ],
+ [
+  {
+   "q": "Найди суффикс в слове «домик».",
+   "a": [
+    "-к-",
+    "-ик-",
+    "-мик-",
+    "нет суффикса"
+   ],
+   "k": 1,
+   "e": "Дом-ик-∅: уменьшительный суффикс -ик-."
+  },
+  {
+   "q": "Найди суффикс в слове «берёзка».",
+   "a": [
+    "-ка-",
+    "-к-",
+    "-ёз-",
+    "-а-"
+   ],
+   "k": 1,
+   "e": "Берёз-к-а: суффикс -к-, окончание -а."
+  },
+  {
+   "q": "Найди суффикс в слове «зимний».",
+   "a": [
+    "-ний-",
+    "-ий",
+    "-н-",
+    "нет суффикса"
+   ],
+   "k": 2,
+   "e": "Зим-н-ий: суффикс -н-, окончание -ий."
+  },
+  {
+   "q": "Найди суффикс в слове «моряк».",
+   "a": [
+    "-як-",
+    "-к-",
+    "-ряк-",
+    "нет суффикса"
+   ],
+   "k": 0,
+   "e": "Мор-як-∅: суффикс -як-."
+  },
+  {
+   "q": "Найди суффикс в слове «грибник».",
+   "a": [
+    "-ик-",
+    "-ник-",
+    "-н-",
+    "-к-"
+   ],
+   "k": 1,
+   "e": "Гриб-ник-∅: суффикс -ник-."
+  },
+  {
+   "q": "Найди суффикс в слове «подснежник».",
+   "a": [
+    "-ик-",
+    "-еж-",
+    "-ник-",
+    "нет суффикса"
+   ],
+   "k": 2,
+   "e": "Под-снеж-ник-∅: суффикс -ник-."
+  },
+  {
+   "q": "Найди суффикс в слове «пушистый».",
+   "a": [
+    "-ист-",
+    "-ст-",
+    "-ый",
+    "-уш-"
+   ],
+   "k": 0,
+   "e": "Пуш-ист-ый: суффикс -ист-, окончание -ый."
+  },
+  {
+   "q": "Найди суффикс в слове «строитель».",
+   "a": [
+    "-ител-",
+    "-ель-",
+    "-тель-",
+    "-итель- — один суффикс"
+   ],
+   "k": 2,
+   "e": "Стро-и-тель-∅: суффикс -тель- (перед ним находится -и-)."
+  },
+  {
+   "q": "Найди суффикс в слове «водяной».",
+   "a": [
+    "-ян-",
+    "-ной-",
+    "-н-",
+    "-ой"
+   ],
+   "k": 0,
+   "e": "Вод-ян-ой: суффикс -ян-, окончание -ой."
+  },
+  {
+   "q": "Найди суффикс в слове «снежинка».",
+   "a": [
+    "-к-",
+    "-инк-",
+    "-инка-",
+    "-жин-"
+   ],
+   "k": 1,
+   "e": "Снеж-инк-а: суффикс -инк-, окончание -а."
+  }
+ ],
+ [
+  {
+   "q": "Выбери верный разбор слова «лесник».",
+   "a": [
+    "лес-ник-∅",
+    "ле-сник-∅",
+    "лес-н-ик",
+    "лесни-к"
+   ],
+   "k": 0,
+   "e": "Лес-ник-∅: корень лес-, суффикс -ник-, нулевое окончание."
+  },
+  {
+   "q": "Выбери верный разбор слова «записка».",
+   "a": [
+    "запис-к-а",
+    "за-пис-к-а",
+    "за-пи-ска",
+    "за-писк-а"
+   ],
+   "k": 1,
+   "e": "За-пис-к-а: приставка за-, корень пис-, суффикс -к-, окончание -а."
+  },
+  {
+   "q": "Выбери верный разбор слова «подводный».",
+   "a": [
+    "подвод-н-ый",
+    "по-двод-н-ый",
+    "под-вод-н-ый",
+    "под-вод-ный"
+   ],
+   "k": 2,
+   "e": "Под-вод-н-ый: приставка под-, корень вод-, суффикс -н-, окончание -ый."
+  },
+  {
+   "q": "Выбери верный разбор слова «приморский».",
+   "a": [
+    "при-мор-ск-ий",
+    "при-морс-к-ий",
+    "примор-ск-ий",
+    "при-мор-ский"
+   ],
+   "k": 0,
+   "e": "При-мор-ск-ий: приставка при-, корень мор-, суффикс -ск-, окончание -ий."
+  },
+  {
+   "q": "Выбери верный разбор слова «подснежник».",
+   "a": [
+    "под-сне-жник-∅",
+    "подснеж-ник-∅",
+    "под-снеж-ник-∅",
+    "под-снеж-н-ик"
+   ],
+   "k": 2,
+   "e": "Под-снеж-ник-∅: приставка под-, корень снеж- с чередованием г/ж, суффикс -ник-, нулевое окончание."
+  },
+  {
+   "q": "Выбери верный разбор слова «бездомный».",
+   "a": [
+    "без-дом-н-ый",
+    "бе-здом-н-ый",
+    "бездом-н-ый",
+    "без-дом-ный"
+   ],
+   "k": 0,
+   "e": "Без-дом-н-ый: приставка без-, корень дом-, суффикс -н-, окончание -ый."
+  },
+  {
+   "q": "Выбери верный разбор слова «переписка».",
+   "a": [
+    "пере-пис-к-а",
+    "перепис-к-а",
+    "пере-пи-ска",
+    "пере-писк-а"
+   ],
+   "k": 0,
+   "e": "Пере-пис-к-а: приставка пере-, корень пис-, суффикс -к-, окончание -а."
+  },
+  {
+   "q": "Выбери верный разбор слова «подземный».",
+   "a": [
+    "под-зем-ный",
+    "подзем-н-ый",
+    "под-зем-н-ый",
+    "по-дзем-н-ый"
+   ],
+   "k": 2,
+   "e": "Под-зем-н-ый: приставка под-, корень зем-, суффикс -н-, окончание -ый."
+  },
+  {
+   "q": "Выбери верный разбор слова «предрассветный».",
+   "a": [
+    "пред-рас-свет-н-ый",
+    "пред-рассвет-н-ый",
+    "предрас-свет-н-ый",
+    "пред-рас-свет-ный"
+   ],
+   "k": 0,
+   "e": "Пред-рас-свет-н-ый: две приставки пред-, рас-, корень свет-, суффикс -н-, окончание -ый."
+  },
+  {
+   "q": "Выбери верный разбор слова «переподготовка».",
+   "a": [
+    "перепод-готов-к-а",
+    "пере-под-готов-к-а",
+    "пере-подготов-к-а",
+    "пере-под-готов-ка"
+   ],
+   "k": 1,
+   "e": "Пере-под-готов-к-а: приставки пере- и под-, корень готов-, суффикс -к-, окончание -а."
+  }
+ ]
 ];
 const $=s=>document.querySelector(s), state={diff:'easy',station:0,index:0,score:0,answered:false,done:[],total:0,wrong:[],sound:true,voice:false};let st;try{st=JSON.parse(localStorage.getItem('morfik-v1')||'null')}catch{}if(st&&Array.isArray(st.done))state.done=st.done.filter(x=>Number.isInteger(x)&&x>=0&&x<5);function save(){try{localStorage.setItem('morfik-v1',JSON.stringify({done:state.done}))}catch{}}
 function beep(ok){if(!state.sound)return;try{const c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(ok?660:260,c.currentTime);o.frequency.exponentialRampToValueAtTime(ok?990:190,c.currentTime+.16);g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.16,c.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.25);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.26);setTimeout(()=>c.close(),450)}catch{}}function speak(t){if(!state.voice||!('speechSynthesis'in window))return;try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='ru-RU';u.rate=.9;speechSynthesis.speak(u)}catch{}}
 function map(){ $('#map').innerHTML='';stations.forEach((s,i)=>{let b=document.createElement('button');b.className='place'+(state.done.includes(i)?' done':'');b.innerHTML=`<span class="icon" aria-hidden="true">${s.icon}</span><strong>${s.name}</strong><span class="tiny">${state.done.includes(i)?'Пройдено':'Начать испытание'}</span>`;b.onclick=()=>begin(i);$('#map').append(b)});$('#gems').textContent=`💎 ${state.score}`}
-function begin(i){state.station=i;state.index=0;state.score=0;state.answered=false;state.wrong=[];state.total=({easy:3,medium:4,hard:5})[state.diff];$('#task').classList.remove('hidden');$('#end').classList.add('hidden');show();$('#task').scrollIntoView({behavior:'smooth'})}
+function begin(i){state.station=i;state.index=0;state.score=0;state.answered=false;state.wrong=[];state.total=10;$('#task').classList.remove('hidden');$('#end').classList.add('hidden');show();$('#task').scrollIntoView({behavior:'smooth'})}
 function show(){let s=stations[state.station],q=bank[state.station][state.index];state.answered=false;$('#next').classList.add('hidden');$('#feedback').classList.add('hidden');$('#leveltag').textContent=`${s.icon} ${s.name}`;$('#tasktitle').textContent=s.title;$('#counter').textContent=`Задание ${state.index+1} из ${state.total}`;$('#bar').style.width=`${Math.round(100*state.index/state.total)}%`;$('#question').textContent=q.q;$('#gems').textContent=`💎 ${state.score}`;$('#answers').innerHTML='';state.order=[0,1,2,3];for(let z=3;z>0;z--){let j=Math.floor(Math.random()*(z+1));[state.order[z],state.order[j]]=[state.order[j],state.order[z]]}state.order.forEach((orig,i)=>{const b=document.createElement('button');b.className='option';b.textContent=`${'АБВГ'[i]}. ${q.a[orig]}`;b.onclick=()=>answer(orig);$('#answers').append(b)});speak(q.q)}
-function answer(i){if(state.answered)return;state.answered=true;const q=bank[state.station][state.index],ok=i===q.k;beep(ok);if(ok)state.score++;else state.wrong.push(state.index);[...$('#answers').children].forEach((b,n)=>{b.disabled=true;if(state.order[n]===q.k)b.classList.add('right');else if(state.order[n]===i)b.classList.add('wrong')});const f=$('#feedback');f.className='feedback'+(ok?'':' bad');f.innerHTML=`<strong>${ok?'🌟 Верно! Кристалл твой!':'🧩 Почти! Морфик подсказывает:'}</strong><br>${q.e}<br><small>${stations[state.station].hint}</small>`;$('#next').textContent=state.index+1>=state.total?'Завершить уровень ✓':'Следующее задание →';$('#next').classList.remove('hidden');$('#gems').textContent=`💎 ${state.score}`;$('#bar').style.width=`${Math.round(100*(state.index+1)/state.total)}%`;speak((ok?'Верно! ':'Попробуй запомнить: ')+q.e)}
+function sparkle(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const layer=$('#fx');if(!layer)return;['✨','🌸','⭐','💎','🌼','✨','🦋','✦'].forEach((ch,i)=>{let e=document.createElement('span');e.className='sparkle';e.textContent=ch;e.style.setProperty('--x',((i%4)-1.5)*105+'px');e.style.setProperty('--y',(Math.floor(i/4)?125:-120)+'px');e.style.left=(42+Math.random()*16)+'%';layer.append(e);setTimeout(()=>e.remove(),950)})}
+function answer(i){if(state.answered)return;state.answered=true;const q=bank[state.station][state.index],ok=i===q.k;beep(ok);if(ok){state.score++;sparkle()}else state.wrong.push(state.index);[...$('#answers').children].forEach((b,n)=>{b.disabled=true;if(state.order[n]===q.k)b.classList.add('right');else if(state.order[n]===i)b.classList.add('wrong')});const f=$('#feedback');f.className='feedback'+(ok?'':' bad');f.innerHTML=`<strong>${ok?'🌟 Верно! Кристалл твой!':'🧩 Почти! Морфик подсказывает:'}</strong><br>${q.e}<br><small>${stations[state.station].hint}</small>`;$('#next').textContent=state.index+1>=state.total?'Завершить уровень ✓':'Следующее задание →';$('#next').classList.remove('hidden');$('#gems').textContent=`💎 ${state.score}`;$('#bar').style.width=`${Math.round(100*(state.index+1)/state.total)}%`;speak((ok?'Верно! ':'Попробуй запомнить: ')+q.e)}
 function finish(){if(!state.done.includes(state.station))state.done.push(state.station);save();$('#task').classList.add('hidden');map();if(state.done.length===5){$('#end').classList.remove('hidden');$('#certscore').textContent=`Пройдены все 5 испытаний! В последнем — ${state.score} из ${state.total} кристаллов.`;$('#end').scrollIntoView({behavior:'smooth'})}else{let n=stations.findIndex((_,i)=>!state.done.includes(i));begin(n)}}
 $('#start').onclick=()=>{$('#game').classList.remove('hidden');map();$('#game').scrollIntoView({behavior:'smooth'})};$('#how').onclick=()=>{$('#rules').classList.toggle('hidden');$('#rules').scrollIntoView({behavior:'smooth'})};document.querySelectorAll('.dif').forEach(b=>b.onclick=()=>{state.diff=b.dataset.d;document.querySelectorAll('.dif').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));if(!$('#task').classList.contains('hidden'))begin(state.station)});$('#next').onclick=()=>{if(state.index+1>=state.total)finish();else{state.index++;show()}};$('#back').onclick=()=>{$('#task').classList.add('hidden');$('#game').scrollIntoView({behavior:'smooth'})};$('#print').onclick=()=>window.print();$('#again').onclick=()=>{state.done=[];save();$('#end').classList.add('hidden');map();begin(0)};$('#reset').onclick=()=>{if(confirm('Сбросить отметки о пройденных станциях?')){state.done=[];save();$('#end').classList.add('hidden');$('#task').classList.add('hidden');map()}};$('#sound').onclick=()=>{state.sound=!state.sound;$('#sound').textContent=state.sound?'🔊 Звук: вкл.':'🔇 Звук: выкл.';$('#sound').setAttribute('aria-pressed',String(state.sound))};$('#voice').onclick=()=>{state.voice=!state.voice;$('#voice').textContent=state.voice?'🗣️ Читать: вкл.':'🗣️ Читать: выкл.';$('#voice').setAttribute('aria-pressed',String(state.voice))};map();
 </script></body></html>
