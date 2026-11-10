@@ -43,13 +43,30 @@
 .hero .actions{margin-top:19px}.hero .button.ghost{background:#fffdf2;color:#19553e;border-color:#bca35e}
 @media(max-width:800px){.hero{min-height:640px;background-position:59% center}.hero>.shell{width:min(580px,calc(100% - 28px));margin-left:14px;padding:25px}.hero h1{font-size:43px}}
 @media(max-width:620px){.hero{min-height:unset;display:block;padding:250px 0 24px;background-size:cover,auto 385px;background-position:center,right top;background-color:#0b4b3c}.hero>.shell{margin:0 auto;width:calc(100% - 26px);padding:22px 19px;border-radius:23px}.hero h1{font-size:36px}.hero h1 em{font-size:26px}.hero p{font-size:14px}.hero .pill{font-size:10px}}
+
+/* Student-facing guided tutor: no exposed prompt or API key. */
+.student-mentor-hero{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:235px;padding:20px 22px 20px 28px;background:linear-gradient(115deg,#073e32,#15644e);border:3px solid #dbbd7a;border-radius:24px;overflow:hidden;color:#fff}
+.student-mentor-hero h3{font-size:clamp(24px,3vw,33px);margin:9px 0;color:#ffe7ab}
+.student-mentor-hero p{max-width:600px;color:#e7f3e7}.student-mentor-hero img{width:clamp(150px,22vw,250px);height:auto;flex-shrink:0;filter:drop-shadow(0 12px 17px #071c1a)}
+.student-mentor-panel{padding:23px;margin-top:20px;background:#fffefa;border:1px solid #d3e4d4;border-radius:24px;box-shadow:var(--shadow)}
+.student-mentor-panel select{max-width:520px}
+.student-mentor-message{padding:19px 21px;margin:17px 0;border:1px solid #b8dcc7;border-radius:18px;background:#e8f4e9;color:#174e3d;line-height:1.6;white-space:pre-wrap}
+.student-mentor-actions{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
+.student-mentor-panel .hint{margin-bottom:0}
+.teacher-tools{margin-top:28px;padding:20px;border:1px solid #d9c99d;border-radius:23px;background:#faf6e9}
+.teacher-tools h3{font-size:25px;margin:5px 0}.teacher-tools>p{color:#4d6557}
+.teacher-tools details{background:#fffefb;border:1px solid #d8e0d1;border-radius:15px}
+.teacher-tools summary{cursor:pointer;color:#0a5440;padding:16px 20px;font-weight:800}
+.teacher-tools details[open] summary{background:#edf4ea;border-bottom:1px solid #d8e0d1}
+.teacher-tools__inner{padding:18px}.teacher-tools__inner .ai-hero{margin-bottom:18px}
+@media(max-width:650px){.student-mentor-hero{padding:16px;min-height:180px}.student-mentor-hero h3{font-size:22px}.student-mentor-hero p{font-size:13px}.student-mentor-hero img{width:100px}.student-mentor-panel{padding:16px}.teacher-tools__inner{padding:10px}}
 </style>
 </head>
 <body>
 <header class="top"><div class="shell"><div class="brand">АННА ЯКОВЛЕВНА<span>ИНТЕРАКТИВНАЯ МАСТЕРСКАЯ</span></div><nav class="nav"><a href="../#games">Все игры</a><a href="https://fipi.ru/oge/demoversii-specifikacii-kodifikatory" target="_blank" rel="noopener noreferrer">ФИПИ</a></nav></div></header>
-<section class="hero"><div class="shell"><div class="eyebrow">Русский язык · 9 класс · подготовка к ОГЭ</div><h1>ИИ-репетитор<br><em>Русский язык · ОГЭ-2027</em></h1><p>Объяснения без зубрёжки. Авторские задания с проверкой, повторение ошибок и план подготовки. А ещё — инструкция, как создать ИИ-наставника в ChatGPT.</p><div class="pills"><span class="pill">✦ 48 тренировочных заданий</span><span class="pill">✦ 8 разделов</span><span class="pill">✦ Сохраняет прогресс на устройстве</span><span class="pill">✦ Работает без интернета после скачивания</span></div><div class="actions"><button class="button" id="heroStart">Начать тренировку →</button><button class="button ghost" id="heroAI">Настроить ИИ-наставника ✦</button></div></div></section>
+<section class="hero"><div class="shell"><div class="eyebrow">Русский язык · 9 класс · подготовка к ОГЭ</div><h1>ИИ-репетитор<br><em>Русский язык · ОГЭ-2027</em></h1><p>Объяснения без зубрёжки. Авторские задания с проверкой, повторение ошибок и план подготовки. А ещё — инструкция, как создать ИИ-наставника в ChatGPT.</p><div class="pills"><span class="pill">✦ 48 тренировочных заданий</span><span class="pill">✦ 8 разделов</span><span class="pill">✦ Сохраняет прогресс на устройстве</span><span class="pill">✦ Работает без интернета после скачивания</span></div><div class="actions"><button class="button" id="heroStart">Начать тренировку →</button><button class="button ghost" id="heroAI">Мой репетитор ✦</button></div></div></section>
 <main class="shell page">
-<nav class="tabs" aria-label="Разделы сайта"><button class="tab active" data-panel="training" aria-selected="true">🎯 Тренировка</button><button class="tab" data-panel="progress" aria-selected="false">📈 Мой прогресс</button><button class="tab" data-panel="theory" aria-selected="false">📖 Теория</button><button class="tab" data-panel="ai" aria-selected="false">🤖 ИИ-наставник</button><button class="tab" data-panel="teacher" aria-selected="false">🎓 Учителю</button></nav>
+<nav class="tabs" aria-label="Разделы сайта"><button class="tab active" data-panel="training" aria-selected="true">🎯 Тренировка</button><button class="tab" data-panel="progress" aria-selected="false">📈 Мой прогресс</button><button class="tab" data-panel="theory" aria-selected="false">📖 Теория</button><button class="tab" data-panel="ai" aria-selected="false">🤖 Мой репетитор</button><button class="tab" data-panel="teacher" aria-selected="false">🎓 Учителю</button></nav>
 <section class="panel active" id="training">
 <h2 class="section-title">Проверь знания на практике</h2><p class="subtitle">Выберите тему и сложность. Задания идут по одному; после ответа увидите объяснение.</p>
 <div class="grid" style="margin-bottom:20px"><div class="card"><div class="giant">🎯</div><div class="stat-num" id="metricAttempts">0</div><div class="stat-label">Ответов дано</div></div><div class="card"><div class="giant">💎</div><div class="stat-num" id="metricMastered">0 / 48</div><div class="stat-label">Вопросов решено верно</div></div><div class="card"><div class="giant">🌱</div><div class="stat-num" id="metricTopics">0 / 8</div><div class="stat-label">Тем начато</div></div></div>
@@ -60,9 +77,36 @@
 </section>
 <section class="panel" id="progress"><h2 class="section-title">Ваш путь к экзамену</h2><p class="subtitle">Результаты сохраняются только в этом браузере. Если открыть сайт на другом устройстве, прогресс не перенесётся автоматически.</p><div class="grid" id="progressStats"></div><h3 style="margin-top:28px">Освоение тем</h3><div class="topic-grid" id="topicBars"></div><div class="actions"><button class="button dark" id="progressErrors">Повторить ошибки →</button><button class="button secondary small" id="resetProgress">Сбросить прогресс</button></div></section>
 <section class="panel" id="theory"><h2 class="section-title">Короткие объяснения</h2><p class="subtitle">Восемь опорных блоков для повторения. Читайте правило, затем закрепляйте его на практике.</p><div class="theory" id="theoryGrid"></div><div class="callout"><strong>Для развёрнутых ответов:</strong> изучите официальные требования к изложению и сочинению по действующей спецификации ФИПИ. Автоматическая проверка на этом сайте относится только к тренировочным тестам с выбором ответа.</div></section>
-<section class="panel" id="ai"><h2 class="section-title">Создаём ИИ-репетитора в ChatGPT</h2><p class="subtitle">Рабочая инструкция для учителя или семьи. Наставник будет действовать внутри отдельного проекта ChatGPT.</p>
-<div class="ai-hero"><div><div class="eyebrow">Персональная поддержка</div><h3>ИИ не решает за ученика.<br><strong>Он учит рассуждать.</strong></h3><p>Попросите объяснить правило, задать один вопрос, дождаться ответа и разобрать ошибку. Все материалы проверяет педагог.</p></div><img class="ai-robot" src="assets/ai-robot-modern.svg" width="640" height="640" loading="lazy" alt="Современный дружелюбный робот-репетитор с планшетом"></div>
-<div class="steps"><article class="step"><h3>Создайте проект</h3><p>Откройте ChatGPT и выберите «Новый проект». Название: «ОГЭ · Русский язык · 2027».</p></article><article class="step"><h3>Прикрепите материалы</h3><p>Добавьте официальные документы ФИПИ: демонстрационный вариант, кодификатор, спецификацию. Учитывайте, что документы 2027 года могут иметь статус проекта.</p></article><article class="step"><h3>Вставьте инструкции</h3><p>В меню проекта выберите «Настройки проекта», затем поместите туда готовую инструкцию из блока ниже.</p></article><article class="step"><h3>Начните беседу</h3><p>Напишите: «Проведи диагностическую тренировку по пунктуации. Задавай по одному заданию и объясняй ошибки».</p></article></div>
+<section class="panel" id="ai">
+<h2 class="section-title">Мой репетитор по русскому языку</h2>
+<p class="subtitle">Выбирай тему, вспоминай правило и решай задания. Промпты и настройки ChatGPT вводить не нужно.</p>
+<div class="student-mentor-hero"><div><div class="eyebrow">9 класс · Подготовка к ОГЭ</div><h3>Привет! Давай готовиться вместе.</h3><p>Выберем тему, вспомним правило и решим несколько заданий. Если ошибёшься — покажу объяснение и помогу повторить.</p></div><img src="assets/ai-robot-modern.svg" width="640" height="640" loading="lazy" alt="Дружелюбный робот-наставник с планшетом"></div>
+<div class="student-mentor-panel">
+ <label for="studentMentorTopic" class="filter-label">Какую тему повторим?</label>
+ <select id="studentMentorTopic" class="filter-control"><option value="all">Все темы русского языка</option></select>
+ <div class="student-mentor-message" id="studentMentorMessage" role="status" aria-live="polite">Привет! 👋 Выбери тему. Я могу напомнить правило, предложить тренировку или вернуться к ошибкам.</div>
+ <div class="student-mentor-actions">
+  <button class="button secondary" id="studentMentorTheory">📖 Объясни тему</button>
+  <button class="button dark" id="studentMentorPractice">🎯 Начать тренировку</button>
+  <button class="button secondary" id="studentMentorMistakes">🔁 Разобрать ошибки</button>
+ </div>
+ <p class="hint">В тренировке задания появляются по одному. Можно воспользоваться подсказкой, получить объяснение и перейти к следующему вопросу. Ваш прогресс сохраняется в этом браузере.</p>
+</div>
+<div class="callout"><strong>Важно:</strong> сейчас это интерактивный учебный наставник с авторскими заданиями и подготовленными объяснениями, <strong>а не чат с подключённым GPT</strong>. Для свободного диалога с нейросетью прямо на сайте нужно отдельное защищённое подключение.</div>
+</section>
+<section class="panel" id="teacher"><h2 class="section-title">Для учителя</h2><p class="subtitle">Как использовать навигатор на уроке и при самостоятельной подготовке.</p>
+<div class="grid"><article class="card"><span class="giant">🧩</span><h3>Диагностика — 10 минут</h3><p>Выберите «Все темы» и дайте ученику ответить на 10 вопросов. После каждого ответа обсудите объяснение, а не только правильность выбора.</p></article><article class="card"><span class="giant">🎯</span><h3>Адресная работа</h3><p>По итогам тренировки откройте «Мой прогресс». Выберите слабую тему, повторите правило и проведите новую короткую тренировку.</p></article><article class="card"><span class="giant">🔁</span><h3>Возврат к ошибкам</h3><p>Нажмите «Повторить ошибки». При новом правильном ответе задание исчезает из списка ошибок. Это не заменяет письменный разбор.</p></article></div>
+<div class="callout"><strong>Методическое ограничение:</strong> задания этого сайта авторские, не воспроизводят полный объём экзамена и не заменяют официальный открытый банк ФИПИ. Успешный результат здесь не прогнозирует балл ОГЭ.</div>
+<h3>Проверенные официальные ссылки</h3><div class="sources"><a href="https://fipi.ru/oge/demoversii-specifikacii-kodifikatory" target="_blank" rel="noopener noreferrer">ФИПИ: документы ОГЭ ↗</a><a href="https://fipi.ru/oge/otkrytyy-bank-zadaniy-oge" target="_blank" rel="noopener noreferrer">ФИПИ: открытый банк ↗</a><a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt" target="_blank" rel="noopener noreferrer">Как работают проекты ChatGPT ↗</a></div>
+<div class="actions"><a class="button secondary small" href="index.html" download="oge_2027_repetitor_offline.html">⬇ Скачать сайт для работы без интернета</a></div><p class="hint">В скачанной HTML-копии работают тренировка, теория и статистика. Ссылки на внешние источники и ChatGPT без интернета не откроются.</p>
+<div class="teacher-tools">
+ <h3>Настройка ИИ-репетитора — для учителя</h3>
+ <p>Этот блок предназначен педагогу. Ученики работают с заданиями без промпта, а учитель может отдельно настроить проект в ChatGPT. Настройка проекта <strong>не подключает нейросеть к сайту автоматически</strong>.</p>
+ <details id="teacherPromptDetails">
+  <summary>🔧 Показать инструкцию по настройке и промпт</summary>
+  <div class="teacher-tools__inner">
+   <div class="ai-hero"><div><div class="eyebrow">Инструкция для педагога</div><h3>ИИ помогает учиться,<br><strong>но не решает за ученика.</strong></h3><p>Перед применением проверьте документы ФИПИ, формулировки заданий и критерии оценивания.</p></div><img class="ai-robot" src="assets/ai-robot-modern.svg" alt="" width="640" height="640" loading="lazy"></div>
+   <div class="steps"><article class="step"><h3>Создайте проект</h3><p>Откройте ChatGPT и выберите «Новый проект». Название: «ОГЭ · Русский язык · 2027».</p></article><article class="step"><h3>Прикрепите материалы</h3><p>Добавьте официальные документы ФИПИ: демонстрационный вариант, кодификатор, спецификацию. Учитывайте, что документы 2027 года могут иметь статус проекта.</p></article><article class="step"><h3>Вставьте инструкции</h3><p>В меню проекта выберите «Настройки проекта», затем поместите туда готовую инструкцию из блока ниже.</p></article><article class="step"><h3>Начните беседу</h3><p>Напишите: «Проведи диагностическую тренировку по пунктуации. Задавай по одному заданию и объясняй ошибки».</p></article></div>
 <div class="prompt-box"><div class="prompt-head"><div><strong>Инструкция для ИИ-репетитора</strong><br><span>Можно редактировать перед вставкой в проект</span></div><button class="button small" id="copyPrompt">📋 Скопировать</button></div><textarea id="promptText" spellcheck="false" aria-label="Инструкция для ChatGPT">Ты — доброжелательный ИИ-репетитор по русскому языку для ученика 9 класса, готовящегося к ОГЭ-2027.
 
 ЦЕЛЬ: помогать понять правила, рассуждать самостоятельно, учиться на ошибках. Не выполняй домашнюю или экзаменационную работу за ученика.
@@ -82,12 +126,11 @@
 Начни словами: «Привет! Я помогу тебе подготовиться к русскому языку. С какой темы начнём?»</textarea></div>
 <div class="actions"><a class="button dark" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Открыть ChatGPT ↗</a><a class="button secondary" href="https://fipi.ru/oge/demoversii-specifikacii-kodifikatory" target="_blank" rel="noopener noreferrer">Документы ФИПИ ↗</a></div>
 <div class="callout"><strong>Важно:</strong> на этом сайте пока нет прямого диалога с GPT. Онлайн-ИИ работает в ChatGPT; здесь работают автономные задания с заранее проверяемыми ответами. Подключение полноценного ИИ непосредственно к сайту потребует отдельного защищённого сервера и API, а также настройки защиты данных учеников.</div>
-</section>
-<section class="panel" id="teacher"><h2 class="section-title">Для учителя</h2><p class="subtitle">Как использовать навигатор на уроке и при самостоятельной подготовке.</p>
-<div class="grid"><article class="card"><span class="giant">🧩</span><h3>Диагностика — 10 минут</h3><p>Выберите «Все темы» и дайте ученику ответить на 10 вопросов. После каждого ответа обсудите объяснение, а не только правильность выбора.</p></article><article class="card"><span class="giant">🎯</span><h3>Адресная работа</h3><p>По итогам тренировки откройте «Мой прогресс». Выберите слабую тему, повторите правило и проведите новую короткую тренировку.</p></article><article class="card"><span class="giant">🔁</span><h3>Возврат к ошибкам</h3><p>Нажмите «Повторить ошибки». При новом правильном ответе задание исчезает из списка ошибок. Это не заменяет письменный разбор.</p></article></div>
-<div class="callout"><strong>Методическое ограничение:</strong> задания этого сайта авторские, не воспроизводят полный объём экзамена и не заменяют официальный открытый банк ФИПИ. Успешный результат здесь не прогнозирует балл ОГЭ.</div>
-<h3>Проверенные официальные ссылки</h3><div class="sources"><a href="https://fipi.ru/oge/demoversii-specifikacii-kodifikatory" target="_blank" rel="noopener noreferrer">ФИПИ: документы ОГЭ ↗</a><a href="https://fipi.ru/oge/otkrytyy-bank-zadaniy-oge" target="_blank" rel="noopener noreferrer">ФИПИ: открытый банк ↗</a><a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt" target="_blank" rel="noopener noreferrer">Как работают проекты ChatGPT ↗</a></div>
-<div class="actions"><a class="button secondary small" href="index.html" download="oge_2027_repetitor_offline.html">⬇ Скачать сайт для работы без интернета</a></div><p class="hint">В скачанной HTML-копии работают тренировка, теория и статистика. Ссылки на внешние источники и ChatGPT без интернета не откроются.</p></section>
+
+   <p class="hint">Раздел для учителя находится на публичном сайте и не защищён паролем. Не размещайте здесь сведения об учениках, API-ключи и пароли.</p>
+  </div>
+ </details>
+</div></section>
 </main>
 <footer class="footer"><div class="shell"><div>© Интерактивная мастерская Анны Яковлевны · Русский язык · 9 класс</div><div>Авторские тренировочные задания · не официальный ресурс ФИПИ</div></div></footer>
 <script>
@@ -191,7 +234,28 @@ function drawProgress(){let attempts=allAttempts(),right=Object.keys(state.stats
 $('progressStats').innerHTML='<div class="card"><div class="stat-num">'+attempts+'</div><div class="stat-label">Всего ответов</div></div><div class="card"><div class="stat-num">'+pct+'%</div><div class="stat-label">Доля правильных ответов</div></div><div class="card"><div class="stat-num">'+state.mistakes.length+'</div><div class="stat-label">Вопросов для повторения</div></div>';
 $('topicBars').replaceChildren();TOPICS.forEach(function(topic){let questions=TASKS.filter(function(q){return q.topic===topic.id;});let got=questions.filter(function(q){return state.stats[q.id]&&state.stats[q.id].mastered;}).length;let tile=document.createElement('article');tile.className='topic-card';let row=document.createElement('div');row.className='topic-row';let icon=document.createElement('span');icon.className='topic-emoji';icon.textContent=topic.icon;let body=document.createElement('div');let h=document.createElement('h3');h.textContent=topic.name;let small=document.createElement('small');small.textContent=got+' из '+questions.length+' вопросов решено верно';body.append(h,small);row.append(icon,body);let bar=document.createElement('div');bar.className='bar';let fill=document.createElement('span');fill.style.width=(100*got/questions.length)+'%';bar.append(fill);tile.append(row,bar);$('topicBars').append(tile);});}
 function drawTheory(){if($('theoryGrid').children.length)return;TOPICS.forEach(function(topic){let card=document.createElement('article');card.className='theory-item';let h=document.createElement('h3');h.textContent=topic.icon+' '+topic.name;let p=document.createElement('p');p.textContent=topic.theory;let b=document.createElement('button');b.className='button small secondary';b.textContent='Проверить тему →';b.onclick=function(){nav('training');$('topicSelect').value=topic.id;$('levelSelect').value='all';start(false,false);};card.append(h,p,b);$('theoryGrid').append(card);});}
-$('resetProgress').onclick=function(){if(!window.confirm('Удалить сохранённые ответы и ошибки на этом устройстве?'))return;state={stats:{},mistakes:[]};persist();updateStats();drawProgress();};
+$('resetProgress').onclick=function(){if(!window.confirm('Удалить сохранённые ответы и ошибки на этом устройстве?'))return;state={stats:{},mistakes:[]};persist();
+/* One shared set of reviewed tasks, hints and stored mistakes for student and standard training. */
+TOPICS.forEach(function(t){let o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('studentMentorTopic').appendChild(o);});
+$('studentMentorTheory').onclick=function(){
+ let id=$('studentMentorTopic').value;
+ $('studentMentorMessage').textContent=id==='all'
+  ? 'Выбери одну из тем — например, пунктуацию или орфографию. Я напомню правило и предложу потренироваться.'
+  : '📖 '+getTopic(id).name+'\n\n'+getTopic(id).theory+'\n\nТеперь нажми «Начать тренировку» и проверь, как ты понял правило.';
+};
+$('studentMentorPractice').onclick=function(){
+ $('topicSelect').value=$('studentMentorTopic').value;
+ $('levelSelect').value='all';
+ nav('training');start(false,false);
+};
+$('studentMentorMistakes').onclick=function(){
+ let topic=$('studentMentorTopic').value;
+ let missed=TASKS.some(function(t){return (topic==='all'||t.topic===topic)&&state.mistakes.indexOf(t.id)!==-1;});
+ if(!missed){$('studentMentorMessage').textContent='По этой теме пока нет ошибок для повторения. Сначала выполни тренировку или выбери «Все темы». 👍';return;}
+ $('topicSelect').value=topic;$('levelSelect').value='all';nav('training');start(true,false);
+};
+
+updateStats();drawProgress();};
 $('copyPrompt').onclick=async function(){let el=$('promptText');try{await navigator.clipboard.writeText(el.value);$('copyPrompt').textContent='✓ Скопировано';}catch(e){el.focus();el.select();let ok=document.execCommand('copy');$('copyPrompt').textContent=ok?'✓ Скопировано':'Выделите текст и скопируйте';}setTimeout(function(){$('copyPrompt').textContent='📋 Скопировать';},2300);};
 updateStats();drawProgress();
 })();
