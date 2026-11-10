@@ -1,627 +1,91 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123d44"><title>Тайна Морфемного леса — квест, 5 класс</title><style>
-:root{--ink:#163448;--navy:#102e44;--cyan:#a3f0f2;--pink:#ff7b9b;--gold:#ffcb64;--lime:#b5fa9c;--paper:#fffef2}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:radial-gradient(circle at 18% 10%,#8ef4fa 0,transparent 35%),radial-gradient(circle at 85% 22%,#ffd2f2 0,transparent 35%),linear-gradient(130deg,#d5fff2,#e9e0ff 52%,#fff5cf);min-height:100vh}button{font:inherit;cursor:pointer}button:focus-visible{outline:4px solid #e44d93;outline-offset:3px}.wrap{max-width:1080px;margin:auto;padding:20px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:950;font-size:clamp(18px,3vw,27px);color:#17446a}.tiny{font-size:13px;color:#476074}.pill{border:2px solid #fff;background:#ffffffd8;border-radius:60px;padding:8px 13px;box-shadow:0 5px 12px #41617d1c}.hero{position:relative;overflow:hidden;margin-top:18px;padding:clamp(24px,5vw,50px);border-radius:38px;background:linear-gradient(125deg,#0e5960,#2d73a8 48%,#875ac0);color:white;box-shadow:0 18px 40px #3d487d44}.hero:after{content:'✦  ✨   ✦';position:absolute;right:24px;top:20px;color:#ffe5a4;font-size:35px;transform:rotate(-12deg)}h1{font-size:clamp(31px,6vw,58px);line-height:1.08;max-width:760px;margin:10px 0}h2{font-size:clamp(23px,4vw,35px)}.hero p{font-size:clamp(16px,2.3vw,21px);max-width:650px}.mascot{font-size:66px;display:inline-block;filter:drop-shadow(0 8px 7px #0004);animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:19px}.btn{border:none;border-radius:18px;font-weight:850;padding:13px 22px;box-shadow:0 7px 0 #0002;transition:.18s}.btn:active{transform:translateY(4px);box-shadow:0 3px 0 #0002}.primary{background:var(--gold);color:#3c2f35}.secondary{background:#fff;color:#124a63}.hidden{display:none!important}.card{padding:25px;border:3px solid #ffffff;border-radius:30px;background:#ffffffcf;box-shadow:0 12px 30px #64829d2b;margin-top:19px}.sectiontitle{font-weight:950;font-size:clamp(24px,4vw,34px);margin:4px 0 12px}.muted{color:#526a7b}.map{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.place{border:3px solid #fff;background:linear-gradient(150deg,#e6fcff,#d7f9ed);border-radius:26px;padding:18px 10px;min-height:166px;text-align:center;position:relative;box-shadow:0 7px 0 #83a7a744}.place:nth-child(2){background:linear-gradient(140deg,#ffe4ae,#ffd0d4)}.place:nth-child(3){background:linear-gradient(140deg,#dcd1ff,#bbf4fc)}.place:nth-child(4){background:linear-gradient(140deg,#fdf3b8,#b8f5cd)}.place:nth-child(5){background:linear-gradient(140deg,#ffdbed,#d1dcff)}.place .icon{font-size:48px;display:block}.place strong{display:block;margin-top:8px}.place.done:after{content:'✓';position:absolute;top:6px;right:8px;background:#2caa7a;color:white;border-radius:100%;padding:1px 8px;font-size:20px}.difficulty{display:flex;gap:10px;flex-wrap:wrap}.dif{border:2px solid #8fc4bc;border-radius:17px;padding:11px 18px;background:white;font-weight:800}.dif[aria-pressed=true]{background:#164d65;color:white;border-color:#164d65}.progress{height:16px;border-radius:20px;background:#d9e7ef;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#57cbd3,#a5de65,#ffca62);width:0;transition:width .4s}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}.option{border:3px solid #b8dfe6;background:white;text-align:left;border-radius:20px;padding:16px;font-weight:800;min-height:64px}.option:hover:not(:disabled){border-color:#387aab;background:#eefaff}.option:disabled{cursor:default}.option.right{background:#d3ffe4;border-color:#2dba77}.option.wrong{background:#ffe0e5;border-color:#f56378}.question{font-weight:900;font-size:clamp(20px,3.5vw,30px);margin:15px 0}.feedback{padding:18px;border-radius:19px;background:#ebf9ed;border-left:6px solid #45b46d;margin-top:15px;font-size:17px;line-height:1.5}.feedback.bad{background:#fff2d9;border-left-color:#e99a36}.badge{background:#fff5ba;padding:7px 14px;border-radius:25px;font-weight:900;display:inline-block}.footer{text-align:center;margin:25px;color:#4e6072;font-size:13px}.certificate{border:8px double #dca249;background:linear-gradient(120deg,#fffdf0,#d8fcf0);text-align:center;padding:30px;border-radius:25px}.certificate h2{color:#145766;font-size:clamp(28px,5vw,45px)}.certstars{font-size:55px}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.mini{border:1px solid #b5d8dd;border-radius:12px;padding:7px 12px;background:#fff}.sr{position:absolute;left:-10000px}@media(max-width:730px){.map{grid-template-columns:repeat(2,1fr)}.place:last-child{grid-column:1/-1}.answers{grid-template-columns:1fr}.card{padding:17px}.hero{border-radius:27px}.wrap{padding:12px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}@media print{.top,.actions,.footer,.toolbar,.map,.difficulty{display:none!important}.certificate{display:block!important}body{background:white}}
-
-/* Сказочный объёмный сад: свет, глубина, лепестки и сияние без внешних ресурсов. */
-:root{--ink:#382a41;--gold:#ffd773;--paper:#fff9e9}
-body{background:radial-gradient(ellipse at 7% 15%,#fce5ff 0,transparent 40%),radial-gradient(ellipse at 94% 27%,#d8fcbd 0,transparent 37%),linear-gradient(#92d8ee 0%,#dcf9dc 38%,#91bf70 100%);background-attachment:fixed}
-.wrap{max-width:1180px}
-.top{background:#fff9efcc;border:2px solid #fff;border-radius:26px;padding:13px 18px;box-shadow:0 12px 28px #296f4d3a}
-.brand{color:#62306e;text-shadow:0 1px #fff}
-.hero{isolation:isolate;border:5px solid #ffedb9;background:radial-gradient(ellipse at 89% 24%,#e9b8f2b7 0,transparent 29%),radial-gradient(ellipse at 18% 80%,#d7ffaad0 0,transparent 46%),linear-gradient(135deg,#6851a0,#7db8d9 42%,#5da776 100%);box-shadow:0 13px 0 #9c6b9c,0 23px 40px #473b6a60}
-.hero:before{content:'🌸 🌿 🦋 🌷 🌼 🍄 ✨';position:absolute;z-index:-1;right:4%;bottom:4%;width:43%;font-size:clamp(33px,6vw,74px);line-height:2;text-shadow:0 7px 7px #284d4133;transform:rotate(-5deg)}
-.hero:after{content:'✨ ✦ ✨';right:20px;top:18px;animation:twinkle 2.3s ease-in-out infinite}
-.hero h1{color:#fff8e5;text-shadow:0 3px #8a4f98,0 6px 20px #29374baa;max-width:650px}
-.hero p{max-width:600px;text-shadow:0 1px 3px #2c344a99}
-.mascot{filter:drop-shadow(0 10px 6px #342e5790)}
-.card{border:4px solid #fff4cd;background:linear-gradient(130deg,#fffcf2ef,#fef1e7e8);box-shadow:0 10px 0 #e5c696,0 20px 35px #3d694d30}
-.sectiontitle{color:#75307b}
-.map{position:relative;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;padding:25px 12px 34px;border-radius:38px;background:radial-gradient(circle at 16% 20%,#fff5cb 0,transparent 18%),radial-gradient(circle at 75% 60%,#fface0 0,transparent 25%),linear-gradient(140deg,#aee3a1,#d7f3ad 52%,#8ec8a3);border:5px ridge #c6a165;box-shadow:inset 0 0 35px #27674938,0 12px 0 #827044,0 22px 36px #486b5552}
-.map:before{content:'🌻  🌸    🌿    🦋     🌷   🌼';position:absolute;left:0;right:0;bottom:2px;text-align:center;white-space:nowrap;overflow:hidden;font-size:25px;pointer-events:none}
-.place{min-height:190px;background:linear-gradient(125deg,#fffdf4,#efdaff 62%,#b9efcb)!important;border:4px solid #fffbe5;border-bottom:7px solid #e9b96c;border-radius:35% 36% 26px 26px;box-shadow:0 7px 0 #ae8f6b,0 15px 19px #37594152,inset 0 5px 12px #fff, inset -6px -7px 19px #d9bfe777;transform:translateY(0);transition:transform .2s,filter .2s,box-shadow .2s;overflow:hidden;color:#44305c}
-.place:before{content:'✨';position:absolute;top:9px;left:11px;animation:twinkle 2.6s infinite}
-.place:nth-child(2n){background:linear-gradient(140deg,#fff9d8,#ffd7e6 63%,#d4f8de)!important}
-.place:nth-child(3n){background:linear-gradient(140deg,#e5efff,#dbcbff 63%,#ffedc2)!important}
-.place:hover,.place:focus-visible{transform:translateY(-6px) rotate(-1deg);filter:brightness(1.05);box-shadow:0 12px 0 #b08d66,0 25px 30px #37594168}
-.place .icon{font-size:60px;filter:drop-shadow(0 7px 4px #633c6945);animation:bob 3s ease-in-out infinite}
-.place.done{background:linear-gradient(135deg,#d6ffd3,#fff6c3)!important;box-shadow:0 4px 0 #91b579,0 0 22px #ffefa3}
-.place.done:after{box-shadow:0 0 12px #fff783;animation:twinkle 1.5s infinite}
-.btn{border:2px solid #fff8cb;border-bottom:5px solid #c8a566;box-shadow:0 6px 0 #754d6780,0 12px 16px #51394a30}
-.primary{background:linear-gradient(#fff4a6,#ffc956);color:#573252}
-.secondary{background:linear-gradient(#fff,#f4dafa);color:#63336e}
-.badge{background:linear-gradient(#fff8c6,#ffe195);border:2px solid white;box-shadow:0 4px 0 #dbb56e;color:#684067}
-.progress{height:18px;border:2px solid #fff;background:#dfcfbe}
-.fill{background:linear-gradient(90deg,#76cb68,#ffe37a,#e6a1ea)}
-.option{position:relative;min-height:78px;font-size:clamp(17px,2vw,21px);background:linear-gradient(135deg,#fffef8,#f4ebff);border:3px solid #d4a8dd;border-bottom-width:7px;box-shadow:0 6px 13px #91608a30;transition:transform .15s,background .2s}
-.option:hover:not(:disabled){transform:translateY(-3px);background:#fff7d2;border-color:#cc88be}
-.option.right{background:linear-gradient(145deg,#d8ffd4,#efffe4);box-shadow:0 0 18px #88e88b;animation:answerGlow .55s ease-out}
-.option.wrong{background:linear-gradient(135deg,#ffe2dc,#fff0e9)}
-.feedback{border:3px solid #a7dba4;box-shadow:0 8px 0 #c4e0b9}
-.question{color:#613579}
-.certificate{border:10px ridge #dfbb70;background:radial-gradient(circle at 90% 20%,#fff3ba,transparent 35%),linear-gradient(130deg,#fff9e5,#e6ffd1,#f7dcff);box-shadow:0 0 26px #f1d36c}
-.fx-layer{position:fixed;inset:0;pointer-events:none;z-index:999;overflow:hidden}
-.sparkle{position:absolute;top:45%;left:50%;font-size:clamp(24px,4vw,48px);animation:burst .9s ease-out forwards;filter:drop-shadow(0 0 9px #fff6a0)}
-@keyframes burst{0%{opacity:0;transform:translate(0,0) scale(.3)}20%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.5) rotate(55deg)}}
-@keyframes answerGlow{50%{box-shadow:0 0 45px #fff5ab;transform:scale(1.025)}}
-@keyframes twinkle{50%{opacity:.35;filter:brightness(1.5)}}
-@media(max-width:820px){.map{grid-template-columns:repeat(2,minmax(0,1fr))}.place:last-child{grid-column:1/-1}.place{min-height:150px}.hero:before{opacity:.45}}
-@media(max-width:430px){.map{padding:12px 9px 28px;gap:11px}.place{min-height:143px;padding:12px 6px}.place .icon{font-size:43px}.place strong{font-size:14px}.hero:before{display:none}}
-@media(prefers-reduced-motion:reduce){.sparkle{display:none}.place:hover{transform:none}}
-</style></head><body><div id="fx" class="fx-layer" aria-hidden="true"></div><main class="wrap"><div class="top"><div class="brand">🌈 Мастерская учителя · 5 класс</div><div class="toolbar"><button id="sound" class="mini" aria-pressed="true">🔊 Звук: вкл.</button><button id="voice" class="mini" aria-pressed="false">🗣️ Читать: выкл.</button><button id="reset" class="mini">↻ Сбросить прогресс</button></div></div>
-<section class="hero"><span class="mascot" aria-hidden="true">🤖</span><div class="tiny" style="color:#e2ffdf;font-weight:900">ИНТЕРАКТИВНЫЙ КВЕСТ ПО РУССКОМУ ЯЗЫКУ</div><h1>Тайна Морфемного леса</h1><p>Волшебник перепутал части слов! Помоги роботу Морфику пройти пять испытаний по 10 слов, собрать кристаллы и вернуть лесу краски.</p><div class="actions"><button id="start" class="btn primary">✨ Начать приключение</button><button id="how" class="btn secondary">📖 Правила игры</button></div></section>
-<section id="rules" class="card hidden"><h2>📖 Как играть</h2><p>Пройди пять мест: окончание, корень, приставка, суффикс и полный разбор слова. После каждого ответа Морфик объяснит правило. При ошибке можно вернуться и потренироваться ещё раз.</p><p>На каждой станции — 10 слов. Первые задания проще, затем встречаются более трудные слова с чередованием звуков и несколькими приставками. Правильный ответ даёт кристалл 💎. Ошибки не отнимают баллы.</p></section>
-<section id="game" class="hidden"><div class="card"><div class="sectiontitle">🗺️ Тропинки волшебного сада</div><p class="muted">🌼 Выбирай дорожку. На каждой остановке — десять слов. Цветы и фонарики загораются при верном ответе.</p><p class="muted">Пройденные станции отмечены галочкой. Можно возвращаться и переигрывать.</p><div id="map" class="map"></div><p class="badge">🌱 → 🌿 → 🌳 Каждая станция: 10 слов, сложность растёт</p></div><div id="task" class="card hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><span id="leveltag" class="badge"></span><strong id="counter"></strong><span id="gems">💎 0</span></div><div class="progress" style="margin:16px 0"><div id="bar" class="fill"></div></div><h2 id="tasktitle" class="sectiontitle"></h2><div id="question" class="question"></div><div id="answers" class="answers"></div><div id="feedback" role="status" aria-live="polite" class="hidden feedback"></div><div class="actions"><button id="next" class="btn primary hidden">Продолжить →</button><button id="back" class="btn secondary">← На карту</button></div></div><div id="end" class="card hidden"><div class="certificate"><div class="certstars">🏆🌈💎</div><h2>Сертификат исследователя слов</h2><p>Робот Морфик благодарит тебя за спасение Морфемного леса!</p><h3 id="certscore"></h3><p>Ты научился находить части слова и проверять свои ответы.</p><p>«Морфемика — тайна, которую можно разгадать!»</p><div class="actions" style="justify-content:center"><button id="print" class="btn primary">🖨️ Распечатать</button><button id="again" class="btn secondary">↻ Пройти заново</button></div></div></div></section><div class="footer">© Мастерская учителя · Для занятий в 5 классе. Работает без интернета. Важные ответы проверены по школьной модели разбора.</div></main>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d2739"><title>Тайна Морфемного леса — интерактивный 3D-квест</title><style>
+:root{--navy:#11273c;--glass:#0b2338dd;--gold:#ffd77d;--mint:#96fff0;--paper:#f9fbff;--violet:#b7a2ff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,'Segoe UI',sans-serif;background:#081724;color:#fff}button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #ffe189;outline-offset:4px}
+.world{min-height:100svh;position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(#76cbed,#cbf5f0 56%,#76bf90)}
+.landscape{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.world:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(#00162a44,transparent 26%,transparent 69%,#00182b8c)}
+.toolbar{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:24px;position:relative;z-index:5}
+.status{background:var(--glass);border:1px solid #d0ffff5c;border-radius:21px;padding:15px 20px;box-shadow:0 10px 40px #00192b75;backdrop-filter:blur(12px);min-width:275px}
+.status h1{font-size:clamp(17px,2.1vw,25px);margin:0 0 4px;line-height:1.16}.status p{margin:0 0 8px;font-size:13px;color:#d0f4ff}.track{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.gem{width:27px;height:20px;border-radius:6px;background:#ffffff22;border:1px solid #ffffff70}.gem.on{background:linear-gradient(140deg,#fff0b1,#84ffef 60%,#689aff);border-color:#fff3ad;box-shadow:0 0 14px #c7fffbaa}.topbuttons{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end}.topbtn{border:1px solid #fff9;border-radius:15px;background:#ffffffed;color:#19344a;padding:12px 15px;font-weight:800;box-shadow:0 8px 25px #07162650}.topbtn[aria-pressed=true]{background:#dcfff2}
+.landmark{position:absolute;display:flex;align-items:center;flex-direction:column;gap:3px;border:0;background:transparent;color:#fff;transform:translate(-50%,-50%);z-index:2;min-width:118px;text-align:center;filter:drop-shadow(0 7px 8px #061e366e);transition:transform .2s;touch-action:manipulation}.landmark:hover:not(:disabled){transform:translate(-50%,-55%) scale(1.05)}.landmark .symbol{display:grid;place-items:center;position:relative;font-size:clamp(38px,5vw,74px);height:clamp(65px,9vw,116px);width:clamp(76px,10vw,136px);border-radius:32px;background:linear-gradient(145deg,#eafcfb99,#5765b650);border:2px solid #faffffac;box-shadow:inset 0 2px 16px #fff8,0 0 28px #65fef7a9;backdrop-filter:blur(2px)}.landmark .label{background:linear-gradient(120deg,#071d34ed,#214867f2);padding:9px 12px;border:1px solid #b6faffbb;border-radius:13px;font-size:clamp(12px,1.45vw,17px);font-weight:900;white-space:nowrap;box-shadow:0 8px 22px #071d3494}.landmark .number{position:absolute;top:-8px;right:-8px;background:#ffe192;color:#23415b;border-radius:50%;height:29px;width:29px;display:grid;place-items:center;font-weight:1000;border:2px solid white}.landmark.locked .symbol{filter:grayscale(.65);opacity:.77}.landmark.locked .label:after{content:" 🔒"}.landmark.done .label:after{content:" ✓";color:#92fdd1}.landmark.done .symbol{box-shadow:0 0 35px #ffe68f,0 0 65px #7fffc8}.l0{left:17%;top:49%}.l1{left:38%;top:34%}.l2{left:63%;top:47%}.l3{left:81%;top:30%}.l4{left:52%;top:69%}
+.robot{position:absolute;bottom:8%;left:7%;z-index:3;filter:drop-shadow(0 12px 15px #001e3b8a);animation:bob 3s ease-in-out infinite}.robot svg{width:clamp(95px,13vw,185px);height:auto}.robottext{position:absolute;left:13%;bottom:10%;background:#fff;color:#17405a;border:2px solid #a1f6ff;padding:12px 16px;border-radius:20px;font-weight:800;max-width:245px;font-size:clamp(12px,1.4vw,17px);box-shadow:0 10px 30px #0004;z-index:3}
+.footerbar{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);border:1px solid #8defff80;background:#10283de8;padding:12px 24px;border-radius:20px;font-weight:800;max-width:min(92%,750px);text-align:center;box-shadow:0 8px 24px #0008;z-index:3}
+.spark{animation:twinkle 2.5s ease-in-out infinite alternate;transform-origin:center}@keyframes twinkle{to{opacity:.2;transform:scale(.65)}}@keyframes bob{50%{transform:translateY(-13px)}}
+.overlay{position:fixed;inset:0;background:#061426b9;z-index:20;display:none;align-items:center;justify-content:center;padding:14px;backdrop-filter:blur(10px)}.overlay.show{display:flex}.modal{width:min(800px,100%);max-height:93svh;overflow:auto;background:linear-gradient(150deg,#faffff,#e8f6ff 70%,#f8efff);color:#18364b;border-radius:26px;border:3px solid #d9faff;box-shadow:0 30px 110px #000b}.modalheader{position:sticky;top:0;background:#f9fefff2;padding:18px 20px;border-bottom:1px solid #d1e4eb;display:flex;justify-content:space-between;gap:10px;z-index:2;align-items:center}.modal h2{margin:0;font-size:clamp(22px,3vw,33px)}.close{background:#dff2fa;color:#17425c;border:0;border-radius:12px;padding:7px 13px;font-size:25px}.modalbody{padding:22px}.question{font-size:clamp(21px,3vw,29px);font-weight:900;line-height:1.3;margin:14px 0 20px}.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}.option{border:2px solid #b7dbea;border-radius:17px;background:#fff;padding:16px;text-align:left;font-size:clamp(16px,2vw,21px);color:#17405d;font-weight:750;min-height:70px}.option:hover:not(:disabled){border-color:#2688c3;background:#eafffc}.option:disabled{opacity:1}.option.right{border-color:#1b9869;background:#c9fce8}.option.wrong{border-color:#cf587c;background:#ffe0e6}.explain{background:#fff4d5;border-left:6px solid #efb84e;padding:15px;border-radius:13px;margin:16px 0;font-size:17px;line-height:1.5}.row{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.btn{border:0;border-radius:15px;padding:13px 18px;font-weight:850;color:#fff;background:linear-gradient(110deg,#095b84,#6551aa);box-shadow:0 6px 0 #153e6970}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.subtle{color:#19506a;background:#e0f2f8;box-shadow:none}.counter{font-weight:800;color:#466078}.steps{margin:14px 0}.cert{border:6px double #d5af5f;border-radius:22px;padding:28px;text-align:center;background:linear-gradient(120deg,#fffbe9,#dffcf9)}.cert h3{font-size:32px;margin:10px 0}.teacherline{font-size:13px;color:#39576a;border-top:1px dashed #a5bccb;padding-top:9px;margin-top:12px}.difficulty{display:flex;gap:9px;margin:16px 0;flex-wrap:wrap}.difficulty button{border:2px solid #abcbdc;background:#fff;color:#16405c;padding:10px 13px;border-radius:12px;font-weight:800}.difficulty button[aria-pressed=true]{background:#165c78;color:#fff}.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:700px){.toolbar{padding:10px;flex-direction:column}.status{padding:10px;min-width:0}.topbuttons{gap:5px}.topbtn{padding:8px;font-size:12px}.world{min-height:860px}.landmark{min-width:90px}.landmark .symbol{width:74px;height:66px;font-size:39px;border-radius:19px}.landmark .label{font-size:11px;padding:6px}.l0{left:22%;top:40%}.l1{left:69%;top:38%}.l2{left:25%;top:59%}.l3{left:76%;top:59%}.l4{left:52%;top:73%}.robot{bottom:8%;left:2%}.robottext{left:25%;bottom:10%;max-width:170px}.footerbar{bottom:6px;font-size:12px;padding:8px}.options{grid-template-columns:1fr}.modalbody{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}@media print{.world,.overlay{display:none!important}body{background:white;color:black}.printcert{display:block!important}}.printcert{display:none}
+</style></head><body>
+<main class="world" aria-label="Карта квеста Морфемного леса">
+<svg class="landscape" viewBox="0 0 1440 930" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#3c87d2"/><stop offset=".55" stop-color="#bcf3f5"/><stop offset="1" stop-color="#6ad5ae"/></linearGradient><linearGradient id="grass" x2="0" y2="1"><stop stop-color="#72c68b"/><stop offset="1" stop-color="#1a6c56"/></linearGradient><linearGradient id="road" x2="0" y2="1"><stop stop-color="#e1eff0"/><stop offset="1" stop-color="#93afbb"/></linearGradient><linearGradient id="glass" x2="0" y2="1"><stop stop-color="#c2fbff"/><stop offset=".48" stop-color="#3283bf"/><stop offset="1" stop-color="#1c417d"/></linearGradient><linearGradient id="tower" x2="0" y2="1"><stop stop-color="#c9f2f0"/><stop offset=".4" stop-color="#98b9c8"/><stop offset="1" stop-color="#447083"/></linearGradient><linearGradient id="portal" x2="0" y2="1"><stop stop-color="#a487fc"/><stop offset="1" stop-color="#413db4"/></linearGradient><radialGradient id="glow"><stop stop-color="#c6fff9"/><stop offset=".5" stop-color="#66bbff" stop-opacity=".55"/><stop offset="1" stop-color="#66bbff" stop-opacity="0"/></radialGradient><filter id="blur"><feGaussianBlur stdDeviation="17"/></filter><filter id="shine"><feGaussianBlur stdDeviation="5"/></filter><pattern id="windows" width="24" height="34" patternUnits="userSpaceOnUse"><path d="M5 4h11v21H5z" fill="#b6f9ff" opacity=".47"/><path d="M5 4h11v2H5z" fill="#fff" opacity=".55"/></pattern><pattern id="bricks" width="45" height="20" patternUnits="userSpaceOnUse"><path d="M0 0H45M22 0V10M0 10H45M10 10V20" stroke="#ffffff" stroke-opacity=".12" fill="none"/></pattern></defs>
+<rect width="1440" height="930" fill="url(#sky)"/>
+<g opacity=".6" fill="#eaffff"><ellipse cx="170" cy="150" rx="180" ry="29"/><ellipse cx="270" cy="110" rx="95" ry="31"/><ellipse cx="1025" cy="110" rx="220" ry="26"/><ellipse cx="1155" cy="83" rx="120" ry="29"/></g>
+<g opacity=".63" fill="#4da0a4"><path d="M0 470V345h65v-67l25-24 22 24v-39h42v231M150 470V290h56v-62h35v242M240 470V262h68v-47h25v255M357 470V328h50v-75h24v217M1010 480V325h45v-99h38v254M1100 480V286h70v-55h28v249M1210 480V313h42V260h33v220M1320 470V280h80v190Z"/></g>
+<g><path d="M345 450V165q0-32 35-32h66q36 0 36 35v282" fill="url(#tower)" stroke="#d9f6ff" stroke-width="7"/><rect x="360" y="171" width="109" height="275" rx="26" fill="url(#glass)"/><rect x="368" y="188" width="90" height="249" rx="18" fill="url(#windows)"/><path d="M388 130l20-90 28 90" fill="#b1d7eb" stroke="#e4ffff" stroke-width="5"/><path d="M400 40h25" stroke="#a8faff" stroke-width="10"/>
+<path d="M495 450V115q0-24 28-24h65q29 0 29 26v333" fill="url(#tower)" stroke="#e4ffff" stroke-width="6"/><rect x="507" y="135" width="95" height="309" rx="19" fill="url(#glass)"/><rect x="516" y="150" width="76" height="285" fill="url(#windows)"/><path d="M527 90l25-80 28 80" fill="#a7d4e8" stroke="#e4ffff" stroke-width="5"/>
+<path d="M695 450V104q0-26 32-26h62q32 0 32 29v343" fill="url(#tower)" stroke="#e9ffff" stroke-width="7"/><rect x="710" y="108" width="95" height="335" rx="22" fill="url(#glass)"/><rect x="722" y="126" width="69" height="300" fill="url(#windows)"/><path d="M730 75l30-72 31 72" fill="#abd3dd" stroke="#eaffff" stroke-width="5"/>
+<path d="M905 464V170q0-38 44-38h74q42 0 42 43v289" fill="url(#tower)" stroke="#eaffff" stroke-width="7"/><rect x="920" y="177" width="129" height="280" rx="25" fill="url(#glass)"/><rect x="931" y="192" width="108" height="250" fill="url(#windows)"/></g>
+<path d="M0 430q160-45 310-4 140-66 288-15 220-73 428 6 220-65 414-10v523H0" fill="url(#grass)"/>
+<g fill="#2b7d72"><path d="M0 522l55-192 66 192M80 538l42-182 49 182M1240 535l40-197 72 197M1330 545l50-220 60 220"/></g>
+<g><path d="M-20 420 Q240 367 520 420T1130 423L1480 361" fill="none" stroke="#6c899a" stroke-width="90"/><path d="M-20 420 Q240 367 520 420T1130 423L1480 361" fill="none" stroke="#c7faff" stroke-width="57"/><path d="M-20 420 Q240 367 520 420T1130 423L1480 361" fill="none" stroke="#5a9dc2" stroke-width="37"/><path d="M-20 420 Q240 367 520 420T1130 423L1480 361" fill="none" stroke="#d3faff" stroke-width="11"/></g>
+<path d="M330 930Q500 700 700 580Q835 490 960 467L1100 525Q820 635 755 930" fill="url(#road)"/><path d="M445 930Q595 700 755 613Q850 544 975 506" fill="none" stroke="#eaffff" stroke-width="7" stroke-dasharray="18 27" opacity=".7"/>
+<g><path d="M70 635V475q0-120 129-120t128 120v160" fill="url(#tower)" stroke="#dffaff" stroke-width="14"/><path d="M100 627V483q0-92 100-92t100 92v144" fill="#162e68"/><path d="M125 623V492q0-73 74-73t73 73v131" fill="url(#glass)" stroke="#75eeff" stroke-width="9"/><path d="M149 615V500q0-48 50-48t49 48v115" fill="#0e3271" stroke="#9c8dff" stroke-width="9"/><path d="M160 606V509q0-36 39-36t38 36v97" fill="#122c5e"/></g>
+<g><path d="M1005 545V365q0-110 130-110t130 110v180" fill="url(#tower)" stroke="#e1fdff" stroke-width="16"/><path d="M1040 530V376q0-80 95-80t95 80v154" fill="#243a81" stroke="#91c5ff" stroke-width="7"/><path d="M1060 520V388q0-61 75-61t75 61v132" fill="url(#portal)" stroke="#a7e7ff" stroke-width="12"/><ellipse cx="1135" cy="450" rx="67" ry="75" fill="url(#glow)"/><path d="M1090 421q45-34 91 0M1080 464q60 31 111-6" stroke="#b4fff9" stroke-width="6" fill="none" opacity=".7"/></g>
+<g><path d="M580 520v-84q0-88 130-88t130 88v84" fill="url(#tower)" stroke="#d6faff" stroke-width="15"/><path d="M612 520v-74q0-56 98-56t98 56v74" fill="#243568" stroke="#87efff" stroke-width="7"/><path d="M649 515v-67q0-38 61-38t61 38v67" fill="#14347b"/><path d="M661 499q50-68 98 0" stroke="#8a8fff" stroke-width="6" fill="none"/></g>
+<g><ellipse cx="705" cy="605" rx="150" ry="44" fill="#e9f4f1" stroke="#8eadb7" stroke-width="8"/><ellipse cx="705" cy="595" rx="109" ry="29" fill="#5abfc6"/><path d="M696 587q-45-62-18-112 26 7 26 54 20-101 47-116 15 75-36 174" fill="#97fff9" stroke="#d3ffff" stroke-width="6"/><ellipse cx="705" cy="595" rx="23" ry="10" fill="#e0ffff"/></g>
+<g opacity=".95"><rect x="860" y="540" width="68" height="100" rx="25" fill="#9bbaca" stroke="#ecffff" stroke-width="8"/><rect x="873" y="548" width="42" height="69" rx="16" fill="#234b66" stroke="#67e8ff" stroke-width="5"/><path d="M893 567l-9 23h10l-5 16 18-28h-11l7-11" fill="#adffbd"/></g>
+<g fill="#276e60" stroke="#c3f9c8" stroke-width="3"><path d="M65 705v-85l-30-9 30-85 29 85-29 9M1320 685v-95l-31-12 31-92 36 92-36 12M1270 754v-90l-32-11 32-94 37 94-37 11M230 754v-80l-33-13 33-94 35 94-35 13"/></g>
+<g fill="#ffb8d4"><circle cx="100" cy="695" r="10"/><circle cx="156" cy="742" r="9"/><circle cx="1288" cy="805" r="10"/><circle cx="1340" cy="762" r="13"/></g>
+<g fill="#e6ffff"><circle class="spark" cx="610" cy="210" r="5"/><circle class="spark" cx="1050" cy="200" r="6"/><circle class="spark" cx="892" cy="310" r="6"/><circle class="spark" cx="285" cy="280" r="5"/></g></svg>
+<div class="toolbar"><div class="status"><h1>🌿 Тайна Морфемного леса</h1><p>Миссия: верни кристаллы состава слова</p><div class="track"><span id="progress">Выполнено 0 из 5</span><span id="gems" class="track"></span></div></div><div class="topbuttons"><button class="topbtn" id="help">💡 Подсказка</button><button class="topbtn" id="teacher" aria-pressed="false">⚙️ Режим учителя</button><button class="topbtn" id="sound" aria-pressed="false">🔇 Звук</button><button class="topbtn" id="reset">↺ Заново</button></div></div>
+<div id="places"></div>
+<div class="robot" aria-hidden="true"><svg viewBox="0 0 185 245"><defs><linearGradient id="rob" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".5" stop-color="#a6d4e2"/><stop offset="1" stop-color="#718fbb"/></linearGradient></defs><ellipse cx="93" cy="235" rx="70" ry="9" fill="#082b3c" opacity=".4"/><rect x="55" y="119" width="77" height="90" rx="31" fill="url(#rob)" stroke="#e9ffff" stroke-width="5"/><rect x="24" y="29" width="140" height="113" rx="45" fill="url(#rob)" stroke="#f7ffff" stroke-width="7"/><rect x="35" y="47" width="119" height="78" rx="31" fill="#101a36"/><ellipse cx="67" cy="87" rx="10" ry="13" fill="#82f9ff"/><ellipse cx="118" cy="87" rx="10" ry="13" fill="#82f9ff"/><path d="M75 104q18 18 36 0" fill="none" stroke="#ffb6c5" stroke-width="5" stroke-linecap="round"/><path d="M92 26V11" stroke="#dffaff" stroke-width="5"/><circle cx="92" cy="8" r="8" fill="#9affef"/><circle cx="23" cy="90" r="16" fill="#c0e8ff"/><circle cx="163" cy="90" r="16" fill="#c0e8ff"/><rect x="68" y="145" width="54" height="42" rx="10" fill="#25486a" stroke="#8bf5f4" stroke-width="3"/><path d="M80 172l12-17 11 17" fill="none" stroke="#ffe79a" stroke-width="5"/><path d="M55 157l-21 24m98-24 24 22" stroke="#bfe4f7" stroke-width="13" stroke-linecap="round"/><path d="M73 204l-12 19m61-19 12 19" stroke="#d7f7ff" stroke-width="11" stroke-linecap="round"/></svg></div><div class="robottext" id="robottext">Привет! Я Морфик 🤖 Нажми на первую станцию!</div><div class="footerbar" id="footertext">🌟 Начни с Леса окончаний. Другие локации откроются по очереди.</div>
+</main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modaltitle"><div class="modal"><div class="modalheader"><h2 id="modaltitle">Задание</h2><button class="close" id="close" aria-label="Закрыть">×</button></div><div class="modalbody" id="body"></div></div></div>
+<div class="printcert" id="printcert"></div>
 <script>
-'use strict';const stations=[{name:'Лес окончаний',icon:'🌲',title:'Найди окончание',hint:'Окончание помогает изменять форму слова. Нулевое окончание есть у изменяемого слова, если оно не выражено буквами.'},{name:'Пещера корней',icon:'🪨',title:'Отыщи корень',hint:'Корень — общая значимая часть родственных слов. Проверяй и смысл, и написание.'},{name:'Мост приставок',icon:'🌉',title:'Найди приставку',hint:'Приставка стоит перед корнем и помогает образовать новое слово.'},{name:'Башня суффиксов',icon:'🏰',title:'Найди суффикс',hint:'Суффикс обычно стоит после корня и перед окончанием; он помогает образовать новые слова.'},{name:'Кристалл Морфемики',icon:'💎',title:'Собери слово по частям',hint:'Определи окончание, найди основу, подбери родственные слова, выдели приставки и суффиксы.'}];
-// Ответы и объяснения составлены для школьной модели морфемного разбора.
-const bank=[
- [
-  {
-   "q": "Найди окончание в слове «книга».",
-   "a": [
-    "-а",
-    "-га",
-    "нулевое",
-    "-ига"
-   ],
-   "k": 0,
-   "e": "Книга — книги — книгой. Изменяется -а: это окончание."
-  },
-  {
-   "q": "Найди окончание в слове «травой».",
-   "a": [
-    "-ой",
-    "-й",
-    "-вой",
-    "нулевое"
-   ],
-   "k": 0,
-   "e": "Трава — травой — траве. Окончание формы «травой» — -ой."
-  },
-  {
-   "q": "Найди окончание в слове «окно».",
-   "a": [
-    "-но",
-    "нулевое",
-    "-о",
-    "-кно"
-   ],
-   "k": 2,
-   "e": "Окно — окна — окном: меняется окончание -о."
-  },
-  {
-   "q": "Есть ли окончание в слове «лес»?",
-   "a": [
-    "Нет: слово неизменяемое",
-    "Окончание -с",
-    "Нулевое окончание",
-    "Окончание -ес"
-   ],
-   "k": 2,
-   "e": "Лес — леса — лесом. Слово изменяется, но в форме «лес» окончание нулевое."
-  },
-  {
-   "q": "Какое окончание в слове «берёзами»?",
-   "a": [
-    "-ми",
-    "-ами",
-    "-и",
-    "-зами"
-   ],
-   "k": 1,
-   "e": "Берёза — берёзами — берёзах: окончание -ами."
-  },
-  {
-   "q": "Какое окончание в слове «тетрадями»?",
-   "a": [
-    "-ями",
-    "-ами",
-    "-ми",
-    "нулевое"
-   ],
-   "k": 0,
-   "e": "Тетрадь — тетрадями — тетрадях: окончание -ями."
-  },
-  {
-   "q": "Какое окончание в слове «красивому»?",
-   "a": [
-    "-му",
-    "-ому",
-    "-у",
-    "-ивому"
-   ],
-   "k": 1,
-   "e": "Красивый — красивого — красивому: окончание -ому."
-  },
-  {
-   "q": "Какое окончание в слове «маленьких»?",
-   "a": [
-    "-ких",
-    "-их",
-    "-х",
-    "-еньких"
-   ],
-   "k": 1,
-   "e": "Маленький — маленького — маленьких: окончание -их."
-  },
-  {
-   "q": "Какое окончание в слове «перелесками»?",
-   "a": [
-    "-ками",
-    "-ми",
-    "-ами",
-    "-и"
-   ],
-   "k": 2,
-   "e": "Перелесок — перелески — перелесками: окончание -ами."
-  },
-  {
-   "q": "Какое окончание в слове «подснежниками»?",
-   "a": [
-    "-никами",
-    "-ми",
-    "-ами",
-    "нулевое"
-   ],
-   "k": 2,
-   "e": "Подснежник — подснежниками — подснежниках: окончание -ами."
-  }
- ],
- [
-  {
-   "q": "Найди корень в слове «лесник».",
-   "a": [
-    "лес-",
-    "лесн-",
-    "-ник-",
-    "ле-"
-   ],
-   "k": 0,
-   "e": "Лес — лесник — лесной. Общая значимая часть — лес-."
-  },
-  {
-   "q": "Найди корень в слове «горка».",
-   "a": [
-    "горк-",
-    "гор-",
-    "-ка-",
-    "ор-"
-   ],
-   "k": 1,
-   "e": "Гора — горка — горный: корень гор-."
-  },
-  {
-   "q": "Найди корень в слове «морской».",
-   "a": [
-    "мор-",
-    "морск-",
-    "морс-",
-    "-ск-"
-   ],
-   "k": 0,
-   "e": "Море — моряк — морской: корень мор-."
-  },
-  {
-   "q": "Найди корень в слове «водяной».",
-   "a": [
-    "вод-",
-    "водян-",
-    "-ян-",
-    "во-"
-   ],
-   "k": 0,
-   "e": "Вода — водный — водяной: корень вод-."
-  },
-  {
-   "q": "Найди корень в слове «снежинка».",
-   "a": [
-    "снег-",
-    "снеж-",
-    "снежин-",
-    "-инк-"
-   ],
-   "k": 1,
-   "e": "Снег — снежный — снежинка: в корне чередуются г и ж; здесь корень снеж-."
-  },
-  {
-   "q": "Найди корень в слове «дорожка».",
-   "a": [
-    "дор-",
-    "дорож-",
-    "дорожк-",
-    "-к-"
-   ],
-   "k": 1,
-   "e": "Дорога — дорожный — дорожка: г чередуется с ж; корень дорож-."
-  },
-  {
-   "q": "Найди корень в слове «приморский».",
-   "a": [
-    "примор-",
-    "морс-",
-    "мор-",
-    "-ск-"
-   ],
-   "k": 2,
-   "e": "Море — морской — приморский: корень мор-."
-  },
-  {
-   "q": "Найди корень в слове «перелесок».",
-   "a": [
-    "перелес-",
-    "лес-",
-    "лесок-",
-    "-ок-"
-   ],
-   "k": 1,
-   "e": "Лес — лесок — перелесок: корень лес-."
-  },
-  {
-   "q": "Найди корень в слове «подосиновик».",
-   "a": [
-    "осин-",
-    "подосин-",
-    "-овик-",
-    "оси-"
-   ],
-   "k": 0,
-   "e": "Осина — осиновый — подосиновик: корень осин-."
-  },
-  {
-   "q": "Найди корень в слове «предрассветный».",
-   "a": [
-    "рассвет-",
-    "свет-",
-    "предрас-",
-    "-вет-"
-   ],
-   "k": 1,
-   "e": "Свет — светлый — рассвет — предрассветный: корень свет-. Перед ним две приставки."
-  }
- ],
- [
-  {
-   "q": "Найди приставку в слове «запеть».",
-   "a": [
-    "нет приставки",
-    "за-",
-    "зап-",
-    "-пе-"
-   ],
-   "k": 1,
-   "e": "Петь — запеть: приставка за-."
-  },
-  {
-   "q": "Найди приставку в слове «подписать».",
-   "a": [
-    "по-",
-    "-пис-",
-    "под-",
-    "нет приставки"
-   ],
-   "k": 2,
-   "e": "Писать — подписать: приставка под-."
-  },
-  {
-   "q": "Найди приставку в слове «переписать».",
-   "a": [
-    "пере-",
-    "пер-",
-    "по-",
-    "нет приставки"
-   ],
-   "k": 0,
-   "e": "Писать — переписать: приставка пере-."
-  },
-  {
-   "q": "Найди приставку в слове «приехать».",
-   "a": [
-    "при-",
-    "пр-",
-    "про-",
-    "-ех-"
-   ],
-   "k": 0,
-   "e": "Ехать — приехать: приставка при-."
-  },
-  {
-   "q": "Найди приставку в слове «выбежать».",
-   "a": [
-    "в-",
-    "вы-",
-    "-беж-",
-    "нет приставки"
-   ],
-   "k": 1,
-   "e": "Бежать — выбежать: приставка вы-."
-  },
-  {
-   "q": "Найди приставку в слове «безветренный».",
-   "a": [
-    "без-",
-    "бе-",
-    "бес-",
-    "нет приставки"
-   ],
-   "k": 0,
-   "e": "Ветер — ветреный — безветренный: приставка без-."
-  },
-  {
-   "q": "Найди приставку в слове «приоткрыть».",
-   "a": [
-    "про-",
-    "при-",
-    "пр-",
-    "от-"
-   ],
-   "k": 1,
-   "e": "Открыть — приоткрыть: приставка при- придаёт значение неполноты действия."
-  },
-  {
-   "q": "Найди приставку в слове «предсказать».",
-   "a": [
-    "пре-",
-    "пред-",
-    "под-",
-    "нет приставки"
-   ],
-   "k": 1,
-   "e": "Сказать — предсказать: приставка пред-."
-  },
-  {
-   "q": "Сколько приставок в слове «предрассветный»?",
-   "a": [
-    "Одна",
-    "Ни одной",
-    "Две",
-    "Три"
-   ],
-   "k": 2,
-   "e": "Пред-рас-свет-н-ый: две приставки — пред- и рас-."
-  },
-  {
-   "q": "Какие приставки в слове «переподготовка»?",
-   "a": [
-    "пере- и под-",
-    "пер- и по-",
-    "только пере-",
-    "только под-"
-   ],
-   "k": 0,
-   "e": "Пере-под-готов-к-а: перед корнем готов- стоят приставки пере- и под-."
-  }
- ],
- [
-  {
-   "q": "Найди суффикс в слове «домик».",
-   "a": [
-    "-к-",
-    "-ик-",
-    "-мик-",
-    "нет суффикса"
-   ],
-   "k": 1,
-   "e": "Дом-ик-∅: уменьшительный суффикс -ик-."
-  },
-  {
-   "q": "Найди суффикс в слове «берёзка».",
-   "a": [
-    "-ка-",
-    "-к-",
-    "-ёз-",
-    "-а-"
-   ],
-   "k": 1,
-   "e": "Берёз-к-а: суффикс -к-, окончание -а."
-  },
-  {
-   "q": "Найди суффикс в слове «зимний».",
-   "a": [
-    "-ний-",
-    "-ий",
-    "-н-",
-    "нет суффикса"
-   ],
-   "k": 2,
-   "e": "Зим-н-ий: суффикс -н-, окончание -ий."
-  },
-  {
-   "q": "Найди суффикс в слове «моряк».",
-   "a": [
-    "-як-",
-    "-к-",
-    "-ряк-",
-    "нет суффикса"
-   ],
-   "k": 0,
-   "e": "Мор-як-∅: суффикс -як-."
-  },
-  {
-   "q": "Найди суффикс в слове «грибник».",
-   "a": [
-    "-ик-",
-    "-ник-",
-    "-н-",
-    "-к-"
-   ],
-   "k": 1,
-   "e": "Гриб-ник-∅: суффикс -ник-."
-  },
-  {
-   "q": "Найди суффикс в слове «подснежник».",
-   "a": [
-    "-ик-",
-    "-еж-",
-    "-ник-",
-    "нет суффикса"
-   ],
-   "k": 2,
-   "e": "Под-снеж-ник-∅: суффикс -ник-."
-  },
-  {
-   "q": "Найди суффикс в слове «пушистый».",
-   "a": [
-    "-ист-",
-    "-ст-",
-    "-ый",
-    "-уш-"
-   ],
-   "k": 0,
-   "e": "Пуш-ист-ый: суффикс -ист-, окончание -ый."
-  },
-  {
-   "q": "Найди суффикс в слове «строитель».",
-   "a": [
-    "-ител-",
-    "-ель-",
-    "-тель-",
-    "-итель- — один суффикс"
-   ],
-   "k": 2,
-   "e": "Стро-и-тель-∅: суффикс -тель- (перед ним находится -и-)."
-  },
-  {
-   "q": "Найди суффикс в слове «водяной».",
-   "a": [
-    "-ян-",
-    "-ной-",
-    "-н-",
-    "-ой"
-   ],
-   "k": 0,
-   "e": "Вод-ян-ой: суффикс -ян-, окончание -ой."
-  },
-  {
-   "q": "Найди суффикс в слове «снежинка».",
-   "a": [
-    "-к-",
-    "-инк-",
-    "-инка-",
-    "-жин-"
-   ],
-   "k": 1,
-   "e": "Снеж-инк-а: суффикс -инк-, окончание -а."
-  }
- ],
- [
-  {
-   "q": "Выбери верный разбор слова «лесник».",
-   "a": [
-    "лес-ник-∅",
-    "ле-сник-∅",
-    "лес-н-ик",
-    "лесни-к"
-   ],
-   "k": 0,
-   "e": "Лес-ник-∅: корень лес-, суффикс -ник-, нулевое окончание."
-  },
-  {
-   "q": "Выбери верный разбор слова «записка».",
-   "a": [
-    "запис-к-а",
-    "за-пис-к-а",
-    "за-пи-ска",
-    "за-писк-а"
-   ],
-   "k": 1,
-   "e": "За-пис-к-а: приставка за-, корень пис-, суффикс -к-, окончание -а."
-  },
-  {
-   "q": "Выбери верный разбор слова «подводный».",
-   "a": [
-    "подвод-н-ый",
-    "по-двод-н-ый",
-    "под-вод-н-ый",
-    "под-вод-ный"
-   ],
-   "k": 2,
-   "e": "Под-вод-н-ый: приставка под-, корень вод-, суффикс -н-, окончание -ый."
-  },
-  {
-   "q": "Выбери верный разбор слова «приморский».",
-   "a": [
-    "при-мор-ск-ий",
-    "при-морс-к-ий",
-    "примор-ск-ий",
-    "при-мор-ский"
-   ],
-   "k": 0,
-   "e": "При-мор-ск-ий: приставка при-, корень мор-, суффикс -ск-, окончание -ий."
-  },
-  {
-   "q": "Выбери верный разбор слова «подснежник».",
-   "a": [
-    "под-сне-жник-∅",
-    "подснеж-ник-∅",
-    "под-снеж-ник-∅",
-    "под-снеж-н-ик"
-   ],
-   "k": 2,
-   "e": "Под-снеж-ник-∅: приставка под-, корень снеж- с чередованием г/ж, суффикс -ник-, нулевое окончание."
-  },
-  {
-   "q": "Выбери верный разбор слова «бездомный».",
-   "a": [
-    "без-дом-н-ый",
-    "бе-здом-н-ый",
-    "бездом-н-ый",
-    "без-дом-ный"
-   ],
-   "k": 0,
-   "e": "Без-дом-н-ый: приставка без-, корень дом-, суффикс -н-, окончание -ый."
-  },
-  {
-   "q": "Выбери верный разбор слова «переписка».",
-   "a": [
-    "пере-пис-к-а",
-    "перепис-к-а",
-    "пере-пи-ска",
-    "пере-писк-а"
-   ],
-   "k": 0,
-   "e": "Пере-пис-к-а: приставка пере-, корень пис-, суффикс -к-, окончание -а."
-  },
-  {
-   "q": "Выбери верный разбор слова «подземный».",
-   "a": [
-    "под-зем-ный",
-    "подзем-н-ый",
-    "под-зем-н-ый",
-    "по-дзем-н-ый"
-   ],
-   "k": 2,
-   "e": "Под-зем-н-ый: приставка под-, корень зем-, суффикс -н-, окончание -ый."
-  },
-  {
-   "q": "Выбери верный разбор слова «предрассветный».",
-   "a": [
-    "пред-рас-свет-н-ый",
-    "пред-рассвет-н-ый",
-    "предрас-свет-н-ый",
-    "пред-рас-свет-ный"
-   ],
-   "k": 0,
-   "e": "Пред-рас-свет-н-ый: две приставки пред-, рас-, корень свет-, суффикс -н-, окончание -ый."
-  },
-  {
-   "q": "Выбери верный разбор слова «переподготовка».",
-   "a": [
-    "перепод-готов-к-а",
-    "пере-под-готов-к-а",
-    "пере-подготов-к-а",
-    "пере-под-готов-ка"
-   ],
-   "k": 1,
-   "e": "Пере-под-готов-к-а: приставки пере- и под-, корень готов-, суффикс -к-, окончание -а."
-  }
- ]
-];
-const $=s=>document.querySelector(s), state={diff:'easy',station:0,index:0,score:0,answered:false,done:[],total:0,wrong:[],sound:true,voice:false};let st;try{st=JSON.parse(localStorage.getItem('morfik-v1')||'null')}catch{}if(st&&Array.isArray(st.done))state.done=st.done.filter(x=>Number.isInteger(x)&&x>=0&&x<5);function save(){try{localStorage.setItem('morfik-v1',JSON.stringify({done:state.done}))}catch{}}
-function beep(ok){if(!state.sound)return;try{const c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(ok?660:260,c.currentTime);o.frequency.exponentialRampToValueAtTime(ok?990:190,c.currentTime+.16);g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.16,c.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.25);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.26);setTimeout(()=>c.close(),450)}catch{}}function speak(t){if(!state.voice||!('speechSynthesis'in window))return;try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='ru-RU';u.rate=.9;speechSynthesis.speak(u)}catch{}}
-function map(){ $('#map').innerHTML='';stations.forEach((s,i)=>{let b=document.createElement('button');b.className='place'+(state.done.includes(i)?' done':'');b.innerHTML=`<span class="icon" aria-hidden="true">${s.icon}</span><strong>${s.name}</strong><span class="tiny">${state.done.includes(i)?'Пройдено':'Начать испытание'}</span>`;b.onclick=()=>begin(i);$('#map').append(b)});$('#gems').textContent=`💎 ${state.score}`}
-function begin(i){state.station=i;state.index=0;state.score=0;state.answered=false;state.wrong=[];state.total=10;$('#task').classList.remove('hidden');$('#end').classList.add('hidden');show();$('#task').scrollIntoView({behavior:'smooth'})}
-function show(){let s=stations[state.station],q=bank[state.station][state.index];state.answered=false;$('#next').classList.add('hidden');$('#feedback').classList.add('hidden');$('#leveltag').textContent=`${s.icon} ${s.name}`;$('#tasktitle').textContent=s.title;$('#counter').textContent=`Задание ${state.index+1} из ${state.total}`;$('#bar').style.width=`${Math.round(100*state.index/state.total)}%`;$('#question').textContent=q.q;$('#gems').textContent=`💎 ${state.score}`;$('#answers').innerHTML='';state.order=[0,1,2,3];for(let z=3;z>0;z--){let j=Math.floor(Math.random()*(z+1));[state.order[z],state.order[j]]=[state.order[j],state.order[z]]}state.order.forEach((orig,i)=>{const b=document.createElement('button');b.className='option';b.textContent=`${'АБВГ'[i]}. ${q.a[orig]}`;b.onclick=()=>answer(orig);$('#answers').append(b)});speak(q.q)}
-function sparkle(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const layer=$('#fx');if(!layer)return;['✨','🌸','⭐','💎','🌼','✨','🦋','✦'].forEach((ch,i)=>{let e=document.createElement('span');e.className='sparkle';e.textContent=ch;e.style.setProperty('--x',((i%4)-1.5)*105+'px');e.style.setProperty('--y',(Math.floor(i/4)?125:-120)+'px');e.style.left=(42+Math.random()*16)+'%';layer.append(e);setTimeout(()=>e.remove(),950)})}
-function answer(i){if(state.answered)return;state.answered=true;const q=bank[state.station][state.index],ok=i===q.k;beep(ok);if(ok){state.score++;sparkle()}else state.wrong.push(state.index);[...$('#answers').children].forEach((b,n)=>{b.disabled=true;if(state.order[n]===q.k)b.classList.add('right');else if(state.order[n]===i)b.classList.add('wrong')});const f=$('#feedback');f.className='feedback'+(ok?'':' bad');f.innerHTML=`<strong>${ok?'🌟 Верно! Кристалл твой!':'🧩 Почти! Морфик подсказывает:'}</strong><br>${q.e}<br><small>${stations[state.station].hint}</small>`;$('#next').textContent=state.index+1>=state.total?'Завершить уровень ✓':'Следующее задание →';$('#next').classList.remove('hidden');$('#gems').textContent=`💎 ${state.score}`;$('#bar').style.width=`${Math.round(100*(state.index+1)/state.total)}%`;speak((ok?'Верно! ':'Попробуй запомнить: ')+q.e)}
-function finish(){if(!state.done.includes(state.station))state.done.push(state.station);save();$('#task').classList.add('hidden');map();if(state.done.length===5){$('#end').classList.remove('hidden');$('#certscore').textContent=`Пройдены все 5 испытаний! В последнем — ${state.score} из ${state.total} кристаллов.`;$('#end').scrollIntoView({behavior:'smooth'})}else{let n=stations.findIndex((_,i)=>!state.done.includes(i));begin(n)}}
-$('#start').onclick=()=>{$('#game').classList.remove('hidden');map();$('#game').scrollIntoView({behavior:'smooth'})};$('#how').onclick=()=>{$('#rules').classList.toggle('hidden');$('#rules').scrollIntoView({behavior:'smooth'})};document.querySelectorAll('.dif').forEach(b=>b.onclick=()=>{state.diff=b.dataset.d;document.querySelectorAll('.dif').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));if(!$('#task').classList.contains('hidden'))begin(state.station)});$('#next').onclick=()=>{if(state.index+1>=state.total)finish();else{state.index++;show()}};$('#back').onclick=()=>{$('#task').classList.add('hidden');$('#game').scrollIntoView({behavior:'smooth'})};$('#print').onclick=()=>window.print();$('#again').onclick=()=>{state.done=[];save();$('#end').classList.add('hidden');map();begin(0)};$('#reset').onclick=()=>{if(confirm('Сбросить отметки о пройденных станциях?')){state.done=[];save();$('#end').classList.add('hidden');$('#task').classList.add('hidden');map()}};$('#sound').onclick=()=>{state.sound=!state.sound;$('#sound').textContent=state.sound?'🔊 Звук: вкл.':'🔇 Звук: выкл.';$('#sound').setAttribute('aria-pressed',String(state.sound))};$('#voice').onclick=()=>{state.voice=!state.voice;$('#voice').textContent=state.voice?'🗣️ Читать: вкл.':'🗣️ Читать: выкл.';$('#voice').setAttribute('aria-pressed',String(state.voice))};map();
+const S=[
+{name:"Лес окончаний",icon:"🌳",hint:"Чтобы определить окончание, измени форму слова. Окончание не входит в основу.",q:[
+["Укажи окончание в слове «берёза».",["-а","-за","-бер","нет окончания"],0,"Берёз-а: окончание -а. Сравни: берёза — берёзы."],
+["У какого слова нет окончания?",["окно","пальто","рука","ученик"],1,"Пальто — неизменяемое существительное, окончания нет."],
+["Какое окончание в слове «лес»?",["-с","-ес","нулевое","нет окончания"],2,"Лес-∅: при изменении формы леса, лесу окончание появляется; в форме лес — нулевое."]
+]},
+{name:"Пещера корней",icon:"💎",hint:"Однокоренные слова связаны общим значением. Не путай корень и одинаковые буквы.",q:[
+["Выбери однокоренные слова.",["вода, водный, подводный","лес, лиса, колесо","гора, горе, гореть","нос, носить, носок"],0,"Вода, водный, подводный: общий корень вод- и значение, связанное с водой."],
+["Укажи корень слова «лесник».",["-ник","лес-","ле-","-сник"],1,"Лес-ник-∅: корень лес-, суффикс -ник."],
+["Какая пара НЕ является однокоренной?",["снег — снежный","гриб — грибок","гора — горе","дом — домик"],2,"Гора и горе имеют разное значение, поэтому не являются однокоренными."]
+]},
+{name:"Мост приставок",icon:"🌉",hint:"Приставка стоит перед корнем. Подбери слово без приставки: ехать — приехать.",q:[
+["Какую приставку имеет слово «перелёт»?",["пе-","пере-","-лёт","нет приставки"],1,"Пере-лёт-∅: приставка пере- находится перед корнем -лёт-."],
+["В каком слове есть приставка под-?",["подарок","подсказка","подушка","подол"],1,"В слове подсказка выделяется приставка под-: под-сказ-к-а."],
+["В каком слове приставки нет?",["подход","выход","мороз","переход"],2,"Мороз — непроизводное слово без приставки."]
+]},
+{name:"Башня суффиксов",icon:"🗼",hint:"Суффикс находится после корня. Сравни: дом — домик, берёза — берёзка.",q:[
+["Укажи суффикс в слове «домик».",["-дом","-ик","-мик","-к"],1,"Дом-ик-∅: суффикс -ик-."],
+["Какой суффикс в слове «берёзка»?",["-ёзк","-а","-к","-зк"],2,"Берёз-к-а: суффикс -к-."],
+["Укажи суффикс в слове «лесник».",["-ик","-к","-ник","-ни"],2,"Лес-ник-∅: суффикс -ник-."]
+]},
+{name:"Замок Морфемики",icon:"🏰",hint:"Сначала окончание и основа, затем корень через родственные слова, потом приставка и суффикс.",q:[
+["Выбери верный разбор слова «подснежник».",["под-снеж-ник-∅","по-дснеж-ник-∅","подс-неж-ник-∅","под-снежн-ик-∅"],0,"Под-снеж-ник-∅: приставка под-, корень снеж-, суффикс -ник-, нулевое окончание."],
+["Что НЕ входит в основу слова?",["корень","приставка","суффикс","окончание"],3,"Окончание не входит в основу. Основа слова — часть без окончания."],
+["Как разбирается слово «записка»?",["за-пис-к-а","запис-к-а","за-пи-ска","з-а-писк-а"],0,"За-пис-к-а: приставка за-, корень -пис-, суффикс -к-, окончание -а."]
+]}];
+const POS=["l0","l1","l2","l3","l4"];const KEY="morfik_world_v3";let progress;try{progress=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){progress=[]}if(!Array.isArray(progress))progress=[];progress=progress.filter(v=>Number.isInteger(v)&&v>=0&&v<5);let teacher=false,sound=false,current=0,question=0,mistakes=0,answered=false,review=[];
+const $=s=>document.querySelector(s);
+function save(){try{localStorage.setItem(KEY,JSON.stringify(progress))}catch(e){}}
+function chime(ok){if(!sound)return;try{const C=window.AudioContext||window.webkitAudioContext,c=new C(),o=c.createOscillator(),g=c.createGain();o.type="sine";o.frequency.value=ok?680:260;g.gain.value=.07;o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.14);o.onended=()=>c.close()}catch(e){}}
+function draw(){let h="";S.forEach((s,i)=>{let locked=i>0&&!progress.includes(i-1),done=progress.includes(i);h+=`<button class="landmark ${POS[i]} ${locked?"locked":""} ${done?"done":""}" data-i="${i}" aria-label="${s.name}${locked?", закрыто":""}"><span class="symbol"><span class="number">${i+1}</span>${s.icon}</span><span class="label">${s.name}</span></button>`});$("#places").innerHTML=h;document.querySelectorAll(".landmark").forEach(b=>b.onclick=()=>openStation(+b.dataset.i));$("#progress").textContent="Выполнено "+progress.length+" из 5";$("#gems").innerHTML=S.map((_,i)=>`<span class="gem ${progress.includes(i)?"on":""}"></span>`).join("");if(progress.length===5){$("#footertext").textContent="🏆 Все пять локаций пройдены! Нажми на Замок Морфемики, чтобы открыть награду.";$("#robottext").textContent="Ура! Ты спас(ла) Морфемный лес!";}}
+function modal(title,body){$("#modaltitle").textContent=title;$("#body").innerHTML=body;$("#overlay").classList.add("show")}
+function close(){ $("#overlay").classList.remove("show") }
+function openStation(i){if(i>0&&!progress.includes(i-1)){let p=S[i-1].name;$("#footertext").textContent="🔒 Сначала пройди локацию «"+p+"».";$("#robottext").textContent="Путь откроется после предыдущего задания!";return}if(i===4&&progress.includes(4)){certificate();return}current=i;question=0;mistakes=0;review=[];showQuestion()}
+function showQuestion(){answered=false;const s=S[current],q=s.q[question];modal(s.icon+" "+s.name,`<div class="row"><span class="counter">Испытание ${current+1} из 5 · Вопрос ${question+1} из ${s.q.length}</span><span>💎 ${Math.max(0,question-mistakes)} верно с первого раза</span></div><div class="question">${q[0]}</div><div class="options" id="options">${q[1].map((v,j)=>`<button class="option" data-answer="${j}">${v}</button>`).join("")}</div><div id="response" aria-live="polite"></div><div class="row steps"><button class="btn subtle" id="hint">💡 Подсказка Морфика</button><button class="btn" id="next" hidden>Продолжить →</button></div>${teacher?`<div class="teacherline">👩‍🏫 Для учителя: правильный ответ — ${q[1][q[2]]}. ${q[3]}</div>`:""}`);document.querySelectorAll(".option").forEach(b=>b.onclick=()=>answer(+b.dataset.answer));$("#hint").onclick=()=>{$("#response").innerHTML=`<div class="explain">🤖 <b>Морфик подсказывает:</b> ${s.hint}</div>`};$("#next").onclick=next}
+function answer(a){if(answered)return;answered=true;const q=S[current].q[question],ok=a===q[2];if(!ok){mistakes++;review.push(question)}chime(ok);document.querySelectorAll(".option").forEach(b=>{let n=+b.dataset.answer;b.disabled=true;if(n===q[2])b.classList.add("right");if(n===a&&!ok)b.classList.add("wrong")});$("#response").innerHTML=`<div class="explain"><b>${ok?"✅ Верно! Кристалл сияет!":"🔎 Ничего страшного — запомни объяснение."}</b><br>${q[3]}</div>`;$("#next").hidden=false;$("#next").textContent=question===S[current].q.length-1?"Завершить испытание →":"Следующий вопрос →";$("#robottext").textContent=ok?"Отлично! Морфемы найдены!":"Ошибки помогают учиться!"}
+function next(){if(question<S[current].q.length-1){question++;showQuestion();return}const i=current;if(!progress.includes(i))progress.push(i);progress.sort();save();draw();let nextName=S[i+1]?.name;modal("💎 Кристалл получен!",`<div class="cert"><div style="font-size:58px">💎✨</div><h3>${S[i].name} пройдена!</h3><p>Верных ответов с первой попытки: <b>${S[i].q.length-mistakes} из ${S[i].q.length}</b>.</p><p>${nextName?"Открылась новая локация: <b>"+nextName+"</b>.":"Все кристаллы собраны! Сундук Морфика открыт."}</p><div class="row" style="justify-content:center;margin-top:20px">${mistakes?`<button class="btn subtle" id="repeat">🔁 Повторить станцию</button>`:""}<button class="btn" id="continue">${nextName?"К следующей локации →":"🏆 Получить сертификат"}</button></div></div>`);let rep=$("#repeat");if(rep)rep.onclick=()=>openStation(i);$("#continue").onclick=()=>nextName?openStation(i+1):certificate()}
+function certificate(){modal("🏆 Сертификат исследователя",`<div class="cert"><div style="font-size:65px">🏅🌳💎</div><h3>Хранитель Морфемного леса</h3><p>Поздравляем! Ты справился(лась) со всеми пятью испытаниями квеста «Тайна Морфемного леса».</p><p><b>Теперь ты умеешь находить окончание, корень, приставку и суффикс.</b></p><p style="color:#566">Русский язык · 5 класс · Мастерская Анны Яковлевны</p><button class="btn" id="print">🖨️ Распечатать награду</button> <button class="btn subtle" id="finishclose">Вернуться в мир</button></div>`);$("#print").onclick=()=>{ $("#printcert").innerHTML="<h1>СЕРТИФИКАТ</h1><h2>Хранитель Морфемного леса</h2><p>За успешное прохождение пяти испытаний квеста по морфемике</p>";window.print()};$("#finishclose").onclick=close}
+$("#close").onclick=close;$("#overlay").onclick=e=>{if(e.target===$("#overlay"))close()};document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+$("#help").onclick=()=>modal("💡 Подсказка от Морфика",`<p style="font-size:20px">Исследуй игровой мир: нажимай на светящиеся объекты и выполняй задания по порядку.</p><p><b>1.</b> Окончание — изменяемая часть слова.<br><b>2.</b> Корень — общая часть родственных слов.<br><b>3.</b> Приставка находится перед корнем.<br><b>4.</b> Суффикс находится после корня.<br><b>5.</b> Для разбора сначала найди окончание и основу.</p><p>🤖 После неправильного ответа Морфик объяснит правильный разбор. Каждое испытание можно пройти снова.</p>`);
+$("#teacher").onclick=()=>{teacher=!teacher;$("#teacher").setAttribute("aria-pressed",String(teacher));$("#teacher").textContent=teacher?"⚙️ Учитель: вкл.":"⚙️ Режим учителя";$("#robottext").textContent=teacher?"В режиме учителя ответы видны сразу.":"Режим ученика включён."};
+$("#sound").onclick=()=>{sound=!sound;$("#sound").setAttribute("aria-pressed",String(sound));$("#sound").textContent=sound?"🔊 Звук: вкл.":"🔇 Звук"};
+$("#reset").onclick=()=>{if(confirm("Начать весь квест заново?")){progress=[];save();draw();$("#footertext").textContent="🌟 Начни с Леса окончаний. Другие локации откроются по очереди.";$("#robottext").textContent="Отлично! Начнём путешествие заново."}};
+draw();
 </script></body></html>
