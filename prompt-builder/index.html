@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#074638">
+<title>Конструктор материалов для урока — Мастерская Анны Яковлевны</title>
+<meta name="description" content="Бесплатный пошаговый конструктор промптов для учителей. Конспект, рабочий лист, тест, домашнее задание, интерактивная игра, квест и тренажёр. Работает без API.">
+<style>
+:root{--green:#064638;--green2:#13614e;--gold:#f4be47;--gold2:#dca750;--cream:#fff9ea;--ink:#20362c;--muted:#5f685f;--border:#e5d6b7;--paper:#fbf5e9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:linear-gradient(155deg,#edf6ef,#fff8e8 55%,#f8e9dd);min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #008e82;outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}
+header{background:#074638;color:#f9efd7;border-bottom:3px solid #d6aa59}.head{max-width:1060px;margin:auto;padding:15px 23px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-family:Georgia,serif;font-size:19px;font-weight:700;line-height:1.2}.brand small{display:block;font:10px system-ui,sans-serif;text-transform:uppercase;letter-spacing:2px;margin-top:5px;color:#e8d1a1}.head a{color:#faedc9;text-decoration:none;border:1px solid #ffffff75;border-radius:100px;padding:10px 14px;font-size:13px}
+main{max-width:960px;margin:30px auto 65px;padding:0 17px}.shell{padding:36px 40px;background:linear-gradient(140deg,#fff9ed,#fff3d9 60%,#f7e9e7);border:1px solid #e5cc99;border-radius:33px;box-shadow:0 18px 50px #19503919}
+.headline{text-align:center}.pill{display:inline-block;border:1px solid #e8d4ad;border-radius:80px;background:#fff;padding:12px 23px;color:#815e2e;font-weight:800;font-size:14px}
+h1{font:700 clamp(31px,5vw,48px)/1.13 Georgia,'Times New Roman',serif;color:#074638;margin:24px auto 14px;max-width:760px}h1+p{max-width:730px;margin:auto;color:var(--muted);line-height:1.7;font-size:17px}
+.steps{display:flex;align-items:center;justify-content:center;gap:12px;margin:35px 0}.stepdot{width:47px;height:47px;border:1px solid #e5d7bb;background:#fffdf8;color:#6f6656;display:grid;place-items:center;border-radius:16px;font-weight:800}.stepdot.active,.stepdot.past{background:var(--gold);border-color:#e0a81d;color:#2a291f;box-shadow:0 5px 14px #e6b95154}.stepline{width:min(9vw,55px);height:3px;background:#e1d5ba;border-radius:4px}
+.stage{background:#fffefd;border:1px solid #eedec5;border-radius:28px;padding:32px 35px;box-shadow:0 7px 25px #bb98651a}.stage[hidden]{display:none!important}.stage-top{text-align:center}.stage-num{display:inline-block;border-radius:100px;background:var(--gold);padding:10px 23px;font-weight:800;color:#2b2c22}.stage h2{font-size:clamp(23px,4vw,34px);line-height:1.2;margin:20px 0 9px;text-align:center}.stage .intro{text-align:center;color:var(--muted);line-height:1.65;max-width:650px;margin:0 auto 28px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.choice{background:#fffaf0;border:2px solid #ead9b6;border-radius:24px;padding:25px 15px;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;text-align:center;font-size:18px;font-weight:750;color:#28362c;transition:background .15s,transform .15s,border .15s}.choice:hover{transform:translateY(-2px);border-color:#dcb35d}.choice[aria-pressed=true]{background:linear-gradient(140deg,#ffdc71,#ffc747);border-color:#e4ad17;box-shadow:0 6px 18px #d5a62430}.choice .emoji{font-size:36px}.choice small{font-size:12px;font-weight:500;color:#5c563f}.grid{display:grid;grid-template-columns:1fr 1fr;gap:19px}.field{display:block;margin:0 0 19px;font-weight:750;color:#5f4e35}.field input,.field textarea,.field select{display:block;width:100%;border:1.5px solid #dfcfad;border-radius:17px;background:#fffcf6;margin-top:10px;padding:15px;color:var(--ink);font-size:16px;line-height:1.5}.field textarea{min-height:118px;resize:vertical}.field input::placeholder,.field textarea::placeholder{color:#908b7e}.field small{display:block;color:#6f756c;font-weight:450;margin-top:6px}.checkrow{display:flex;align-items:center;gap:11px;padding:13px 0;font-size:15px;color:#36463c}.checkrow input{width:20px;height:20px;accent-color:var(--green);flex:none}
+.buttons{display:flex;gap:15px;justify-content:space-between;margin-top:30px}.btn{background:#fabe3c;border:2px solid #f2b225;color:#2c2b1b;padding:16px 26px;border-radius:100px;font-weight:800;min-height:54px;flex:1}.btn.secondary{background:#fff;border:1.5px solid var(--border);color:var(--ink);flex:0 1 170px}.btn:hover:not(:disabled){filter:brightness(.97)}.buttons .btn:only-child{width:100%}.status{color:#a54224;min-height:22px;text-align:center;margin:12px 0 0;font-size:14px;font-weight:650}
+.preview{background:#f4f8f0;border:1px solid #d8e5d3;border-radius:20px;padding:19px;margin-top:15px}.preview textarea{display:block;resize:vertical;border:1px solid #bdd0bc;background:#fff;border-radius:14px;width:100%;min-height:340px;padding:17px;line-height:1.58;font-size:14px;color:#183d30}.preview h3{margin:0 0 13px;color:#0a4d3c}.preview p{color:#546157;font-size:13px}.result-actions{display:flex;gap:12px;flex-wrap:wrap}.result-actions .btn{flex:1 1 170px}.msg{margin-top:12px;color:#156342;font-weight:700;font-size:14px}.info{max-width:850px;margin:25px auto 0;font-size:13px;text-align:center;color:#687569;line-height:1.55}.info a{color:#0a5b48}.extra{margin-top:12px;border-top:1px solid #e8e0d1;padding-top:20px}.example{border:1px solid #d9c69a;background:#fff7e1;border-radius:12px;padding:13px;line-height:1.6;font-size:13px;margin:13px 0}
+@media(max-width:670px){main{margin:16px auto 35px;padding:0 10px}.shell{padding:24px 14px;border-radius:24px}.stage{padding:25px 16px;border-radius:24px}.cards{grid-template-columns:1fr;gap:12px}.choice{min-height:115px;padding:15px;flex-direction:row;justify-content:flex-start;text-align:left}.choice .emoji{font-size:31px}.steps{gap:8px;margin:23px 0}.stepdot{width:42px;height:42px}.stepline{width:18px}.grid{grid-template-columns:1fr;gap:0}.buttons{gap:10px}.btn{padding:13px 14px}.btn.secondary{flex:0 0 108px}.head{padding:12px 14px}.brand{font-size:15px}.head a{font-size:11px;padding:8px}}
+</style></head>
+<body><header><div class="head"><div class="brand">МАСТЕРСКАЯ АННЫ ЯКОВЛЕВНЫ<small>Интерактивные материалы для учителя</small></div><a href="../">← На главную</a></div></header>
+<main><div class="shell"><div class="headline"><div class="pill">✨ Бесплатный конструктор для преподавателя</div><h1>Конструктор материалов для урока с нейросетями</h1><p>Пройдите 4 коротких шага и получите подробный промпт для ChatGPT или другой нейросети. Бесплатно, без регистрации и API.</p></div>
+<div class="steps" aria-label="Этапы конструктора"><span class="stepdot active" data-step-indicator="1">1</span><span class="stepline"></span><span class="stepdot" data-step-indicator="2">2</span><span class="stepline"></span><span class="stepdot" data-step-indicator="3">3</span><span class="stepline"></span><span class="stepdot" data-step-indicator="4">4</span></div>
+<section class="stage" data-step="1"><div class="stage-top"><span class="stage-num">Шаг 1 из 4</span><h2>Что вы хотите создать?</h2><p class="intro">Выберите один материал. После этого укажем предмет, класс и особенности задания.</p></div>
+<div class="cards" id="materials">
+<button type="button" class="choice" aria-pressed="true" data-material="Конспект урока"><span class="emoji">📝</span><span>Конспект урока</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Рабочий лист"><span class="emoji">📄</span><span>Рабочий лист</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Тест"><span class="emoji">✅</span><span>Тест</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Домашнее задание"><span class="emoji">🏠</span><span>Домашнее задание</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Интерактивная игра"><span class="emoji">🎮</span><span>Интерактивная игра</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Учебный квест"><span class="emoji">🗝️</span><span>Учебный квест</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Интерактивные карточки"><span class="emoji">🃏</span><span>Интерактивные карточки</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Интерактивный тренажёр"><span class="emoji">🎯</span><span>Интерактивный тренажёр</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Презентация"><span class="emoji">🖥️</span><span>Презентация</span></button>
+<button type="button" class="choice" aria-pressed="false" data-material="Разноуровневые задания"><span class="emoji">📚</span><span>Разноуровневые задания</span></button>
+</div><div class="buttons"><button type="button" class="btn" id="next1">Дальше →</button></div></section>
+<section class="stage" data-step="2" hidden><div class="stage-top"><span class="stage-num">Шаг 2 из 4</span><h2>Заполните тему урока</h2><p class="intro">Уточните предмет, класс, тему и цель — так нейросеть подготовит не общий ответ, а материал для вашей аудитории.</p></div>
+<div class="grid"><label class="field">Предмет<select id="subject"><option>Русский язык</option><option>Литература</option><option>Английский язык</option><option>Математика</option><option>История</option><option>Обществознание</option><option>Биология</option><option>География</option><option>Другой предмет</option></select></label><label class="field">Класс / возраст<select id="grade"><option>5 класс</option><option>6 класс</option><option>7 класс</option><option>8 класс</option><option selected>9 класс</option><option>10 класс</option><option>11 класс</option><option>Начальная школа</option><option>Другая возрастная группа</option></select></label></div>
+<label class="field">Тема<input id="topic" maxlength="180" placeholder="Например: Правописание безударных гласных" autocomplete="off"><small>Обязательное поле</small></label>
+<label class="field">Цель материала<textarea id="goal" maxlength="650" placeholder="Например: объяснить правило, закрепить его и проверить понимание учащихся"></textarea></label>
+<p class="status" id="step2Error" role="alert"></p><div class="buttons"><button type="button" class="btn secondary" data-back="1">Назад</button><button type="button" class="btn" id="next2">Дальше →</button></div></section>
+<section class="stage" data-step="3" hidden><div class="stage-top"><span class="stage-num">Шаг 3 из 4</span><h2>Настройте задания</h2><p class="intro">Выберите сложность и формат, добавьте собственные пожелания. При необходимости можно оставить настройки по умолчанию.</p></div>
+<div class="grid"><label class="field">Уровень сложности<select id="difficulty"><option>Три уровня: базовый, средний и повышенный</option><option>Базовый, с подробными подсказками</option><option>Средний</option><option>Повышенный</option></select></label><label class="field">Формат результата<select id="format"><option>Готовый текст для урока</option><option>HTML-файл, работающий без интернета</option><option>Материал для Word, без таблиц</option><option>Структура презентации</option><option>Карточки с заданиями</option></select></label></div>
+<div class="grid"><label class="field">Время занятия<select id="duration"><option>45 минут</option><option>20 минут</option><option>15 минут</option><option>60 минут</option><option>Не указывать</option></select></label><label class="field">Количество заданий<input type="number" id="count" min="1" max="60" value="10" inputmode="numeric"><small>От 1 до 60</small></label></div>
+<label class="field">Дополнительные требования<textarea id="wishes" maxlength="1800" placeholder="Например: добавь задания для учеников с трудностями, игровые элементы и понятные объяснения ошибок"></textarea></label>
+<label class="checkrow"><input id="answers" type="checkbox" checked> Правильные ответы, пояснения и критерии оценивания</label>
+<label class="checkrow"><input id="verify" type="checkbox" checked> Проверка фактов и ссылок на надёжные источники</label>
+<label class="checkrow"><input id="differentiation" type="checkbox" checked> Дифференциация заданий и поддержка слабых учеников</label>
+<p class="status" id="step3Error" role="alert"></p><div class="buttons"><button type="button" class="btn secondary" data-back="2">Назад</button><button type="button" class="btn" id="next3">Получить промпт →</button></div></section>
+<section class="stage" data-step="4" hidden><div class="stage-top"><span class="stage-num">Шаг 4 из 4</span><h2>Ваш промпт готов!</h2><p class="intro">Проверьте текст, при желании отредактируйте и скопируйте в ChatGPT, DeepSeek или другую доступную нейросеть.</p></div>
+<div class="preview"><h3 id="resultTitle">Готовый запрос</h3><textarea id="result" spellcheck="false" aria-label="Готовый редактируемый промпт"></textarea><p>Конструктор составляет инструкцию, а не сам учебный материал. Содержимое ответа нейросети проверяет педагог.</p></div>
+<div class="result-actions"><button type="button" class="btn" id="copy">📋 Скопировать промпт</button><button type="button" class="btn secondary" id="download">⬇ Скачать TXT</button></div><div class="msg" id="copyStatus" role="status" aria-live="polite"></div>
+<div class="buttons"><button type="button" class="btn secondary" data-back="3">Изменить</button><button type="button" class="btn" id="restart">Создать новый промпт</button></div></section>
+</div><p class="info">Данные остаются в вашем браузере: сайт не отправляет их на сервер и не требует API. <a href="../oge-2027/">Перейти к ОГЭ-2027</a> · © Мастерская Анны Яковлевны</p></main>
+<script>
+(function(){
+'use strict';
+var current=1,chosen='Конспект урока';
+var $=function(id){return document.getElementById(id);};
+var all=document.querySelectorAll('[data-step]');
+function show(n){
+ current=n;
+ all.forEach(function(el){el.hidden=Number(el.getAttribute('data-step'))!==n;});
+ document.querySelectorAll('[data-step-indicator]').forEach(function(el){var i=Number(el.getAttribute('data-step-indicator'));el.classList.toggle('active',i===n);el.classList.toggle('past',i<n);});
+ var main=document.querySelector('main');if(main)main.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('[data-material]').forEach(function(btn){btn.addEventListener('click',function(){chosen=btn.getAttribute('data-material');document.querySelectorAll('[data-material]').forEach(function(b){b.setAttribute('aria-pressed',String(b===btn));});});});
+document.querySelectorAll('[data-back]').forEach(function(btn){btn.addEventListener('click',function(){show(Number(btn.getAttribute('data-back')));});});
+$('next1').addEventListener('click',function(){show(2);});
+$('next2').addEventListener('click',function(){if(!$('topic').value.trim()){$('step2Error').textContent='Пожалуйста, укажите тему.';$('topic').focus();return;}$('step2Error').textContent='';show(3);});
+function makePrompt(){
+ var goal=$('goal').value.trim();
+ var wants=$('wishes').value.trim();
+ var count=Math.min(60,Math.max(1,parseInt($('count').value,10)||10));
+ $('count').value=String(count);
+ var lines=[
+ 'Ты — опытный педагог-методист и специалист по разработке учебных материалов.',
+ 'Подготовь: '+chosen+'.',
+ 'Предмет: '+$('subject').value+'.',
+ 'Класс или возраст: '+$('grade').value+'.',
+ 'Тема: «'+$('topic').value.trim()+'».',
+ 'Цель: '+(goal||'объяснить тему, закрепить изученное и проверить понимание')+'.',
+ 'Количество заданий: '+count+'.',
+ 'Сложность: '+$('difficulty').value+'.',
+ 'Формат результата: '+$('format').value+'.'
+ ];
+ if($('duration').value!=='Не указывать')lines.push('Продолжительность занятия: '+$('duration').value+'.');
+ if(wants)lines.push('Дополнительные пожелания учителя: '+wants);
+ lines.push('','Требования к содержанию:',
+ '- Сформулируй учебные результаты и дай понятную ученику инструкцию.',
+ '- Соблюдай возрастную уместность, предметную точность и логичную последовательность.',
+ '- Создай оригинальные задания и покажи образцы выполнения, если это поможет.');
+ if($('differentiation').checked)lines.push('- Предусмотри три уровня сложности и поддержку ученикам, испытывающим затруднения.');
+ if($('answers').checked)lines.push('- Приложи отдельный блок ответов для учителя, объяснения ошибок и понятные критерии оценивания.');
+ if($('verify').checked)lines.push('- Проверь фактические сведения и формулировки. Используй надёжные источники; указывай ссылки только на реально проверенные материалы. Если не уверен, сообщи об этом.');
+ if(chosen.indexOf('Интерактивн')!==-1||chosen==='Учебный квест'||$('format').value.indexOf('HTML')===0)lines.push('- Для HTML: подготовь полный автономный файл с крупными кнопками, адаптацией для телефона, проверкой ответов, повторением ошибок и без внешних зависимостей.');
+ if(chosen==='Конспект урока')lines.push('- Составь ход урока по этапам: мотивация, актуализация, объяснение, закрепление, рефлексия, домашнее задание.');
+ if(chosen==='Домашнее задание')lines.push('- Учти реалистичное время выполнения и возможность самостоятельной проверки.');
+ if(chosen==='Презентация')lines.push('- Для каждого слайда предложи заголовок, ключевую мысль, пример и наглядное оформление.');
+ if($('grade').value==='9 класс' && $('subject').value==='Русский язык')lines.push('- Если материал касается ОГЭ, различай авторские упражнения и официальные задания; сверяй структуру и критерии с действующими документами ФИПИ.');
+ if($('format').value.indexOf('Word')!==-1)lines.push('- Для Word: Times New Roman 14, интервал 1, без таблиц; тему и этапы выдели голубым.');
+ lines.push('','Предоставь полный готовый материал и отдельные рекомендации учителю. Не придумывай фактов и источников.');
+ return lines.join('\n');
+}
+$('next3').addEventListener('click',function(){
+ var count=Number($('count').value);
+ if(!Number.isFinite(count)||count<1||count>60){$('step3Error').textContent='Выберите количество заданий от 1 до 60.';$('count').focus();return;}
+ $('step3Error').textContent='';
+ $('result').value=makePrompt();$('resultTitle').textContent=chosen+' — '+$('grade').value;$('copyStatus').textContent='';show(4);
+});
+$('copy').addEventListener('click',async function(){
+ var t=$('result').value;if(!t)return;
+ try{if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error('Clipboard not available');await navigator.clipboard.writeText(t);$('copyStatus').textContent='✓ Промпт скопирован.';}
+ catch(e){$('result').focus();$('result').select();var copied=false;try{copied=document.execCommand('copy');}catch(e2){}$('copyStatus').textContent=copied?'✓ Промпт скопирован.':'Текст выделен — нажмите «Скопировать» в меню устройства.';}
+});
+$('download').addEventListener('click',function(){var text=$('result').value;if(!text)return;var blob=new Blob(['\ufeff',text],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var link=document.createElement('a');link.href=url;link.download='prompt_uchitelya.txt';document.body.appendChild(link);link.click();link.remove();setTimeout(function(){URL.revokeObjectURL(url);},1200);});
+$('restart').addEventListener('click',function(){chosen='Конспект урока';document.querySelectorAll('[data-material]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-material')===chosen));});['topic','goal','wishes'].forEach(function(x){$(x).value='';});$('subject').selectedIndex=0;$('grade').value='9 класс';$('count').value='10';$('answers').checked=true;$('verify').checked=true;$('differentiation').checked=true;$('result').value='';show(1);});
+if(location.hash==='#start')show(1);
+})();
+</script></body></html>
