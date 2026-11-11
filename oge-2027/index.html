@@ -60,6 +60,27 @@
 .teacher-tools details[open] summary{background:#edf4ea;border-bottom:1px solid #d8e0d1}
 .teacher-tools__inner{padding:18px}.teacher-tools__inner .ai-hero{margin-bottom:18px}
 @media(max-width:650px){.student-mentor-hero{padding:16px;min-height:180px}.student-mentor-hero h3{font-size:22px}.student-mentor-hero p{font-size:13px}.student-mentor-hero img{width:100px}.student-mentor-panel{padding:16px}.teacher-tools__inner{padding:10px}}
+
+/* Teacher prompt builder: local-only, responsive, no AI API. */
+.prompt-builder{margin-top:28px;background:#fffef9;border:2px solid #d2af65;border-radius:26px;box-shadow:0 14px 30px #23463217;overflow:hidden}
+.prompt-builder__heading{padding:26px 28px;background:linear-gradient(115deg,#093e32,#16664f);color:#fff;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.prompt-builder__heading h3{font:700 clamp(24px,3vw,34px)/1.17 Georgia,serif;color:#fff0c5;margin:8px 0}
+.prompt-builder__heading p{max-width:680px;color:#e3f0e6;margin:10px 0 0}.prompt-builder__symbol{font-size:50px;flex:none}
+.prompt-builder__layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px;padding:22px}
+.prompt-builder__form,.prompt-builder__result{min-width:0}
+.prompt-builder__form label{font-size:13px;font-weight:750;color:#335848;display:block;margin:0 0 14px}
+.prompt-builder__form select,.prompt-builder__form input:not([type=checkbox]),.prompt-builder__form textarea,.prompt-builder__result textarea{width:100%;display:block;margin-top:5px;border:1px solid #c5d8c9;border-radius:12px;background:#fff;color:#184a39;padding:12px 14px;font:14px/1.5 system-ui,sans-serif}
+.prompt-builder__form textarea{resize:vertical;min-height:96px}
+.prompt-builder__two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.prompt-builder__form .prompt-builder__check{display:flex;align-items:flex-start;gap:10px;margin:11px 0;font-size:12px;font-weight:600;line-height:1.5}
+.prompt-builder__check input{width:18px;height:18px;flex:none;margin-top:0;accent-color:#155943}
+.prompt-builder__buttons{display:flex;flex-wrap:wrap;gap:9px;margin:17px 0}
+.prompt-builder__result{padding:19px 17px;border:1px solid #d9e6d7;border-radius:18px;background:#f3f7ef;align-self:start}
+.prompt-builder__result h4{font-size:23px;color:#154b3e;margin:0 0 7px}
+.prompt-builder__result textarea{font-family:ui-monospace,Consolas,monospace;min-height:485px;resize:vertical;white-space:pre-wrap}
+.prompt-builder__result .hint{font-size:12px;line-height:1.5}
+@media(max-width:900px){.prompt-builder__layout{grid-template-columns:1fr}.prompt-builder__result textarea{min-height:290px}}
+@media(max-width:530px){.prompt-builder__heading{padding:19px}.prompt-builder__layout{padding:13px}.prompt-builder__two{grid-template-columns:1fr;gap:0}.prompt-builder__symbol{font-size:29px}}
 </style>
 </head>
 <body>
@@ -99,6 +120,22 @@
 <div class="callout"><strong>Методическое ограничение:</strong> задания этого сайта авторские, не воспроизводят полный объём экзамена и не заменяют официальный открытый банк ФИПИ. Успешный результат здесь не прогнозирует балл ОГЭ.</div>
 <h3>Проверенные официальные ссылки</h3><div class="sources"><a href="https://fipi.ru/oge/demoversii-specifikacii-kodifikatory" target="_blank" rel="noopener noreferrer">ФИПИ: документы ОГЭ ↗</a><a href="https://fipi.ru/oge/otkrytyy-bank-zadaniy-oge" target="_blank" rel="noopener noreferrer">ФИПИ: открытый банк ↗</a><a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt" target="_blank" rel="noopener noreferrer">Как работают проекты ChatGPT ↗</a></div>
 <div class="actions"><a class="button secondary small" href="index.html" download="oge_2027_repetitor_offline.html">⬇ Скачать сайт для работы без интернета</a></div><p class="hint">В скачанной HTML-копии работают тренировка, теория и статистика. Ссылки на внешние источники и ChatGPT без интернета не откроются.</p>
+<section class="prompt-builder" id="promptConstructor" aria-labelledby="promptBuilderTitle">
+ <div class="prompt-builder__heading"><div><span class="eyebrow">МЕТОДИЧЕСКАЯ МАСТЕРСКАЯ · БЕЗ API</span><h3 id="promptBuilderTitle">Конструктор промптов для учителя</h3><p>Выберите параметры, дополните своим запросом — и получите готовую инструкцию для любой подходящей нейросети. Промпт собирается прямо в браузере.</p></div><span class="prompt-builder__symbol" aria-hidden="true">✦ 📚</span></div>
+ <div class="prompt-builder__layout">
+ <form id="promptBuilderForm" class="prompt-builder__form">
+  <div class="prompt-builder__two"><label>Предмет<select id="pbSubject"><option value="Русский язык">Русский язык</option><option value="Литература">Литература</option><option value="Оба предмета">Русский язык и литература</option></select></label><label>Класс<select id="pbGrade"><option value="5">5 класс</option><option value="6">6 класс</option><option value="7">7 класс</option><option value="8">8 класс</option><option value="9" selected>9 класс</option></select></label></div>
+  <div class="prompt-builder__two"><label>Что нужно создать?<select id="pbType"><option value="Конспект урока">Конспект урока</option><option value="Интерактивная игра">Интерактивную игру</option><option value="Квест">Учебный квест</option><option value="Интерактивные карточки">Интерактивные карточки</option><option value="Тренажёр">Интерактивный тренажёр</option><option value="Рабочий лист">Рабочий лист</option><option value="Разноуровневые задания">Разноуровневые задания</option><option value="Проверочная работа">Проверочную работу</option><option value="Тест">Тест</option><option value="Презентация">Презентацию</option><option value="Разбор текста">Разбор текста</option><option value="Подготовка к ОГЭ" selected>Подготовку к ОГЭ</option><option value="Промпт для ИИ-репетитора">Инструкцию для ИИ-репетитора</option><option value="Собственный формат">Свой вариант</option></select></label><label>Уровень сложности<select id="pbLevel"><option value="Смешанный: базовый, средний и повышенный">Три уровня сложности</option><option value="Базовый, с пошаговой поддержкой">Базовый</option><option value="Средний">Средний</option><option value="Повышенный">Повышенный</option></select></label></div>
+  <label>Тема или произведение<input id="pbTopic" type="text" maxlength="180" placeholder="Например: Однородные члены предложения" required></label>
+  <label>Ваш запрос: что обязательно учесть?<textarea id="pbRequest" rows="4" maxlength="1800" placeholder="Например: 12 карточек для 9 класса, задания с автопроверкой, объяснения ошибок, работа без интернета."></textarea></label>
+  <div class="prompt-builder__two"><label>Формат результата<select id="pbOutput"><option value="Готовый материал для урока">Готовый материал</option><option value="HTML в одном файле">Офлайн HTML-файл</option><option value="Текст для Word, без таблиц">Текст для Word</option><option value="Структура слайдов презентации">Слайды презентации</option><option value="Набор карточек и ключей">Карточки и ключи</option><option value="Пошаговый план">Пошаговый план</option></select></label><label>Продолжительность занятия<select id="pbDuration"><option value="45 минут">45 минут</option><option value="20 минут">20 минут</option><option value="15 минут">15 минут</option><option value="Без ограничения">Не указывать</option></select></label></div>
+  <label class="prompt-builder__check"><input type="checkbox" id="pbKeys" checked> Добавить правильные ответы, критерии оценивания и объяснения</label>
+  <label class="prompt-builder__check"><input type="checkbox" id="pbVerify" checked> Потребовать проверку фактов и указание достоверных источников</label>
+  <div class="prompt-builder__buttons"><button type="submit" class="button dark" id="pbGenerate">✨ Составить промпт</button><button type="button" class="button secondary" id="pbExample">Пример для ОГЭ</button><button type="reset" class="button secondary" id="pbReset">Очистить</button></div>
+ </form>
+ <div class="prompt-builder__result"><h4>Ваш готовый промпт</h4><p class="hint" id="pbStatus" aria-live="polite">Заполните тему и нажмите «Составить промпт».</p><textarea id="pbResult" readonly spellcheck="false" aria-label="Готовый промпт для копирования" placeholder="Здесь появится готовый запрос..."></textarea>
+ <div class="prompt-builder__buttons"><button type="button" class="button dark small" id="pbCopy" disabled>📋 Скопировать</button><button type="button" class="button secondary small" id="pbDownload" disabled>⬇ Скачать .txt</button></div><p class="hint">Конструктор не отправляет запросы в нейросеть. Он собирает промпт по шаблону — результат можно отредактировать и использовать в ChatGPT или другой нейросети.</p></div></div>
+</section>
 <div class="teacher-tools">
  <h3>Настройка ИИ-репетитора — для учителя</h3>
  <p>Этот блок предназначен педагогу. Ученики работают с заданиями без промпта, а учитель может отдельно настроить проект в ChatGPT. Настройка проекта <strong>не подключает нейросеть к сайту автоматически</strong>.</p>
@@ -257,6 +294,59 @@ $('studentMentorMistakes').onclick=function(){
 
 updateStats();drawProgress();};
 $('copyPrompt').onclick=async function(){let el=$('promptText');try{await navigator.clipboard.writeText(el.value);$('copyPrompt').textContent='✓ Скопировано';}catch(e){el.focus();el.select();let ok=document.execCommand('copy');$('copyPrompt').textContent=ok?'✓ Скопировано':'Выделите текст и скопируйте';}setTimeout(function(){$('copyPrompt').textContent='📋 Скопировать';},2300);};
+
+/* Offline template composer for educators. No requests or student data leave this device. */
+function pbBuild(ev){
+ if(ev)ev.preventDefault();
+ const g=id=>$(id).value.trim();
+ let theme=g('pbTopic');
+ if(!theme){$('pbTopic').focus();$('pbStatus').textContent='Укажите тему или произведение.';return;}
+ const subject=g('pbSubject'),grade=g('pbGrade'),kind=g('pbType'),level=g('pbLevel'),out=g('pbOutput'),duration=g('pbDuration'),request=g('pbRequest');
+ const outputNames={'Конспект урока':'полный конспект урока с этапами, заданиями и рефлексией','Интерактивная игра':'педагогически выверенную интерактивную игру','Квест':'учебный квест с последовательными станциями и заданиями','Интерактивные карточки':'набор интерактивных карточек с проверкой знаний','Тренажёр':'интерактивный тренажёр с обратной связью','Рабочий лист':'готовый к использованию рабочий лист','Разноуровневые задания':'набор заданий разных уровней сложности','Проверочная работа':'проверочную работу с понятными критериями','Тест':'тест по изучаемой теме','Презентация':'план содержательной презентации с наглядными примерами','Разбор текста':'подробный анализ текста с опорой на его содержание','Подготовка к ОГЭ':'комплект тренировочных заданий для подготовки к ОГЭ','Промпт для ИИ-репетитора':'системную инструкцию для учебного ИИ-наставника','Собственный формат':'материал в формате, указанном ниже'};
+ const lines=[
+ 'Ты — опытный учитель-методист по предмету «'+subject+'», умеющий создавать понятные материалы для школьников.',
+ '',
+ 'ЗАДАЧА: разработай '+(outputNames[kind]||kind)+'.',
+ 'Аудитория: '+grade+' класс. Предмет: '+subject+'.',
+ 'Тема: «'+theme+'».',
+ 'Сложность: '+level+'.',
+ 'Формат результата: '+out+'.',
+ ];
+ if(duration!=='Без ограничения')lines.push('Продолжительность: '+duration+'.');
+ if(request)lines.push('МОИ ДОПОЛНИТЕЛЬНЫЕ ТРЕБОВАНИЯ:\n'+request);
+ lines.push('','МЕТОДИЧЕСКИЕ УСЛОВИЯ:',
+ '- Сформулируй цель и ожидаемый образовательный результат; объясняй материал доступным для возраста языком.',
+ '- Обеспечь содержательную точность, логичную последовательность и дифференциацию.',
+ '- Используй оригинальные задания, применимые на уроке или для самостоятельной работы.',
+ '- Не выдавай авторские примеры за официальные экзаменационные задания.',
+ );
+ if(kind==='Интерактивная игра'||kind==='Квест'||kind==='Интерактивные карточки'||kind==='Тренажёр'||out==='HTML в одном файле')lines.push('- Если требуется HTML, создай один полноценный файл с адаптивным интерфейсом, доступными кнопками и проверкой ответов; не используй платные сервисы и внешние библиотеки, чтобы базовые задания работали офлайн.','- Для каждой ошибки предусмотрите корректное объяснение, возможность повторения и понятную навигацию.');
+ if(kind==='Подготовка к ОГЭ'||kind==='Промпт для ИИ-репетитора')lines.push('- При работе с ОГЭ сверяй структуру и критерии с актуальными документами ФИПИ. Указывай год и статус источника; не выдумывай номера заданий и официальные баллы.','- Давай ученику решать самостоятельно, не раскрывай ответ раньше времени.');
+ if($('pbKeys').checked)lines.push('- Добавь отдельные ключи для учителя, объяснения правильных ответов и ясные критерии оценивания там, где они уместны.');
+ if($('pbVerify').checked)lines.push('- Проверь факты, правила, авторство произведений и примеры. Если доступен поиск, укажи ссылки на достоверные источники. Не придумывай источники; при недостатке информации явно обозначь ограничение.');
+ lines.push('','КАК ОФОРМИТЬ ОТВЕТ:','1. Название и цель материала.','2. Краткое понятное объяснение или инструкция.','3. Полный готовый материал, структурированный по этапам.','4. Проверка усвоения и работа над ошибками.','5. Рекомендации учителю по применению.');
+ if(out==='Текст для Word, без таблиц')lines.push('Оформление: без таблиц, шрифт Times New Roman 14, межстрочный интервал 1; выдели тему и этапы голубым.');
+ lines.push('Если перед созданием не хватает критически важных сведений, задай не более двух уточняющих вопросов. Не добавляй вымышленные факты.');
+ $('pbResult').value=lines.join('\n');
+ $('pbCopy').disabled=false;$('pbDownload').disabled=false;
+ $('pbStatus').textContent='Промпт составлен. Можно скопировать или сохранить как текстовый файл.';
+}
+$('promptBuilderForm').addEventListener('submit',pbBuild);
+$('pbExample').onclick=function(){
+ $('pbSubject').value='Русский язык';$('pbGrade').value='9';$('pbType').value='Подготовка к ОГЭ';$('pbLevel').value='Смешанный: базовый, средний и повышенный';$('pbTopic').value='Пунктуация в сложноподчинённом предложении';$('pbRequest').value='Предложи 10 авторских заданий с объяснением ошибок, от простого к сложному. Не называй их официальными заданиями ФИПИ.';$('pbOutput').value='Готовый материал для урока';$('pbDuration').value='20 минут';pbBuild();
+};
+$('pbReset').onclick=function(){setTimeout(function(){$('pbResult').value='';$('pbStatus').textContent='Заполните тему и нажмите «Составить промпт».';$('pbCopy').disabled=true;$('pbDownload').disabled=true;},0);};
+$('pbCopy').onclick=async function(){
+ const el=$('pbResult');if(!el.value)return;
+ try{await navigator.clipboard.writeText(el.value);$('pbStatus').textContent='✓ Промпт скопирован в буфер обмена.';}
+ catch(e){el.focus();el.select();let ok=document.execCommand('copy');$('pbStatus').textContent=ok?'✓ Промпт скопирован.':'Скопируйте выделенный текст вручную.';}
+};
+$('pbDownload').onclick=function(){
+ const value=$('pbResult').value;if(!value)return;
+ const blob=new Blob(['\ufeff',value],{type:'text/plain;charset=utf-8'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='promпt_uchitelya.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1500);
+};
+
 updateStats();drawProgress();
 })();
 </script>
