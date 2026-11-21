@@ -25,7 +25,7 @@
 .answer-review dd { margin: 2px 0 0; line-height: 1.45; white-space: pre-wrap; }
 .answer-review dd + dt { margin-top: 9px; }
 </style>
-</head>
+<style>.topbar .home-link{flex:none;min-height:44px;color:var(--deep);border-color:#d7c9ef;font-size:13px;white-space:nowrap}.topbar .crumb{margin-right:auto}@media(max-width:650px){.topbar{padding:8px 13px;justify-content:space-between;flex-wrap:wrap}.topbar .status-pill{margin:0}.topbar .home-link{min-height:44px}}</style></head>
 <body>
 <div id="app"></div>
 <div id="notice" role="status" aria-live="polite" class="toast" hidden></div>
@@ -338,7 +338,7 @@ function shell(content) {
     ${navItem('Библиотека','library','grid',['library','detail'].includes(view),db.items.length+samples.length)}${navItem('Конструктор','constructor','plus',view==='wizard')}${navItem('Шаблоны','templates','folder',view==='templates',db.templates.length || '')}${onlineVisits ? navItem('Посещаемость','stats','chart',view==='stats') : ''}</nav>
     <div class="sidebar-bottom"><div class="offline-card">${icon('download')}<div><strong>Автономная версия</strong><p>Откройте сохранённый HTML без интернета.</p><button type="button" data-action="offline">Скачать HTML ${icon('chevron')}</button></div></div>
     <div class="profile"><span class="avatar">${icon('book')}</span><span>Режим учителя<small>Русский язык и литература</small></span></div></div></aside>
-    <div class="workspace"><header class="topbar"><div class="crumb">${icon('grid')}<span>Мастерская</span>${icon('chevron')}<strong>${titles[view]}</strong></div><span class="status-pill" title="Тренажёры и шаблоны сохраняются в этом браузере">${localStatus()}</span></header><main class="content">${content}</main></div></div>`;
+    <div class="workspace"><header class="topbar"><a class="btn home-link" href="https://dolzenkoanna90-hash.github.io/anna-lesson-lab/" aria-label="На главную страницу сайта Анны Яковлевны">На главную</a><div class="crumb">${icon('grid')}<span>Мастерская</span>${icon('chevron')}<strong>${titles[view]}</strong></div><span class="status-pill" title="Тренажёры и шаблоны сохраняются в этом браузере">${localStatus()}</span></header><main class="content">${content}</main></div></div>`;
 }
 function render() {
   const screens = { stats:renderStats, library:renderLibrary, wizard:renderWizard, templates:renderTemplates, detail:renderDetail, player:renderPlayer, invalid:renderInvalid };
