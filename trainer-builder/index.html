@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f9f7fc">
+<meta name="description" content="Конструктор интерактивных тренажёров по русскому языку и литературе для 5–9 классов.">
+<title>Конструктор тренажёров для учителя</title>
+<style>:root{color-scheme:light;--ink:#2b2340;--muted:#655c73;--subtle:#786d86;--purple:#6342b3;--deep:#523297;--line:#ebe5f1;--canvas:#faf8fc;--card:#fff;--lavender:#f0e9fc;--rose:#faedf2;--blue:#e9f2fc;--green:#28705a;--red:#9b3655;--radius:22px;font-family:'Inter','Segoe UI',system-ui,sans-serif;font-size:15px}*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink)}button,input,select,textarea{font:inherit;color:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #9979df;outline-offset:3px}button,.trainer-title,.nav-item{transition:background .18s,border-color .18s,box-shadow .18s,color .18s,transform .18s}a{color:var(--deep)}h1,h2,h3,p{margin:0}p{line-height:1.55}svg{flex:none}button svg{pointer-events:none}[hidden]{display:none!important}.icon{width:19px;height:19px;vertical-align:middle;display:inline-block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.shell{min-height:100vh;display:grid;grid-template-columns:252px minmax(0,1fr)}.sidebar{height:100vh;position:sticky;top:0;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;padding:27px 19px 19px;z-index:1}.brand{display:flex;align-items:center;gap:11px;text-align:left;background:none;border:0;padding:2px 5px;color:var(--ink);width:100%;font-weight:800;line-height:1.18;font-size:16px;letter-spacing:-.025em}.brand-icon{display:grid;place-items:center;width:43px;height:43px;flex:none;border-radius:13px;background:linear-gradient(145deg,#916ce3,#6844bd);color:white;box-shadow:0 5px 12px #6b47b92b}.brand-icon .icon{width:24px;height:24px}.brand small{display:block;font-size:11px;letter-spacing:0;font-weight:600;color:var(--subtle);margin-top:4px}.nav-label{color:var(--subtle);font-size:10px;letter-spacing:.115em;font-weight:800;margin:36px 10px 11px;text-transform:uppercase}.nav-item{display:flex;align-items:center;gap:11px;text-align:left;width:100%;padding:0 12px;height:44px;border:0;border-radius:11px;background:none;color:var(--muted);margin-bottom:5px;font-size:13px;font-weight:650}.nav-item:hover{background:#f7f3fc}.nav-item.active{background:var(--lavender);color:var(--deep);font-weight:750}.nav-item .count{margin-left:auto;font-size:11px;border-radius:7px;padding:2px 6px;background:#ffffffc9;color:var(--deep)}.sidebar-bottom{margin-top:auto}.offline-card{background:#fcf8ee;border:1px solid #f3e9d3;padding:13px 12px;border-radius:14px;margin:15px 0;display:grid;grid-template-columns:27px 1fr;gap:8px}.offline-card .icon{color:#926a2f;width:18px}.offline-card strong{font-size:12px;display:block;margin-bottom:3px}.offline-card p{font-size:11px;color:#6d5e4d}.offline-card button{border:0;background:none;color:#754e22;padding:4px 0 0;font-size:11px;font-weight:800;text-align:left}.profile{display:flex;align-items:center;gap:9px;border-top:1px solid var(--line);padding:15px 3px 0;color:var(--ink);font-size:12px;font-weight:750}.avatar{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--rose);color:#99486a;font-size:12px;flex:none}.profile small{display:block;font-size:10px;font-weight:600;color:var(--subtle);margin-top:3px}.workspace{min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 max(28px,calc((100% - 1150px)/2));height:68px;border-bottom:1px solid var(--line);background:#fff}.crumb{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--subtle);white-space:nowrap}.crumb strong{color:var(--ink)}.crumb .icon{width:14px;height:14px}.status-pill{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;background:#f2f8f3;color:#3f6b52;border:1px solid #e4efe5;border-radius:100px;font-size:11px;font-weight:750;white-space:nowrap}.status-pill:before{content:'';width:7px;height:7px;border-radius:100%;background:#63a980}.content{max-width:1210px;margin:auto;padding:27px 29px 40px}.hero{min-height:297px;position:relative;display:flex;align-items:center;isolation:isolate;overflow:hidden;border-radius:25px;border:1px solid #efe2f6;background:linear-gradient(112deg,#eee7fc 0%,#f4eafa 50%,#f8e9f3 100%)}.hero-art{position:absolute;inset:0 0 0 auto;width:52%;background-position:50% 54%;background-size:cover;z-index:-2;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 21%);mask-image:linear-gradient(to right,transparent 0%,#000 21%)}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#eee7fc 0%,#f2e9fa 38%,transparent 65%);pointer-events:none}.hero-copy{padding:29px 32px;width:64%}.hero-tag{display:inline-flex;align-items:center;gap:7px;color:var(--deep);font-size:11px;font-weight:800;padding:6px 10px;border:1px solid #fff9;background:#fff8;border-radius:50px;margin-bottom:13px}.hero-tag .icon{width:13px;height:13px}.hero h1{font-size:clamp(32px,4.05vw,57px);letter-spacing:-.059em;line-height:1.015;max-width:655px;font-weight:850}.hero h1 span{display:block;color:var(--purple)}.hero p{font-size:13px;color:#514465;margin-top:13px;max-width:345px}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px}.hero .actions{margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:11px;background:#fff;min-height:40px;padding:8px 13px;font-size:12px;font-weight:750;text-align:center;text-decoration:none;color:var(--ink);line-height:1.25}.btn:hover{background:#faf7ff;border-color:#d7c9ef}.btn.primary{background:var(--purple);color:#fff;border-color:var(--purple);box-shadow:0 5px 12px #58359822}.btn.primary:hover{background:var(--deep);border-color:var(--deep)}.btn.soft{background:#fff9;border-color:#fff;color:var(--deep)}.btn.soft:hover{background:#fff}.btn.quiet{background:none;color:var(--deep);border-color:transparent}.btn.danger{color:var(--red)}.btn .icon{width:16px;height:16px}.icon-button{display:inline-grid;place-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--muted);height:40px;width:40px;padding:0;flex:none}.icon-button:hover{color:var(--purple);border-color:#d4c3ef;background:#fbf8ff}.icon-button .icon{width:17px;height:17px}.library-section{margin-top:26px}.section-head,.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:13px;margin-bottom:14px}.section-head h2,.page-head h1{font-size:25px;font-weight:820;letter-spacing:-.04em}.section-head p,.page-head p{color:var(--muted);font-size:12px;margin-top:4px}.library-tabs{display:flex;gap:4px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:3px;background:#f3eff8;flex:none}.library-tabs button{border:0;background:none;border-radius:7px;padding:7px 10px;color:var(--muted);font-size:11px;font-weight:750;min-height:32px}.library-tabs button.active{color:var(--deep);background:#fff;box-shadow:0 1px 5px #45306414}.filters{display:grid;grid-template-columns:minmax(90px,.72fr) minmax(140px,1.12fr) minmax(150px,1.35fr) minmax(145px,1.12fr) 40px;gap:8px;margin:0 0 14px}.filter,.field input,.field select,.field textarea,.inline-input{width:100%;min-width:0;background:#fff;border:1px solid #e5deee;border-radius:10px;min-height:40px;padding:8px 10px;font-size:13px}.filter{font-size:12px;color:var(--muted)}.search{position:relative}.search .icon{position:absolute;left:10px;top:12px;width:16px;height:16px;color:var(--subtle)}.search input{padding-left:33px}.trainer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.trainer{display:flex;flex-direction:column;min-width:0;min-height:172px;padding:14px;border-radius:17px;background:#fff;border:1px solid var(--line);box-shadow:0 3px 10px #39245306}.trainer:hover{border-color:#ddcfef;box-shadow:0 5px 15px #3924530a}.trainer-top,.trainer-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}.tile-icon{display:grid;place-items:center;flex:none;width:41px;height:41px;border-radius:12px;background:var(--lavender);color:var(--purple)}.tile-icon.blue{background:var(--blue);color:#3c6caa}.tile-icon.rose{background:var(--rose);color:#a74370}.tile-icon .icon{width:21px;height:21px}.type-chip{color:#5f526e;border:1px solid #eee7f2;background:#faf7fc;padding:4px 7px;font-size:10px;font-weight:750;border-radius:7px;text-align:center}.trainer-title{display:block;text-align:left;background:none;border:0;padding:0;font-size:16px;letter-spacing:-.025em;line-height:1.24;font-weight:800;margin:11px 0 4px;color:var(--ink)}.trainer-title:hover{color:var(--purple)}.trainer p{font-size:11px;color:var(--muted);margin:0 0 9px}.trainer-bottom{margin-top:auto;padding-top:8px;border-top:1px solid #f0ebf4}.trainer-bottom>span{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px}.trainer-bottom>span .icon{width:13px;height:13px}.trainer-bottom .btn{min-height:30px;padding:4px 5px;font-size:11px}.empty{padding:30px 20px;text-align:center;border:1px dashed #ded2ed;border-radius:17px;background:#fff;color:var(--muted)}.empty p{margin:7px 0 14px}.page-head{margin-bottom:21px}.page-head h1{font-size:clamp(27px,3vw,40px)}.back{margin-bottom:12px;padding-left:0}.wizard{max-width:960px;margin:0 auto}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:17px}.step{display:flex;align-items:center;gap:9px;text-align:left;padding:9px 10px;min-height:50px;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:12px;font-weight:750}.step span{display:grid;place-items:center;border-radius:50%;width:25px;height:25px;flex:none;background:#f4eff8;color:var(--purple)}.step.active{border-color:#c9b5ea;color:var(--deep);background:#f4eefc}.step.active span{background:var(--purple);color:#fff}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:13px}.panel h2{font-size:21px;letter-spacing:-.025em}.panel h3{font-size:16px}.panel>.muted,.panel>p{margin-top:6px}.muted,.field small{color:var(--muted);font-size:12px}.field{display:grid;gap:6px;min-width:0;font-size:13px;font-weight:750;margin-bottom:12px}.field small{font-weight:500;line-height:1.45}.field textarea{min-height:75px;resize:vertical;line-height:1.4}.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.form-spaced{margin-top:16px}.formats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0 14px}.format{display:flex;align-items:center;gap:8px;text-align:left;border:1px solid var(--line);border-radius:12px;background:#fff;padding:9px;min-height:52px;font-size:12px;font-weight:750}.format .icon{color:var(--purple)}.format.active{border-color:#bba2e9;color:var(--deep);background:#f4eefd}.footer-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:16px 0}.question-editor{display:grid;grid-template-columns:165px minmax(0,1fr);gap:12px;align-items:start}.question-nav{display:grid;gap:6px}.question-nav .btn{text-align:left;justify-content:flex-start;overflow:hidden}.question-nav .btn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.question-nav .btn.active{background:var(--lavender);border-color:#daccf0;color:var(--deep)}.question-nav .btn.add{margin-top:3px}.editor-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.option-edit{display:grid;grid-template-columns:25px 1fr 40px;gap:7px;align-items:center;margin-bottom:7px}.option-edit input[type=checkbox],.option-edit input[type=radio]{height:17px;width:17px;accent-color:var(--purple)}.question-points{max-width:180px}.error{color:var(--red);font-size:13px;margin:9px 0}.key-list{display:grid;gap:8px;margin-top:13px}.key-row{padding:10px 12px;border-radius:11px;border:1px solid var(--line);background:#fcfaff;font-size:13px;line-height:1.5;overflow-wrap:anywhere}.key-row span{color:var(--muted);display:block}.player-wrap{max-width:770px;margin:0 auto}.student-only{min-height:100vh;background:radial-gradient(ellipse at 82% 12%,#f5e8f4,transparent 62%),var(--canvas)}.student-only .content{padding-top:35px}.student-brand{display:flex;align-items:center;gap:11px;font-weight:800;margin-bottom:19px}.progress-line{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted);margin-bottom:7px;font-weight:700}.progress-track{height:7px;border-radius:20px;background:#eee6f7;overflow:hidden;margin-bottom:17px}.progress-track span{display:block;height:100%;background:linear-gradient(90deg,#9d77e4,#6844b9);transition:width .2s}.question-text{font-size:clamp(19px,3vw,26px);line-height:1.35;white-space:pre-wrap;overflow-wrap:anywhere;margin-bottom:15px}.answer-stack{display:grid;gap:8px}.answer-option{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:11px;background:#fff;padding:9px 11px;min-height:45px;overflow-wrap:anywhere;cursor:pointer}.answer-option:has(input:checked){background:#f5effd;border-color:#cdb9ef}.answer-option input{accent-color:var(--purple);width:17px;height:17px;flex:none}.match-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px;align-items:center;margin:0 0 8px}.match-row span{overflow-wrap:anywhere}.fill-body{white-space:pre-wrap;line-height:2.7;overflow-wrap:anywhere}.fill-body input{display:inline-block;width:min(155px,100%);margin:0 4px}.order-bank,.drop-zone{display:grid;gap:7px;padding:10px;border:1px dashed #d8c8eb;border-radius:12px;min-height:61px;margin-bottom:10px;background:#fbf8ff}.drop-zone{background:#f5effc}.order-row{display:flex;align-items:center;gap:7px}.order-row .btn:first-child{flex:1;justify-content:flex-start;text-align:left;overflow-wrap:anywhere}.order-row .icon-button{height:37px;width:35px}.order-heading{font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:750}.feedback{margin-top:13px;border-radius:11px;padding:10px 12px;background:#edf8f1;color:var(--green);font-size:13px;overflow-wrap:anywhere}.feedback.wrong{background:#faedf1;color:#87324e}.feedback p{margin-top:3px}.result-score{display:flex;align-items:center;gap:17px;margin:14px 0}.score-circle{display:grid;place-items:center;flex:none;width:74px;height:74px;border-radius:50%;background:var(--lavender);color:var(--deep);font-size:22px;font-weight:850}.result-list{padding:0;list-style:none}.result-list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;gap:9px;overflow-wrap:anywhere}.result-list .icon{color:var(--green)}.result-list .wrong .icon{color:var(--red)}.toast{position:fixed;bottom:19px;right:19px;z-index:4;background:#302141;color:#fff;box-shadow:0 6px 24px #30214140;border-radius:11px;padding:11px 14px;max-width:min(380px,calc(100vw - 38px));font-size:13px;line-height:1.4}.toast.error-toast{background:#792a49}dialog{border:1px solid var(--line);border-radius:18px;padding:20px;width:min(475px,calc(100% - 30px));max-height:calc(100dvh - 30px);color:var(--ink);box-shadow:0 17px 80px #24173b40}dialog::backdrop{background:#2c1c4e64}dialog h2{font-size:21px;letter-spacing:-.025em;margin-bottom:8px}dialog p{color:var(--muted);margin-bottom:13px;font-size:13px;overflow-wrap:anywhere}dialog .actions{margin-top:12px}.popover-links{display:grid;gap:7px}.popover-links .btn{justify-content:flex-start}.details-actions{margin:13px 0 0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1050px){.shell{grid-template-columns:205px minmax(0,1fr)}.sidebar{padding-inline:13px}.content{padding-inline:21px}.topbar{padding-inline:21px}.hero-copy{padding-inline:24px}.trainer{padding:12px}.hero-art{width:53%}}
+@media(max-width:820px){.shell{grid-template-columns:70px minmax(0,1fr)}.sidebar{padding-inline:9px;align-items:center}.brand{padding:0;justify-content:center}.brand-name,.nav-label,.nav-item span,.profile span:not(.avatar),.offline-card{display:none}.sidebar nav{margin-top:24px;width:100%}.nav-item{justify-content:center;padding:0}.profile{padding:13px 0 0}.hero{min-height:259px}.trainer-grid{gap:8px}.trainer-title{font-size:15px}}
+@media(max-width:650px){.shell{display:block}.sidebar{height:auto;position:static;display:flex;flex-direction:row;justify-content:space-between;padding:8px 13px;border-right:0;border-bottom:1px solid var(--line)}.sidebar nav{display:flex;gap:3px;width:auto;margin:0}.nav-item{width:43px;margin:0}.brand{width:auto;gap:8px}.brand-icon{width:37px;height:37px}.brand-name{display:block;font-size:12px}.brand-name small,.sidebar-bottom,.crumb{display:none}.topbar{height:auto;padding:0;background:none;border:0;justify-content:flex-end}.topbar .status-pill{margin:8px 13px 0}.content{padding:12px 13px 27px}.hero{min-height:246px;border-radius:17px}.hero-copy{width:82%;padding:15px}.hero-art{width:62%;opacity:.83;background-position:57% 50%}.hero:after{background:linear-gradient(90deg,#eee7fc 0%,#f2e9faee 28%,transparent 76%)}.hero h1{font-size:clamp(29px,7.3vw,44px)}.hero p{font-size:12px;max-width:235px}.hero .actions{gap:5px}.hero .actions .btn{padding:7px;font-size:11px}.section-head{align-items:flex-start;flex-direction:column}.filters{grid-template-columns:repeat(2,minmax(0,1fr)) 40px}.search{grid-column:span 2}.trainer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.trainer{min-height:160px}.page-head{align-items:flex-start;flex-direction:column}.question-editor{display:block}.question-nav{display:flex;overflow:auto;margin-bottom:10px;padding:3px 1px}.question-nav .btn{flex:none;max-width:110px}.formats{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:13px}.steps{gap:4px}.step{gap:5px;padding:6px;font-size:11px}.step span{height:20px;width:20px}.field-grid{gap:0 7px}.player-wrap .actions{gap:6px}}
+@media(max-width:355px){.trainer-grid,.field-grid{grid-template-columns:1fr}.hero-copy{width:95%}.filters{gap:4px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+.visit-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:15px}.visit-metrics>div{background:var(--lavender);border-radius:14px;padding:16px;min-width:0}.visit-metrics>div+div{background:var(--blue)}.visit-metrics strong{display:block;font-size:clamp(26px,5vw,43px);line-height:1.1;color:var(--deep);overflow-wrap:anywhere}.visit-metrics span{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
+
+.hero-art{background-image:url(data:image/webp;base64,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)}</style>
+<style>
+.result-list details { flex: 1; min-width: 0; }
+.result-list summary { cursor: pointer; font-weight: 700; }
+.result-list summary:focus-visible { outline: 3px solid #9979df; outline-offset: 3px; }
+.answer-review { margin: 8px 0 4px; padding: 12px; border-radius: 11px; background: var(--canvas); }
+.answer-review dt { color: var(--muted); font-size: 12px; font-weight: 750; }
+.answer-review dd { margin: 2px 0 0; line-height: 1.45; white-space: pre-wrap; }
+.answer-review dd + dt { margin-top: 9px; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="notice" role="status" aria-live="polite" class="toast" hidden></div>
+<dialog id="dialog" aria-labelledby="dialog-title"></dialog>
+<script type="application/json" id="offline-data">null</script>
+<script>const samples = [
+  {
+    id: 'morphemes', title: 'Морфемика. Состав слова', grade: '5', subject: 'Русский язык', topic: 'Морфемика', level: 'Базовый', type: 'test', tone: 'violet',
+    questions: [
+      { text: 'Как называется главная значимая часть слова, в которой заключено общее значение однокоренных слов?', options: ['Приставка', 'Корень', 'Суффикс', 'Окончание'], answer: 1, hint: 'Сравни слова «лес», «лесник» и «лесной».', explanation: 'Общая часть этих слов — корень -лес-.', points: 1 },
+      { text: 'В каком слове есть приставка?', options: ['Школьник', 'Подписать', 'Берёзка', 'Зимний'], answer: 1, explanation: 'В слове «подписать» приставка под-.', points: 1 },
+      { text: 'Какую часть слова выделяем, изменяя форму слова «книга»: книги, книгу, книгой?', options: ['Корень', 'Суффикс', 'Окончание', 'Приставку'], answer: 2, explanation: 'В этих формах меняется окончание: -а, -и, -у, -ой.', points: 1 },
+      { text: 'Укажи слово с суффиксом -ник-.', options: ['Никто', 'Лесник', 'Низкий', 'Нитка'], answer: 1, explanation: 'Лес-ник: суффикс -ник- образует название человека, связанного с лесом по роду занятий.', points: 1 },
+      { text: 'Какая основа у слова «лесной»?', options: ['лес-', 'лесн-', 'лесной-', 'лесно-'], answer: 1, hint: 'Сравни формы «лесной» и «лесная».', explanation: 'Основа лесн- остаётся после отделения окончания -ой.', points: 1 },
+      { text: 'В какой паре даны формы одного слова?', options: ['Лес — лесник', 'Река — речной', 'Лесник — лесника', 'Рыба — рыбак'], answer: 2, explanation: 'У форм «лесник» и «лесника» одно лексическое значение, меняется падеж.', points: 1 },
+      { text: 'В каком слове есть нулевое окончание?', options: ['Пальто', 'Слева', 'Вчера', 'Стол'], answer: 3, hint: 'Проверь, меняется ли слово: нет чего?', explanation: 'В форме «стол» окончание нулевое. Оно выражено звуком в формах «стола», «столу».', points: 1 },
+      { text: 'Выбери слово, которое состоит из приставки, корня, суффикса и окончания.', options: ['Подводный', 'Лесной', 'Вода', 'Вчера'], answer: 0, explanation: 'Под-вод-н-ый: под- — приставка, -вод- — корень, -н- — суффикс, -ый — окончание.', points: 1 },
+      { text: 'Какое слово не является однокоренным со словом «вода»?', options: ['Водный', 'Водичка', 'Подводный', 'Водитель'], answer: 3, hint: 'Сопоставь значения: вода или водить?', explanation: 'В слове «водитель» корень связан по значению со словом «водить». Одинаковое звучание корней само по себе не делает слова однокоренными.', points: 2 },
+      { text: 'Какой разбор слова «переписка» верен?', options: ['пере-пис-к-а', 'пере-писк-а', 'перепис-к-а', 'пере-пи-ск-а'], answer: 0, explanation: 'Сравни «писать», «переписать», «переписки». Выделяем приставку пере-, корень -пис-, суффикс -к- и окончание -а.', points: 2 },
+      { text: 'В какой паре в корне чередуются согласные?', options: ['Звук — звучный', 'Лес — лесник', 'Сад — садовый', 'Ход — выход'], answer: 0, explanation: 'В корнях -звук- и -звуч- чередуются к и ч.', points: 2 },
+      { text: 'Какой разбор слова «беззвучный» подтверждается словами «звук», «звучный» и формой «беззвучная»?', options: ['без-зв-учн-ый', 'безз-вуч-н-ый', 'без-звуч-н-ый', 'беззвуч-н-ый'], answer: 2, hint: 'Две соседние буквы з стоят на границе морфем.', explanation: 'В слове есть приставка без-, корень -звуч- с чередованием к/ч, суффикс -н- и окончание -ый.', points: 2 }
+    ]
+  },
+  {
+    id: 'words', title: 'Архаизмы, историзмы и неологизмы', grade: '6', subject: 'Русский язык', topic: 'Лексика', level: 'Средний', type: 'match', tone: 'blue',
+    questions: [
+      { text: 'Соотнеси слово с его толкованием.', pairs: [['очи', 'глаза'], ['перст', 'палец'], ['чело', 'лоб']], hint: 'Все три слова называют части тела.', explanation: '«Очи», «перст» и «чело» — архаизмы, у которых есть современные соответствия.', points: 1 },
+      { text: 'Подбери современный синоним к каждому устаревшему слову.', pairs: [['уста', 'губы'], ['длань', 'ладонь'], ['лобзать', 'целовать']], explanation: 'При замене этих слов сохраняется основное значение, но меняется стилистическая окраска.', points: 1 },
+      { text: 'Соотнеси название с реалией прошлого.', pairs: [['кольчуга', 'доспех из металлических колец'], ['ямщик', 'возница на почтовой дороге'], ['стрелец', 'воин стрелецкого войска']], explanation: 'Эти слова помогают назвать конкретные предметы, занятия и воинские должности прошлого.', points: 1 },
+      { text: 'Соотнеси название с явлением, которое оно обозначает в современных текстах о нейросетях.', pairs: [['промпт', 'запрос или инструкция для модели'], ['дипфейк', 'правдоподобная подделка, созданная с помощью ИИ'], ['нейроиллюстрация', 'иллюстрация, созданная нейросетью']], explanation: 'Слова возникают или получают новые значения, когда нужно назвать новые явления.', points: 1 },
+      { text: 'Соотнеси слово или выражение с группой по времени употребления.', pairs: [['ланиты', 'архаизм'], ['кольчуга', 'историзм'], ['промпт (в работе с нейросетью)', 'неологизм']], explanation: '«Ланиты» — устаревшее название щёк, «кольчуга» называет старинный доспех, а «промпт» в этом значении — сравнительно новое слово.', points: 1 },
+      { text: 'Подбери к каждому признаку название группы слов.', pairs: [['Старое название явления, у которого есть современное общеупотребительное имя', 'архаизмы'], ['Названия реалий, характерных для ушедших эпох', 'историзмы'], ['Новые слова или значения слов', 'неологизмы']], explanation: 'Для разграничения архаизмов и историзмов выясни, устарело само название или ушла в прошлое обозначенная реалия.', points: 1 },
+      { text: 'Определи группу выделенного слова в каждом контексте.', pairs: [['У путника дрожали УСТА.', 'архаизм'], ['У заставы сменили лошадей ЯМЩИКИ.', 'историзм'], ['В сети распознали ДИПФЕЙК с голосом актёра.', 'неологизм']], explanation: 'Уста — губы. Ямщики связаны со старой системой почтового сообщения, а дипфейк обозначает новую технологическую реалию.', points: 1 },
+      { text: 'Соотнеси устаревшее слово с точным современным соответствием в данном контексте.', pairs: [['десница воина', 'правая рука'], ['выя коня', 'шея'], ['потупил взор долу', 'вниз'], ['рать выступила в поход', 'войско']], hint: 'Смотри на сочетание целиком.', explanation: 'Контекст помогает выбрать точное соответствие. Например, десница — именно правая рука.', points: 1 },
+      { text: 'Соотнеси слова из исторического рассказа с реалиями, которые они называют.', pairs: [['оброк', 'повинность крестьянина в виде денег или продуктов'], ['барщина', 'принудительная работа крестьянина на помещика'], ['кафтан', 'старинная верхняя одежда'], ['воевода', 'военачальник или правитель области в прошлом']], explanation: 'Точное толкование сохраняет историческую деталь. Оброк и барщина были разными видами повинностей.', points: 2 },
+      { text: 'Для каждого слова выбери объяснение, почему оно относится к указанной группе.', pairs: [['длань — архаизм', 'есть современный синоним «ладонь»'], ['барщина — историзм', 'называет ушедшую форму повинности'], ['дипфейк — неологизм', 'называет сравнительно недавно появившееся явление']], explanation: 'Для классификации важно обосновать ответ по значению слова и истории его употребления.', points: 2 },
+      { text: 'Соотнеси употребление выделенного слова с его ролью в тексте.', pairs: [['Герой поднимает к небу ОЧИ.', 'придаёт речи возвышенность'], ['В рассказе о боярской усадьбе описан КАФТАН хозяина.', 'передаёт деталь быта эпохи'], ['На уроке о нейросетях ученики составили ПРОМПТ.', 'точно называет запрос, адресованный нейросети']], explanation: 'Слово может передавать тон, исторический колорит или точное название нового явления.', points: 2 },
+      { text: 'Представь, что редактируешь текст для шестиклассников. Соотнеси фрагмент с подходящей правкой.', pairs: [['«Ланиты покраснели» в нейтральном пересказе.', 'заменить на «щёки покраснели»'], ['«Крестьянин отрабатывал барщину» в историческом очерке.', 'сохранить термин и пояснить, в чём состояла повинность'], ['«Программа создала дипфейк» при первом упоминании нового термина.', 'сохранить слово и кратко объяснить технологию']], explanation: 'Правка зависит от цели текста. Можно заменить архаизм синонимом, а исторический и современный термины лучше объяснить.', points: 2 }
+    ]
+  },
+  {
+    id: 'dubrovsky', title: 'А. С. Пушкин. «Дубровский»', grade: '6', subject: 'Литература', topic: 'А. С. Пушкин', level: 'Базовый', type: 'game', tone: 'rose',
+    questions: [
+      { text: 'Как зовут отца Владимира Дубровского?', options: ['Кирила Петрович', 'Андрей Гаврилович', 'Антон Пафнутьич'], answer: 1, explanation: 'Андрей Гаврилович Дубровский — отец Владимира и владелец Кистенёвки.', points: 1 },
+      { text: 'Под каким именем Владимир появляется в доме Троекурова?', options: ['Верейский', 'Спицын', 'Дефорж'], answer: 2, hint: 'В доме ждали французского учителя.', explanation: 'Владимир выдаёт себя за учителя-француза Дефоржа.', points: 1 },
+      { text: 'За кого Троекуров выдаёт Машу замуж?', options: ['За князя Верейского', 'За Спицына', 'За Шабашкина'], answer: 0, explanation: 'Маша становится женой князя Верейского.', points: 1 },
+      { text: 'Как называется имение, которое суд присуждает Троекурову?', options: ['Покровское', 'Кистенёвка', 'Арбатово'], answer: 1, explanation: 'Кистенёвка принадлежала Андрею Гавриловичу. Покровское — имение Троекурова, Арбатово — имение Верейского.', points: 1 },
+      { text: 'Что непосредственно оскорбило Андрея Гавриловича на псарне Троекурова?', options: ['Отказ Троекурова показать собак', 'Замечание псаря о том, что иному дворянину пригодилась бы собачья конура', 'Предложение Троекурова продать Кистенёвку'], answer: 1, explanation: 'Дубровский уезжает после насмешки псаря и требует, чтобы его прислали для объяснения.', points: 1 },
+      { text: 'Как Дефорж выходит из комнаты с медведем?', options: ['Ждёт, пока слуга отведёт зверя', 'Убегает через открытое окно', 'Стреляет в медведя из пистолета'], answer: 2, explanation: 'Дефорж стреляет, когда медведь бросается на него. Его хладнокровие поражает Троекурова и Машу.', points: 1 },
+      { text: 'Зачем Маша передаёт Саше кольцо?', options: ['Чтобы подать Дубровскому условный знак о помощи', 'Чтобы вернуть подарок князю', 'Чтобы позвать отца на разговор'], answer: 0, explanation: 'Саша должен положить кольцо в дупло дуба. Так Маша даёт Дубровскому знать, что ей нужна его помощь.', points: 1 },
+      { text: 'Почему Маша отказывается уехать с Владимиром, когда он останавливает карету?', options: ['Она не узнаёт Владимира', 'Она уже обвенчана и считает себя связанной данным обещанием', 'Она решила вернуться к отцу до венчания'], answer: 1, explanation: 'Дубровский появляется после венчания. Маша принимает всерьёз обязательство, которое уже дала.', points: 1 },
+      { text: 'Как судебный спор меняет масштаб ссоры Троекурова и Дубровского?', options: ['Примиряет соседей благодаря решению суда', 'Переводит личную обиду в борьбу за имение, где связи дают Троекурову преимущество', 'Заставляет обоих героев добровольно отказаться от имущества'], answer: 1, explanation: 'Троекуров решает отнять Кистенёвку и привлекает к делу Шабашкина. Личная ссора приводит к имущественной потере семьи Дубровских.', points: 2 },
+      { text: 'После обеда у Троекурова читатель видит ночную сцену Дефоржа со Спицыным. Затем рассказ возвращается к встрече Владимира с настоящим учителем на станции. Что объясняет этот возврат?', options: ['Как Спицын познакомился с князем Верейским', 'Почему Троекуров решил женить Владимира', 'Как Владимир получил документы учителя и оказался в доме Троекурова'], answer: 2, explanation: 'Рассказ о встрече на станции раскрывает происхождение чужого имени уже после того, как тайна начинает открываться.', points: 2 },
+      { text: 'Как меняется замысел Владимира, по его признанию Маше?', options: ['Он отказывается мстить Троекурову после того, как увидел Машу', 'Он намерен мстить Маше за решение отца', 'Он с самого начала ищет только встречи со Спицыным'], answer: 0, explanation: 'В разговоре с Машей Владимир говорит, что отказался от мести, когда увидел её и понял, что в доме живёт она.', points: 2 },
+      { text: 'Какая пара эпизодов лучше всего раскрывает несвободу Маши и её собственную нравственную позицию?', options: ['Разговор на псарне и чтение судебного решения', 'Решение отца выдать Машу замуж и её отказ покинуть мужа после венчания', 'Разговор на станции и ночная встреча со Спицыным'], answer: 1, explanation: 'Первый эпизод показывает давление отца. Второй — то, как Маша сама понимает силу данного обещания.', points: 2 }
+    ]
+  },
+  {
+    id: 'connectives', title: 'Союзы в сложном предложении', grade: '7', subject: 'Русский язык', topic: 'Синтаксис', level: 'Средний', type: 'choice', tone: 'blue',
+    questions: [
+      { text: 'Выбери все сочинительные союзы.', options: ['и', 'потому что', 'но', 'если', 'или'], answer: [0, 2, 4], explanation: '«И», «но», «или» — сочинительные союзы. «Потому что» и «если» — подчинительные.', points: 1 },
+      { text: 'Выбери все подчинительные союзы.', options: ['хотя', 'зато', 'чтобы', 'или'], answer: [0, 2], explanation: '«Хотя» и «чтобы» связывают придаточную часть с главной.', points: 1 },
+      { text: 'Выбери все противительные союзы.', options: ['но', 'или', 'зато', 'а', 'потому что'], answer: [0, 2, 3], explanation: '«Но», «зато» и «а» в противительном значении выражают сопоставление или противопоставление.', points: 1 },
+      { text: 'Выбери все разделительные союзы.', options: ['и', 'либо', 'или', 'зато', 'то… то'], answer: [1, 2, 4], explanation: '«Либо», «или», «то… то» выражают выбор или чередование.', points: 1 },
+      { text: 'В каких предложениях союз «и» соединяет части сложного предложения?', options: ['Ветер стих, и над рекой поднялся туман.', 'Ветер стих и утихомирил шум ветвей.', 'Мы прочитали рассказ и обсудили финал.', 'Класс затих, и учитель начал чтение.'], answer: [0, 3], hint: 'Подчеркни грамматические основы.', explanation: 'В первом и четвёртом предложениях две основы. Во втором и третьем «и» соединяет однородные сказуемые.', points: 1 },
+      { text: 'В каких предложениях подчинительный союз выражает причину?', options: ['Мы задержались, потому что начался дождь.', 'Когда начался дождь, мы вернулись.', 'Так как дорога размокла, мы изменили маршрут.', 'Мы взяли зонт, чтобы укрыться от дождя.'], answer: [0, 2], explanation: '«Потому что» и «так как» вводят объяснение причины.', points: 1 },
+      { text: 'В каких предложениях придаточная часть обозначает условие?', options: ['Если будет тепло, мы пойдём пешком.', 'Как только рассвело, мы вышли.', 'Коли у тебя есть время, зайди ко мне.', 'Хотя стемнело, мы продолжили путь.'], answer: [0, 2], explanation: '«Если» и «коли» вводят придаточную часть со значением условия.', points: 1 },
+      { text: 'Выбери сложносочинённые предложения.', options: ['Тучи разошлись, но солнце ещё не показалось.', 'Я заметил, что солнце уже скрылось.', 'Тучи разошлись, выглянуло солнце.', 'То ветер стихал, то ветви снова шумели.'], answer: [0, 3], explanation: 'Сочинительную связь выражают «но» и «то… то». Союз «что» подчинительный. В третьем примере союза нет.', points: 1 },
+      { text: 'В каких предложениях «да» можно заменить союзом «но» без изменения смысла?', options: ['Я хотел ответить, да звонок прервал урок.', 'Вдали шумели сосны да ели.', 'Ребята спешили, да автобус уже ушёл.', 'На столе лежали тетради да книги.'], answer: [0, 2], explanation: 'В первом и третьем предложениях «да» выражает противопоставление. В двух других оно равно по значению союзу «и».', points: 2 },
+      { text: 'Выбери предложения, в которых «что» служит подчинительным союзом.', options: ['Мы увидели, что река замёрзла.', 'Я спросил, что лежит в коробке.', 'Мне показалось, что дверь открыта.', 'Мы выяснили, что случилось утром.'], answer: [0, 2], hint: 'Проверь, является ли «что» членом придаточного предложения.', explanation: 'В первом и третьем примерах «что» только связывает части. Во втором и четвёртом примерах оно является союзным словом и выполняет роль подлежащего.', points: 2 },
+      { text: 'В каких предложениях перед одиночным «и» нужна запятая? Знаки на месте выбора пропущены.', options: ['Вечером ветер стих и над рекой поднялся туман.', 'Солнце скрылось за лесом и на дороге стало темно.', 'Мы взяли фонари и вышли на тропу.', 'Дверь распахнулась и в комнату вбежал щенок.'], answer: [1, 3], explanation: 'Во втором и четвёртом примерах «и» соединяет части без общего члена. В первом обе части объединяет «вечером», а в третьем одна основа с однородными сказуемыми.', points: 2 },
+      { text: 'Выбери предложения, где есть и сочинительная, и подчинительная связь между грамматическими основами.', options: ['Ветер стих, и рыбаки вернулись к берегу, когда стемнело.', 'Мы закрыли окна, потому что начался ливень и ветер усилился.', 'Солнце село, и мы заметили, что вдали зажглись огни.', 'Когда стемнело, рыбаки свернули сети и вернулись к берегу.'], answer: [0, 1, 2], hint: 'Союз «и» может соединять две придаточные части.', explanation: 'В первых трёх примерах есть подчинительный союз и «и» между частями с отдельными основами. В последнем «и» соединяет сказуемые одной основы.', points: 2 }
+    ]
+  },
+  {
+    id: 'circumstances', title: 'Обстоятельство в предложении', grade: '8', subject: 'Русский язык', topic: 'Члены предложения', level: 'Средний', type: 'fill', tone: 'rose',
+    questions: [
+      { text: 'Выпиши обстоятельство места из предложения «Дети играли во дворе».', pattern: 'Где? ___', blanks: [['во дворе']], explanation: '«Во дворе» отвечает на вопрос «где?».', points: 1 },
+      { text: 'Выпиши обстоятельство времени из предложения «Утром лодки вышли из бухты».', pattern: 'Когда? ___', blanks: [['утром']], explanation: '«Утром» указывает время действия.', points: 1 },
+      { text: 'Выпиши обстоятельство образа действия из предложения «Девочка тихо закрыла дверь».', pattern: 'Как? ___', blanks: [['тихо']], explanation: 'Наречие «тихо» показывает, как девочка закрыла дверь.', points: 1 },
+      { text: 'Выпиши два обстоятельства из предложения «Вчера мы долго гуляли».', pattern: 'Когда? ___ · Как долго? ___', blanks: [['вчера'], ['долго']], explanation: '«Вчера» указывает, когда произошло действие, а «долго» — какова была его продолжительность.', points: 1 },
+      { text: 'Выпиши обстоятельство причины из предложения «Из-за густого тумана рейс задержали».', pattern: 'По какой причине? ___', blanks: [['из-за густого тумана']], explanation: 'Сочетание «из-за густого тумана» называет причину задержки.', points: 1 },
+      { text: 'Выпиши обстоятельство цели из предложения «Мы зашли в читальный зал поработать».', pattern: 'С какой целью? ___', blanks: [['поработать']], explanation: 'Неопределённая форма глагола «поработать» обозначает цель движения.', points: 1 },
+      { text: 'Выпиши обстоятельство меры и степени из предложения «Тропа едва заметно петляла». Запиши только слово, которое уточняет степень признака «заметно».', pattern: 'В какой степени заметно? ___', blanks: [['едва']], explanation: '«Едва» зависит от слова «заметно» и указывает на слабую степень проявления признака.', points: 1 },
+      { text: 'Выпиши обстоятельства места и образа действия из предложения «На пристани матросы работали слаженно».', pattern: 'Где? ___ · Как? ___', blanks: [['на пристани'], ['слаженно']], explanation: '«На пристани» обозначает место работы, а «слаженно» характеризует саму работу.', points: 1 },
+      { text: 'Выпиши обстоятельство уступки из предложения «Несмотря на сильный ветер, мы вышли к реке».', pattern: 'Несмотря на что? ___', blanks: [['несмотря на сильный ветер']], hint: 'Назови помеху, которая не остановила действие.', explanation: 'Сочетание «несмотря на сильный ветер» называет обстоятельство, вопреки которому действие произошло.', points: 2 },
+      { text: 'Выпиши обстоятельство условия из предложения «При ясной погоде виден дальний берег».', pattern: 'При каком условии? ___', blanks: [['при ясной погоде']], explanation: '«При ясной погоде» называет условие, при котором виден берег.', points: 2 },
+      { text: 'Сравни предложения «Мы пришли поговорить» и «Мы начали говорить». Выпиши инфинитив, который выполняет роль обстоятельства.', pattern: 'Обстоятельство цели: ___', blanks: [['поговорить']], explanation: '«Поговорить» поясняет цель прихода. В сочетании «начали говорить» инфинитив входит в составное глагольное сказуемое.', points: 2 },
+      { text: 'Выпиши обстоятельства уступки, места и образа действия из предложения «Несмотря на усталость, ребята в лагере работали не покладая рук».', pattern: 'Вопреки чему? ___ · Где? ___ · Как? ___', blanks: [['несмотря на усталость'], ['в лагере'], ['не покладая рук']], explanation: 'Первое обстоятельство обозначает уступку, второе — место. Устойчивое сочетание «не покладая рук» означает «усердно» и обозначает образ действия.', points: 2 }
+    ]
+  },
+  {
+    id: 'griboedov', title: 'А. С. Грибоедов. «Горе от ума»', grade: '9', subject: 'Литература', topic: 'А. С. Грибоедов', level: 'Повышенный', type: 'drag', tone: 'violet',
+    questions: [
+      { text: 'Расположи по порядку события начала I действия.', order: ['Лиза стучится в комнату Софьи', 'Фамусов застаёт Софью с Молчалиным'], explanation: 'Сначала Лиза пытается предупредить Софью о рассвете. Затем Фамусов встречает Софью и Молчалина.', points: 1 },
+      { text: 'Расположи встречи Софьи в I действии в том порядке, в каком они показаны.', order: ['Софья выходит к Лизе, за ней идёт Молчалин', 'Софья объясняется с Фамусовым', 'Софья встречает вернувшегося Чацкого'], explanation: 'Сцена с Фамусовым предшествует приезду Чацкого.', points: 1 },
+      { text: 'Восстанови ход эпизода с падением Молчалина во II действии.', order: ['Софья видит из окна, как Молчалин падает с лошади', 'Софья теряет сознание', 'Чацкий и Лиза помогают привести Софью в чувство'], explanation: 'Падение Молчалина вызывает обморок Софьи. Сила её переживания становится заметна окружающим.', points: 1 },
+      { text: 'Расположи события IV действия по порядку.', order: ['Гости начинают разъезжаться после бала', 'Чацкий слышит ночной разговор Молчалина с Лизой', 'Чацкий требует подать карету'], explanation: 'После разъезда гостей Чацкий узнаёт правду о Молчалине, а в финале покидает дом Фамусова.', points: 1 },
+      { text: 'Восстанови последовательность разговора Фамусова с Чацким во II действии.', order: ['Фамусов советует Чацкому послужить', 'Чацкий отвечает, что готов служить, но не прислуживаться', 'Фамусов ставит в пример Максима Петровича'], explanation: 'Ответ Чацкого обнаруживает разницу в их взглядах на службу. Фамусов продолжает разговор примером из жизни своего дяди.', points: 1 },
+      { text: 'Расположи по порядку эти эпизоды III действия.', order: ['Чацкий спрашивает Софью, кого она любит', 'Чацкий беседует с Молчалиным о его взглядах', 'В доме Фамусова собираются гости'], explanation: 'Разговоры Чацкого с Софьей и Молчалиным происходят до начала бала.', points: 1 },
+      { text: 'Расположи события комедии в порядке их появления в тексте.', order: ['Лиза стучится в комнату Софьи', 'Чацкий приезжает в дом Фамусова', 'На балу распространяется слух о безумии Чацкого', 'Чацкий требует карету'], hint: 'Первые два события относятся к I действию.', explanation: 'После приезда Чацкого конфликт развивается до сцены на балу, а завершается его отъездом.', points: 1 },
+      { text: 'Проследи путь слуха на балу от первой реплики до реакции Фамусова.', order: ['Софья даёт господину N повод заговорить о безумии Чацкого', 'Господин N сообщает новость господину D', 'Господин D передаёт слух Загорецкому', 'Фамусов уверяет гостей, что первым заметил безумие Чацкого'], explanation: 'По мере распространения догадка воспринимается гостями как установленный факт.', points: 1 },
+      { text: 'Восстанови порядок событий, которые показывают, как Чацкий узнаёт о слухе в IV действии.', order: ['Репетилов встречает Чацкого и задерживает его разговором', 'Гости сообщают Репетилову о безумии Чацкого', 'Чацкий выходит из укрытия и размышляет, поверила ли слуху Софья'], explanation: 'Чацкий слышит разговор гостей и начинает задумываться о роли Софьи в распространении слуха.', points: 2 },
+      { text: 'Расположи по порядку эпизоды, в которых раскрывается истинное отношение Молчалина к Софье.', order: ['Лиза зовёт Молчалина к Софье', 'Молчалин признаётся Лизе, что видит в Софье дочь покровителя', 'Подслушавшая разговор Софья выходит к Молчалину', 'Чацкий выходит из-за колонны'], explanation: 'Ночной разговор лишает Софью иллюзий о Молчалине, а Чацкий становится свидетелем её разочарования.', points: 2 },
+      { text: 'Проследи развитие общественного конфликта. Расположи эпизоды по действиям.', order: ['Чацкий иронизирует над московскими знакомыми в разговоре с Софьей', 'Чацкий спорит с Фамусовым о службе', 'Гости принимают слух о безумии Чацкого', 'Фамусов тревожится о мнении княгини Марьи Алексевны'], explanation: 'Порядок показывает, как частные реплики и спор о ценностях переходят в конфликт со всем окружением Фамусова.', points: 2 },
+      { text: 'Расположи этапы любовной линии от завязки до развязки. Используй события как доказательства.', order: ['Чацкий возвращается в Москву и удивляется холодности Софьи', 'Обморок Софьи при падении Молчалина обнаруживает силу её тревоги', 'Софья защищает Молчалина в разговоре с Чацким', 'Чацкий и Софья слышат, что Молчалин говорит Лизе о своих чувствах', 'Чацкий объясняется с Софьей и решает уехать'], explanation: 'В I–III действиях отношение Софьи к Молчалину раскрывается постепенно. В IV действии герои узнают правду, и любовный конфликт достигает развязки.', points: 2 }
+    ]
+  }
+].map(item => ({ ...item, criteria: 'За полностью верный ответ начисляется указанное число баллов.', questions: item.questions.map(question => ({ type: item.type, ...question })) }));
+
+'use strict';
+
+const formats = {
+  test: ['Тест', 'clipboard', 'Один верный ответ'],
+  game: ['Игра', 'game', 'Серия правильных ответов'],
+  match: ['Сопоставление', 'link', 'Подбор соответствий'],
+  drag: ['Перетаскивание', 'move', 'Восстановление порядка'],
+  choice: ['Выбор ответа', 'checklist', 'Один или несколько верных ответов'],
+  fill: ['Заполнение пропусков', 'edit', 'Ввод слова или выражения']
+};
+const icons = {
+  book: '<path d="M12 6c-3-2-6-3-10-2v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-4-1-7 0-10 2Zm0 0v15"/>',
+  grid: '<rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  folder: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>',
+  copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
+  download: '<path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/>',
+  arrow: '<path d="M4 12h15m-6-6 6 6-6 6"/>',
+  back: '<path d="M20 12H5m6-6-6 6 6 6"/>',
+  chevron: '<path d="m9 6 6 6-6 6"/>',
+  up: '<path d="m6 14 6-6 6 6"/>',
+  down: '<path d="m6 10 6 6 6-6"/>',
+  sparkle: '<path d="M12 2c0 6-4 10-10 10 6 0 10 4 10 10 0-6 4-10 10-10-6 0-10-4-10-10Z"/>',
+  search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/>',
+  reset: '<path d="M3 11a9 9 0 1 1 2 7M3 5v6h6"/>',
+  clipboard: '<rect x="5" y="5" width="14" height="16" rx="2"/><rect x="9" y="3" width="6" height="4" rx="1" fill="white"/><path d="M9 12h6m-6 4h4"/>',
+  link: '<path d="M10 13a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-2 2m2 5a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l2-2"/>',
+  chart: '<path d="M4 3v17h16M9 16v-4m5 4V8m5 8V5"/>',
+  game: '<path d="M7 7h10c3 0 4 3 4 7 0 3-2 4-4 2l-2-2H9l-2 2c-2 2-4 1-4-2 0-4 1-7 4-7Z"/><path d="M8 9v4m-2-2h4m5 0h.01m3 1h.01"/>',
+  checklist: '<path d="m3 6 2 2 3-4m-5 9 2 2 3-4m-5 9 2 2 3-4M11 6h10m-10 7h10m-10 7h10"/>',
+  edit: '<path d="m15 4 5 5M4 20l5-1L21 7l-5-5L4 14l-1 7Zm9 1h8"/>',
+  move: '<path d="M12 2v20M2 12h20M9 5l3-3 3 3M9 19l3 3 3-3M5 9l-3 3 3 3m14-6 3 3-3 3"/>',
+  eye: '<path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.4"/>',
+  check: '<path d="m5 12 4 4L19 6"/>',
+  x: '<path d="m6 6 12 12M18 6 6 18"/>',
+  trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v6m4-6v6"/>',
+  key: '<circle cx="8" cy="10" r="4"/><path d="m11 13 7 7 3-3-2-2-2 2"/>',
+  external: '<path d="M13 4h7v7m0-7-9 9m-2-8H5v15h15v-4"/>',
+  bulb: '<path d="M9 18h6m-5 3h4m-5-6c0-2-3-3-3-7a6 6 0 0 1 12 0c0 4-3 5-3 7Z"/>'
+};
+const icon = name => `<svg aria-hidden="true" class="icon" viewBox="0 0 24 24">${icons[name] ?? ''}</svg>`;
+const gradeValues = ['5','6','7','8','9'];
+const subjects = ['Русский язык','Литература'];
+const levels = ['Базовый','Средний','Повышенный'];
+const storageKey = 'teacher-trainer-studio-v1';
+const siteVisits = location.origin === 'https://teacher-trainer-studio.dolzenkoanna90.chatgpt.site';
+const pagesUrl = new URL('https://dolzenkoanna90-hash.github.io/konstruktor-trenazherov/');
+const pagesVisits = location.origin === pagesUrl.origin && location.pathname.startsWith(pagesUrl.pathname);
+const onlineVisits = siteVisits || pagesVisits;
+const pagesCounter = 'https://countapi.mileshilliard.com/api/v1/';
+const pagesCounterKey = 'anna-lesson-lab-constructor-browser-visits-62e94c2b';
+const moscowDay = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Moscow' });
+let visitRegistration;
+let statsRequest = 0;
+const root = document.getElementById('app');
+const modal = document.getElementById('dialog');
+const notice = document.getElementById('notice');
+const textLimit = 7000;
+const blankFilters = () => ({ grade: '', subject: '', topic: '', type: '' });
+const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[char]);
+const copy = value => JSON.parse(JSON.stringify(value));
+const trim = value => String(value ?? '').trim();
+const bounded = (value, limit = textLimit) => typeof value === 'string' ? value.slice(0, limit) : '';
+const validType = type => Object.hasOwn(formats, type);
+const list = value => Array.isArray(value) ? value : [];
+const countLabel = n => `${n} ${n % 100 >= 11 && n % 100 <= 14 ? 'заданий' : n % 10 === 1 ? 'задание' : [2,3,4].includes(n % 10) ? 'задания' : 'заданий'}`;
+const pointLabel = n => `${n} ${n % 100 >= 11 && n % 100 <= 14 ? 'баллов' : n % 10 === 1 ? 'балл' : [2,3,4].includes(n % 10) ? 'балла' : 'баллов'}`;
+const identifier = () => globalThis.crypto?.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+const isChoice = type => ['test','game','choice'].includes(type);
+const button = (label, action, glyph, style = '', attrs = '') => `<button type="button" class="btn ${style}" data-action="${action}" ${attrs}>${glyph ? icon(glyph) : ''}${label}</button>`;
+const iconButton = (label, action, glyph, attrs = '') => `<button type="button" class="icon-button" data-action="${action}" aria-label="${escape(label)}" title="${escape(label)}" ${attrs}>${icon(glyph)}</button>`;
+const selection = (values, active, empty) => `${empty ? `<option value="">${empty}</option>` : ''}${values.map(item => { const [v,label] = Array.isArray(item) ? item : [item,item]; return `<option value="${escape(v)}" ${v === active ? 'selected' : ''}>${escape(label)}</option>`; }).join('')}`;
+const formatOptions = Object.entries(formats).map(([key,[label]]) => [key,label]);
+const gradeOptions = gradeValues.map(value => [value,`${value} класс`]);
+const wrapField = (label, control, help = '') => `<label class="field"><span>${label}</span>${control}${help ? `<small>${help}</small>` : ''}</label>`;
+const input = (field, value, scope, placeholder = '', attrs = '') => `<input data-${scope}="${field}" value="${escape(value)}" placeholder="${escape(placeholder)}" ${attrs}>`;
+const area = (field, value, scope, placeholder = '', rows = 2) => `<textarea rows="${rows}" maxlength="${textLimit}" data-${scope}="${field}" placeholder="${escape(placeholder)}">${escape(value)}</textarea>`;
+const select = (field, values, value, scope, empty) => `<select data-${scope}="${field}">${selection(values,value,empty)}</select>`;
+const unpack = encoded => {
+  if (typeof encoded !== 'string' || !/^[\w-]+$/.test(encoded) || encoded.length > 12000000) throw new Error('Invalid payload');
+  const bytes = Uint8Array.from(atob(encoded.replace(/-/g,'+').replace(/_/g,'/')), char => char.charCodeAt(0));
+  return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
+};
+function pack(value) {
+  const bytes = new TextEncoder().encode(JSON.stringify(value));
+  let data = '';
+  for (let offset = 0; offset < bytes.length; offset += 8192) data += String.fromCharCode(...bytes.subarray(offset,offset+8192));
+  return btoa(data).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function canonicalQuestion(raw) {
+  const q = raw && typeof raw === 'object' ? raw : {};
+  const type = validType(q.type) ? q.type : 'test';
+  return {
+    type, text: bounded(q.text), hint: bounded(q.hint), explanation: bounded(q.explanation), points: Number.isInteger(q.points) && q.points >= 1 && q.points <= 100 ? q.points : 1,
+    options: list(q.options).slice(0,12).map(item => bounded(item,400)),
+    answer: Array.isArray(q.answer) ? q.answer.filter(Number.isInteger).slice(0,12) : Number.isInteger(q.answer) ? q.answer : -1,
+    pairs: list(q.pairs).slice(0,20).map(pair => list(pair).slice(0,2).map(item => bounded(item,400))),
+    order: list(q.order).slice(0,20).map(item => bounded(item,400)),
+    pattern: bounded(q.pattern), blanks: list(q.blanks).slice(0,20).map(row => list(row).slice(0,12).map(item => bounded(item,400)))
+  };
+}
+function canonicalTrainer(raw) {
+  if (!raw || typeof raw !== 'object' || typeof raw.title !== 'string') throw new Error('Invalid trainer');
+  return {
+    id: /^[a-z0-9-]{1,80}$/i.test(raw.id ?? '') ? raw.id : identifier(),
+    title: bounded(raw.title,140), grade: gradeValues.includes(raw.grade) ? raw.grade : '5', subject: subjects.includes(raw.subject) ? raw.subject : subjects[0],
+    topic: bounded(raw.topic,100), level: levels.includes(raw.level) ? raw.level : levels[0], type: validType(raw.type) ? raw.type : 'test', criteria: bounded(raw.criteria),
+    tone: ['violet','blue','rose'].includes(raw.tone) ? raw.tone : 'violet', questions: list(raw.questions).slice(0,100).map(canonicalQuestion)
+  };
+}
+function problem(q) {
+  if (!trim(q.text)) return 'Введите текст задания.';
+  if (!Number.isInteger(q.points) || q.points < 1 || q.points > 100) return 'Укажите целое число баллов от 1 до 100.';
+  if (isChoice(q.type)) {
+    if (q.options.length < 2 || q.options.some(x => !trim(x))) return 'Заполните как минимум два варианта ответа.';
+    if (new Set(q.options.map(normalize)).size !== q.options.length) return 'Варианты ответа должны различаться.';
+    const keys = q.type === 'choice' ? q.answer : [q.answer];
+    if (!Array.isArray(keys) || !keys.length || keys.some(i => !Number.isInteger(i) || i < 0 || i >= q.options.length)) return 'Отметьте правильный ответ.';
+  }
+  if (q.type === 'match') {
+    if (q.pairs.length > 20 || q.pairs.some(pair => pair.some(part => part.length > 400))) return 'Допустимо до 20 пар, до 400 знаков в каждой части.';
+    if (q.pairs.length < 2 || q.pairs.some(pair => pair.length !== 2 || pair.some(part => !trim(part)))) return 'Введите не меньше двух пар в формате «слово = соответствие».';
+    if (new Set(q.pairs.map(pair => normalize(pair[0]))).size !== q.pairs.length) return 'Левые части пар должны различаться.';
+  }
+  if (q.type === 'drag' && (q.order.length > 20 || q.order.some(item => item.length > 400))) return 'Допустимо до 20 элементов, до 400 знаков в каждом.';
+  if (q.type === 'drag' && (q.order.length < 2 || q.order.some(item => !trim(item)) || new Set(q.order.map(normalize)).size !== q.order.length)) return 'Введите не меньше двух разных элементов в правильном порядке.';
+  if (q.type === 'fill') {
+    const blankCount = q.pattern.split('___').length - 1;
+    if (blankCount > 20 || q.blanks.some(row => row.length > 12 || row.some(item => item.length > 400))) return 'Допустимо до 20 пропусков и до 12 вариантов по 400 знаков для каждого.';
+    if (blankCount < 1) return 'Обозначьте пропуск тремя знаками подчёркивания: ___.';
+    if (q.blanks.length !== blankCount || q.blanks.some(row => !row.length || row.some(item => !trim(item)))) return 'Введите ответы отдельными строками для каждого пропуска.';
+  }
+  return '';
+}
+function storageData(data) {
+  if (!data || !Array.isArray(data.items) || !Array.isArray(data.templates)) throw new Error('Invalid workspace');
+  const items = data.items.map(canonicalTrainer).filter(item => trim(item.title) && item.questions.length && !item.questions.some(problem));
+  const templates = data.templates.map(item => ({ ...canonicalTrainer(item), questions: [], count: Math.max(1,Math.min(100,Math.floor(Number(item.count) || 3))) }));
+  return { items, templates, draft: data.draft && Array.isArray(data.draft.questions) ? copy(data.draft) : null };
+}
+const offline = (() => { try { const encoded = JSON.parse(document.getElementById('offline-data').textContent); return encoded ? unpack(encoded) : null; } catch { return null; } })();
+let storageOK = true;
+function load() {
+  try {
+    const stored = localStorage.getItem(storageKey);
+    if (stored) return storageData(JSON.parse(stored));
+  } catch { storageOK = false; }
+  try { if (offline?.mode === 'teacher') return storageData(offline.workspace); } catch { /* Use sample exercises. */ }
+  return { items: [], templates: [], draft: null };
+}
+const db = load();
+let view = 'library';
+let tab = 'all';
+let filters = blankFilters();
+let draft = db.draft;
+let step = 1;
+let questionIndex = 0;
+let activeItem = null;
+let player = null;
+let playerOrigin = 'detail';
+let error = '';
+let studentOnly = false;
+let toastTimer;
+let dragIndex = null;
+
+function saveLocal() {
+  try { localStorage.setItem(storageKey,JSON.stringify(db)); storageOK = true; }
+  catch { storageOK = false; }
+  const status = root.querySelector('.status-pill');
+  if (status) status.textContent = localStatus();
+  return storageOK;
+}
+function localStatus() { return storageOK ? 'Данные в этом браузере' : 'Хранение недоступно'; }
+function toast(message, isError = false) {
+  clearTimeout(toastTimer);
+  notice.textContent = message;
+  notice.classList.toggle('error-toast',isError);
+  notice.hidden = false;
+  toastTimer = setTimeout(() => { notice.hidden = true; },4500);
+}
+function dialog(title, content) {
+  modal.innerHTML = `<h2 id="dialog-title">${escape(title)}</h2>${content}`;
+  if (!modal.open) modal.showModal();
+}
+function openView(next) {
+  view = next;
+  error = '';
+  render();
+  window.scrollTo(0,0);
+  root.querySelector('h1')?.focus({ preventScroll:true });
+}
+function navItem(label, action, glyph, active, count = '') {
+  return `<button type="button" class="nav-item ${active ? 'active' : ''}" data-action="${action}" aria-label="${label}" title="${label}" ${active ? 'aria-current="page"' : ''}>${icon(glyph)}<span>${label}</span>${count !== '' ? `<span class="count">${count}</span>` : ''}</button>`;
+}
+function shell(content) {
+  const titles = { stats:'Посещаемость', library:'Библиотека', wizard:'Конструктор', templates:'Шаблоны', detail:'Тренажёр', player:playerOrigin === 'wizard' ? 'Предпросмотр' : 'Режим ученика' };
+  return `<div class="shell"><aside class="sidebar">
+    <button type="button" data-action="library" class="brand" aria-label="Мастерская тренажёров"><span class="brand-icon">${icon('book')}</span><span class="brand-name">Мастерская<small>Конструктор тренажёров</small></span></button>
+    <div class="nav-label">Рабочее пространство</div><nav aria-label="Разделы мастерской">
+    ${navItem('Библиотека','library','grid',['library','detail'].includes(view),db.items.length+samples.length)}${navItem('Конструктор','constructor','plus',view==='wizard')}${navItem('Шаблоны','templates','folder',view==='templates',db.templates.length || '')}${onlineVisits ? navItem('Посещаемость','stats','chart',view==='stats') : ''}</nav>
+    <div class="sidebar-bottom"><div class="offline-card">${icon('download')}<div><strong>Автономная версия</strong><p>Откройте сохранённый HTML без интернета.</p><button type="button" data-action="offline">Скачать HTML ${icon('chevron')}</button></div></div>
+    <div class="profile"><span class="avatar">${icon('book')}</span><span>Режим учителя<small>Русский язык и литература</small></span></div></div></aside>
+    <div class="workspace"><header class="topbar"><div class="crumb">${icon('grid')}<span>Мастерская</span>${icon('chevron')}<strong>${titles[view]}</strong></div><span class="status-pill" title="Тренажёры и шаблоны сохраняются в этом браузере">${localStatus()}</span></header><main class="content">${content}</main></div></div>`;
+}
+function render() {
+  const screens = { stats:renderStats, library:renderLibrary, wizard:renderWizard, templates:renderTemplates, detail:renderDetail, player:renderPlayer, invalid:renderInvalid };
+  const content = screens[view]();
+  root.innerHTML = studentOnly ? `<div class="student-only"><main class="content">${content}</main></div>` : shell(content);
+}
+function libraryItems() {
+  const source = tab==='mine' ? db.items : tab==='examples' ? samples : [...db.items,...samples];
+  return source.filter(item => (!filters.grade || item.grade===filters.grade) && (!filters.subject || item.subject===filters.subject) && (!filters.type || item.type===filters.type || item.questions.some(q => q.type===filters.type)) && (!trim(filters.topic) || normalize(`${item.topic} ${item.title}`).includes(normalize(filters.topic))));
+}
+function renderCards() {
+  const items = libraryItems();
+  if (!items.length) return `<div class="empty"><strong>Тренажёры не найдены</strong><p>${tab==='mine' && !db.items.length ? 'Здесь появятся ваши сохранённые работы.' : 'Измените или сбросьте фильтры.'}</p>${tab==='mine' && !db.items.length ? button('Создать тренажёр','new','plus','primary') : button('Сбросить фильтры','reset-filters','reset')}</div>`;
+  return `<div class="trainer-grid">${items.map(item => {
+    const attrs = `data-id="${escape(item.id)}"`;
+    return `<article class="trainer"><div class="trainer-top"><span class="tile-icon ${item.tone}">${icon(formats[item.type][1])}</span><span class="type-chip">${formats[item.type][0]}</span></div><button type="button" class="trainer-title" data-action="detail" ${attrs}>${escape(item.title)}</button><p>${item.grade} класс · ${escape(item.subject)}</p><div class="trainer-bottom"><span>${icon('clipboard')}${countLabel(item.questions.length)}</span>${button('Открыть','detail','arrow','quiet',attrs)}</div></article>`;
+  }).join('')}</div>`;
+}
+function renderLibrary() {
+  return `<section class="hero"><div class="hero-art" aria-hidden="true"></div><div class="hero-copy"><div class="hero-tag">${icon('sparkle')} 5–9 классы</div><h1 tabindex="-1">Конструктор <span>тренажёров</span></h1><p>Создавайте интерактивные задания по русскому языку и литературе.</p><div class="actions">${button('Создать тренажёр','new','plus','primary')}${button('Выбрать шаблон','templates','folder','soft')}</div></div></section>
+  <section class="library-section" aria-labelledby="library-title"><div class="section-head"><div><h2 id="library-title">Библиотека тренажёров</h2><p>Откройте готовый пример или вернитесь к своей работе.</p></div><div class="library-tabs" aria-label="Показать тренажёры">${[['all','Все'],['mine','Мои'],['examples','Примеры']].map(([value,label]) => `<button type="button" class="${value===tab?'active':''}" data-action="tab" data-value="${value}" aria-pressed="${value===tab}">${label}</button>`).join('')}</div></div>
+  <div class="filters"><select class="filter" aria-label="Класс" data-filter="grade">${selection(gradeOptions,filters.grade,'Все классы')}</select><select class="filter" aria-label="Предмет" data-filter="subject">${selection(subjects,filters.subject,'Все предметы')}</select><label class="search">${icon('search')}<input class="filter" type="search" data-filter="topic" value="${escape(filters.topic)}" placeholder="Поиск по теме" aria-label="Поиск по теме"></label><select class="filter" aria-label="Тип задания" data-filter="type">${selection(formatOptions,filters.type,'Все форматы')}</select>${iconButton('Сбросить фильтры','reset-filters','reset')}</div><div id="library-items">${renderCards()}</div></section>`;
+}
+function renderTemplates() {
+  return `<div class="page-head"><div><h1 tabindex="-1">Шаблоны</h1><p>Повторно используйте класс, предмет, тему, формат и количество заданий.</p></div>${button('Создать шаблон','new','plus','primary')}</div>
+  <div class="trainer-grid">${db.templates.map(item => {
+    const attrs = `data-id="${escape(item.id)}"`;
+    return `<article class="trainer"><div class="trainer-top"><span class="tile-icon ${item.tone}">${icon(formats[item.type][1])}</span><span class="type-chip">${formats[item.type][0]}</span></div><h2 class="trainer-title">${escape(item.title)}</h2><p>${item.grade} класс · ${escape(item.subject)} · ${countLabel(item.count)}</p><div class="trainer-bottom">${button('Использовать','use-template','arrow','quiet',attrs)}${iconButton('Удалить шаблон','remove-template','trash',attrs)}</div></article>`;
+  }).join('')}</div>${db.templates.length ? '' : '<div class="empty"><strong>Ваши шаблоны появятся здесь</strong><p>Заполните настройки в конструкторе и нажмите «Сохранить шаблон».</p></div>'}
+  <section class="panel library-section"><h2>Перенос на другой браузер</h2><p class="muted">Скачайте файл с тренажёрами и шаблонами. Импорт добавит записи к уже сохранённым.</p><div class="actions details-actions">${button('Скачать резервную копию','backup','download')}${button('Импортировать JSON','import','folder')}${button('Автономный конструктор','offline','external')}</div><input id="import-file" type="file" accept=".json,application/json" hidden></section>`;
+}
+
+function blankQuestion(type) {
+  return { type, text:'', hint:'', explanation:'', points:1, options:['','',''], answer:type==='choice'?[]:-1, pairsText:'', orderText:'', pattern:'', blanksText:'' };
+}
+function editorQuestion(q) {
+  return { ...blankQuestion(q.type), ...copy(q), pairsText:list(q.pairs).map(pair=>pair.join(' = ')).join('\n'), orderText:list(q.order).join('\n'), blanksText:list(q.blanks).map(row=>row.join(' | ')).join('\n') };
+}
+function questionFromEditor(q) {
+  const lines = value => String(value ?? '').split(/\r?\n/).map(trim).filter(Boolean);
+  const common = { type:q.type, text:trim(q.text), hint:trim(q.hint), explanation:trim(q.explanation), points:Number(q.points) };
+  if (isChoice(q.type)) return { ...common, options:q.options.map(trim), answer:q.answer };
+  if (q.type==='match') return { ...common, pairs:lines(q.pairsText).map(line => { const cut=line.indexOf('='); return cut<0 ? [line] : [trim(line.slice(0,cut)),trim(line.slice(cut+1))]; }) };
+  if (q.type==='drag') return { ...common, order:lines(q.orderText) };
+  return { ...common, pattern:trim(q.pattern), blanks:lines(q.blanksText).map(line=>line.split('|').map(trim)) };
+}
+function rememberDraft() { db.draft = draft; saveLocal(); }
+function newDraft(source, editing = false) {
+  const base = source ? canonicalTrainer(source) : { title:'', grade:'5', subject:subjects[0], topic:'', level:levels[0], type:'test', criteria:'', tone:'violet' };
+  const questions = source?.questions?.length ? source.questions.map(editorQuestion) : Array.from({length:source?.count ?? 3},()=>blankQuestion(base.type));
+  draft = { ...base, title:source && !editing && source.questions?.length ? `${base.title} (копия)`.slice(0,140) : base.title, id:editing ? base.id : null, questions };
+  step = editing ? 2 : 1;
+  questionIndex = 0;
+  rememberDraft();
+  openView('wizard');
+}
+function requestDraft(source, editing = false) {
+  if (draft && (!editing || draft.id!==source?.id) && (trim(draft.title) || draft.questions.some(q=>trim(q.text)))) {
+    dialog('Открыт черновик',`<p>Продолжите работу с ним или замените его новым черновиком.</p><div class="actions">${button('Продолжить черновик','resume','edit','primary')}${button('Заменить черновик','replace-draft',null,'danger')}</div>`);
+    modal.querySelector('[data-action="replace-draft"]').addEventListener('click',()=>{ modal.close(); newDraft(source,editing); },{once:true});
+    return;
+  }
+  if (editing && draft?.id===source?.id) return openView('wizard');
+  newDraft(source,editing);
+}
+function metaProblem() {
+  if (!trim(draft.title)) return 'Введите название тренажёра.';
+  if (!trim(draft.topic)) return 'Укажите тему.';
+  return '';
+}
+function wizardError(message) {
+  error = message;
+  render();
+  root.querySelector('.error')?.focus();
+}
+function changeStep(next) {
+  if (!commitCount()) return;
+  if (next > 1) { const message=metaProblem(); if (message) { step=1; return wizardError(message); } }
+  if (next===3) {
+    const invalid = draft.questions.findIndex(q=>problem(questionFromEditor(q)));
+    if (invalid>=0) { step=2; questionIndex=invalid; return wizardError(`Задание ${invalid+1}. ${problem(questionFromEditor(draft.questions[invalid]))}`); }
+  }
+  step = next;
+  openView('wizard');
+}
+function editorOptions(q) {
+  const many=q.type==='choice';
+  return `<div class="field"><span>Варианты и правильный ответ</span><small>${many ? 'Отметьте все верные варианты.' : 'Отметьте один верный вариант.'}</small></div>${q.options.map((value,i)=>`<div class="option-edit"><input type="${many?'checkbox':'radio'}" name="correct-answer" data-answer="${i}" aria-label="Вариант ${i+1} верный" ${(many ? list(q.answer).includes(i) : q.answer===i)?'checked':''}><input class="inline-input" value="${escape(value)}" data-option="${i}" placeholder="Вариант ${i+1}" aria-label="Вариант ${i+1}" maxlength="400">${iconButton('Убрать вариант','remove-option','x',`data-index="${i}" ${q.options.length<=2?'disabled':''}`)}</div>`).join('')}${button('Добавить вариант','add-option','plus','quiet',q.options.length>=12?'disabled':'')}`;
+}
+function renderQuestionEditor() {
+  const q=draft.questions[questionIndex];
+  let controls;
+  if (isChoice(q.type)) controls=editorOptions(q);
+  if (q.type==='match') controls=wrapField('Пары и правильные соответствия',area('pairsText',q.pairsText,'question','очи = глаза\nперст = палец',4),'Каждую пару пишите с новой строки. Между частями ставьте знак =. До 20 пар.');
+  if (q.type==='drag') controls=wrapField('Элементы в правильном порядке',area('orderText',q.orderText,'question','Первое событие\nВторое событие',4),'Каждый элемент пишите с новой строки. До 20 элементов.');
+  if (q.type==='fill') controls=wrapField('Текст с пропусками',area('pattern',q.pattern,'question','Когда? ___ · Где? ___'),'Обозначьте каждый пропуск тремя подчёркиваниями ___. До 20 пропусков.')+wrapField('Правильные ответы',area('blanksText',q.blanksText,'question','вчера\nво дворе | на дворе'),'Один пропуск — одна строка. Допустимые варианты разделяйте знаком |. Регистр и лишние пробелы не учитываются.');
+  return `<div class="question-editor"><div class="question-nav" aria-label="Список заданий">${draft.questions.map((_,i)=>button(`<span>Задание ${i+1}</span>`,'select-question',null,i===questionIndex?'active':'',`data-index="${i}" ${i===questionIndex?'aria-current="true"':''}`)).join('')}${button('Добавить','add-question','plus','quiet add',draft.questions.length>=100?'disabled':'')}</div><section class="panel"><div class="editor-top"><h2>Задание ${questionIndex+1}</h2>${iconButton('Удалить задание','remove-question','trash',draft.questions.length<=1?'disabled':'')}</div>
+  <div class="field-grid">${wrapField('Тип задания',select('type',formatOptions,q.type,'question'))}${wrapField('Баллы за верный ответ',input('points',q.points,'question','','type="number" min="1" max="100" step="1"'))}</div>${wrapField('Текст задания',area('text',q.text,'question','Напишите, что нужно сделать ученику',3))}${controls}
+  <div class="field-grid form-spaced">${wrapField('Подсказка',area('hint',q.hint,'question','Необязательное поле'))}${wrapField('Краткое объяснение',area('explanation',q.explanation,'question','Необязательное поле'))}</div></section></div>`;
+}
+function renderWizard() {
+  const steps = `<div class="steps" aria-label="Шаги конструктора">${['Настройки','Задания','Предпросмотр и сохранение'].map((label,i)=>`<button type="button" data-action="step" data-index="${i+1}" class="step ${step===i+1?'active':''}" ${step===i+1?'aria-current="step"':''}><span>${i+1}</span>${label}</button>`).join('')}</div>`;
+  let content;
+  if (step===1) content=`<section class="panel"><h2>Настройки тренажёра</h2><div class="field-grid form-spaced">${wrapField('Название',input('title',draft.title,'meta','Например, Состав слова','maxlength="140"'))}${wrapField('Тема',input('topic',draft.topic,'meta','Например, Морфемика','maxlength="100"'))}${wrapField('Класс',select('grade',gradeOptions,draft.grade,'meta'))}${wrapField('Предмет',select('subject',subjects,draft.subject,'meta'))}${wrapField('Сложность',select('level',levels,draft.level,'meta'))}${wrapField('Количество заданий',input('count',draft.questions.length,'meta','','type="number" min="1" max="100" step="1"'),'От 1 до 100. Можно добавить задания на следующем шаге.')}</div>
+  <h3>Основной формат</h3><div class="formats">${Object.entries(formats).map(([type,[label,glyph,help]])=>`<button type="button" class="format ${draft.type===type?'active':''}" data-action="choose-format" data-value="${type}" aria-pressed="${draft.type===type}" title="${help}">${icon(glyph)}${label}</button>`).join('')}</div>${wrapField('Критерии оценивания',area('criteria',draft.criteria,'meta','Например, «5» за 8–10 баллов.'))}</section>`;
+  if (step===2) content=renderQuestionEditor();
+  if (step===3) content=`<section class="panel"><h2>${escape(draft.title)}</h2><p class="muted">${draft.grade} класс · ${escape(draft.subject)} · ${escape(draft.topic)} · ${escape(draft.level)} · ${countLabel(draft.questions.length)}</p><div class="actions details-actions">${button('Предпросмотр ученика','preview','eye')}${button('Сохранить шаблон','save-template','folder')}</div>${keyList(draft.questions.map(questionFromEditor))}</section>`;
+  const left = step===1 ? button('Сохранить шаблон','save-template','folder') : button('Назад','step','back','',`data-index="${step-1}"`);
+  const right = step===3 ? button('Сохранить тренажёр','save-trainer','check','primary') : button(step===1?'К заданиям':'К предпросмотру','step','arrow','primary',`data-index="${step+1}"`);
+  return `<div class="wizard"><div class="page-head"><div><h1 tabindex="-1">${draft.id?'Редактирование тренажёра':'Новый тренажёр'}</h1><p>Настройте формат, добавьте задания и проверьте результат.</p></div></div>${steps}${content}${error ? `<div class="error" tabindex="-1" role="alert">${escape(error)}</div>`:''}<div class="footer-actions">${left}${right}</div></div>`;
+}
+function keyText(q) {
+  if (isChoice(q.type)) return (q.type==='choice'?q.answer:[q.answer]).map(i=>q.options[i]).join(' · ');
+  if (q.type==='match') return q.pairs.map(([left,right])=>`${left} → ${right}`).join(' · ');
+  if (q.type==='drag') return q.order.join(' → ');
+  return q.blanks.map(row=>row.join(' / ')).join(' · ');
+}
+function keyList(questions) {
+  return `<div class="key-list">${questions.map((q,i)=>`<div class="key-row"><strong>${i+1}. ${escape(q.text)}</strong><span>${escape(keyText(q))} · ${pointLabel(q.points)}</span>${q.explanation?`<span>${escape(q.explanation)}</span>`:''}</div>`).join('')}</div>`;
+}
+function renderDetail() {
+  const item=activeItem;
+  const own=db.items.some(x=>x.id===item.id);
+  return `${button('К библиотеке','library','back','quiet back')}<div class="page-head"><div><h1 tabindex="-1">${escape(item.title)}</h1><p>${item.grade} класс · ${escape(item.subject)} · ${escape(item.topic)} · ${escape(item.level)}</p></div><span class="type-chip">${formats[item.type][0]}</span></div>
+  <section class="panel"><h2>Прохождение и выдача задания</h2><p class="muted">${countLabel(item.questions.length)} · Максимум ${pointLabel(item.questions.reduce((sum,q)=>sum+q.points,0))}</p><div class="actions details-actions">${button('Режим ученика','play','eye','primary')}${button('Копировать ссылку','share','link')}${button('Автономная версия','student-offline','download')}${button(own?'Редактировать':'Создать копию',own?'edit-item':'duplicate','edit')}</div></section>
+  <section class="panel"><h2>Ключи и критерии оценивания</h2><p class="muted">${escape(item.criteria || 'За полностью верный ответ начисляется указанное число баллов.')}</p>${keyList(item.questions)}</section>${own?button('Удалить тренажёр','remove-trainer','trash','danger'):''}`;
+}
+
+function normalize(value) { return trim(value).normalize('NFC').toLocaleLowerCase('ru-RU').replace(/\s+/g,' '); }
+function shuffle(items) {
+  const result=[...items];
+  for (let i=result.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [result[i],result[j]]=[result[j],result[i]]; }
+  if (result.length>1 && result.every((value,i)=>value===items[i])) result.push(result.shift());
+  return result;
+}
+function answerCorrect(q, answer) {
+  if (q.type==='test' || q.type==='game') return answer===q.answer;
+  if (q.type==='choice') return new Set(q.answer).size===answer.length && answer.every(i=>q.answer.includes(i));
+  if (q.type==='match') return q.pairs.every((pair,i)=>q.pairs[answer[i]]?.[1]===pair[1]);
+  if (q.type==='drag') return q.order.every((_,i)=>answer[i]===i);
+  return q.blanks.every((row,i)=>row.some(value=>normalize(answer[i])===normalize(value)));
+}
+function play(item, origin, indices = item.questions.map((_,i)=>i), retry = false) {
+  playerOrigin=origin;
+  player={ item, indices, retry, position:0, history:[], streak:0, best:0 };
+  resetAnswer();
+  openView('player');
+}
+const currentQuestion = () => player.item.questions[player.indices[player.position]];
+function resetAnswer() {
+  const q=currentQuestion();
+  player.checked=false;
+  player.hint=false;
+  player.message='';
+  player.answer=q.type==='match'?Array(q.pairs.length).fill(-1):q.type==='fill'?Array(q.blanks.length).fill(''):['choice','drag'].includes(q.type)?[]:-1;
+  const matchIndices = q.type==='match' ? Array.from(new Map(q.pairs.map((pair,i)=>[pair[1],i])).values()) : [];
+  player.bank=q.type==='match'?shuffle(matchIndices):q.type==='drag'?shuffle(q.order.map((_,i)=>i)):[];
+  dragIndex=null;
+}
+function enough(q, value) {
+  if (q.type==='test'||q.type==='game') return value>=0;
+  if (q.type==='choice') return value.length>0;
+  if (q.type==='match') return value.every(i=>i>=0);
+  if (q.type==='drag') return value.length===q.order.length;
+  return value.every(item=>Boolean(trim(item)));
+}
+function playerAnswer(q) {
+  const answer=player.answer;
+  const disabled=player.checked?'disabled':'';
+  if (isChoice(q.type)) return `<div class="answer-stack">${q.options.map((value,i)=>`<label class="answer-option"><input type="${q.type==='choice'?'checkbox':'radio'}" data-play="choice" name="play-choice" value="${i}" ${(q.type==='choice'?answer.includes(i):answer===i)?'checked':''} ${disabled}><span>${escape(value)}</span></label>`).join('')}</div>`;
+  if (q.type==='match') return `<div>${q.pairs.map(([left],i)=>`<label class="match-row"><span>${escape(left)}</span><select class="inline-input" data-play="match" data-index="${i}" ${disabled}>${selection(player.bank.map(index=>[String(index),q.pairs[index][1]]),String(answer[i]),'Выбрать соответствие')}</select></label>`).join('')}</div>`;
+  if (q.type==='drag') {
+    const piece = (index, placed, position) => `<div class="order-row" draggable="${!player.checked}" data-drag="${index}">${button(escape(q.order[index]),placed?'order-remove':'order-add','move','',`data-index="${index}" ${disabled} ${placed?'title="Вернуть в список"':''}`)}${placed&&!player.checked?iconButton('Выше','order-up','up',`data-index="${index}" ${position===0?'disabled':''}`)+iconButton('Ниже','order-down','down',`data-index="${index}" ${position===answer.length-1?'disabled':''}`):''}</div>`;
+    return `<p class="muted">Перетащите элементы в нужном порядке или нажмите на них. Стрелки меняют порядок.</p><div class="order-heading">Элементы</div><div class="order-bank" data-drop="bank">${player.bank.filter(i=>!answer.includes(i)).map(i=>piece(i,false,-1)).join('') || '<span class="muted">Все элементы размещены.</span>'}</div><div class="order-heading">Ваш порядок</div><div class="drop-zone" data-drop="answer">${answer.map((i,position)=>piece(i,true,position)).join('') || '<span class="muted">Переместите сюда первый элемент.</span>'}</div>`;
+  }
+  return `<div class="fill-body">${q.pattern.split('___').map((part,i)=>`${i?`<input class="inline-input" data-play="fill" data-index="${i-1}" aria-label="Пропуск ${i}" value="${escape(answer[i-1])}" maxlength="400" autocapitalize="off" autocomplete="off" spellcheck="false" ${disabled}>`:''}${escape(part)}`).join('')}</div>`;
+}
+function renderInvalid() {
+  return `<div class="player-wrap"><div class="student-brand"><span class="brand-icon">${icon('book')}</span>Мастерская тренажёров</div><section class="panel"><h1>Тренажёр не открылся</h1><p class="muted">Ссылка или файл повреждены. Попросите учителя прислать задание ещё раз.</p></section></div>`;
+}
+function playerHeader() {
+  return `${studentOnly?`<div class="student-brand"><span class="brand-icon">${icon('book')}</span>Мастерская тренажёров</div>`:button(playerOrigin==='wizard'?'К конструктору':'В режим учителя','leave-player','back','quiet back')}<div class="page-head"><div><h1 tabindex="-1">${escape(player.item.title)}</h1><p>${player.item.grade} класс · ${escape(player.item.subject)}${player.retry?' · Повторение ошибок':''}</p></div>${playerOrigin==='wizard'?'<span class="type-chip">Предпросмотр</span>':''}</div>`;
+}
+function renderPlayer() {
+  if (player.position>=player.indices.length) return renderResult();
+  const q=currentQuestion();
+  const latest=player.checked?player.history.at(-1):null;
+  const hasGame=player.item.type==='game'||q.type==='game';
+  return `<div class="player-wrap">${playerHeader()}<div class="progress-line"><span>Задание ${player.position+1} из ${player.indices.length}</span><span>${hasGame?`Серия верных ответов · ${player.streak}`:pointLabel(q.points)}</span></div><div class="progress-track" role="progressbar" aria-label="Прогресс" aria-valuenow="${player.position+(player.checked?1:0)}" aria-valuemax="${player.indices.length}"><span style="width:${(player.position+(player.checked?1:0))/player.indices.length*100}%"></span></div>
+  <section class="panel"><h2 class="question-text">${escape(q.text)}</h2>${playerAnswer(q)}${player.hint?`<div class="feedback"><strong>Подсказка</strong><p>${escape(q.hint)}</p></div>`:''}${player.message?`<p class="error" role="alert">${escape(player.message)}</p>`:''}${latest?`<div class="feedback ${latest.correct?'':'wrong'}" role="status"><strong>${latest.correct?'Верно!':'Есть ошибка'}</strong>${latest.correct && q.explanation?`<p>${escape(q.explanation)}</p>`:''}</div>`:''}
+  <div class="actions details-actions">${latest?button(player.position+1===player.indices.length?'К результату':'Следующее задание','next-answer','arrow','primary'):button('Проверить ответ','check-answer','check','primary')}${q.hint&&!player.hint&&!latest?button('Подсказка','hint','bulb'):''}</div></section></div>`;
+}
+function responseText(q, answer) {
+  if (q.type==='test' || q.type==='game') return q.options[answer];
+  if (q.type==='choice') return answer.map(i=>q.options[i]).join(' · ');
+  if (q.type==='match') return q.pairs.map(([left],i)=>`${left} → ${q.pairs[answer[i]][1]}`).join(' · ');
+  if (q.type==='drag') return answer.map(i=>q.order[i]).join(' → ');
+  return answer.map(value=>trim(value)).join(' · ');
+}
+function renderResultEntry(entry) {
+  const q=player.item.questions[entry.index];
+  const question=escape(q.text);
+  if (entry.correct) return `<li>${icon('check')}<span><strong class="sr-only">Верно. </strong>${question}</span></li>`;
+  return `<li class="wrong">${icon('x')}<details><summary><span class="sr-only">Ошибка. </span>${question}</summary>
+    <dl class="answer-review"><dt>Ваш ответ</dt><dd>${escape(entry.response)}</dd><dt>Правильный ответ</dt><dd>${escape(keyText(q))}</dd>${trim(q.explanation)?`<dt>Пояснение</dt><dd>${escape(q.explanation)}</dd>`:''}</dl></details></li>`;
+}
+function renderResult() {
+  const errors=player.history.filter(entry=>!entry.correct);
+  const total=player.history.reduce((n,entry)=>n+entry.points,0);
+  const maximum=player.indices.reduce((n,i)=>n+player.item.questions[i].points,0);
+  return `<div class="player-wrap">${playerHeader()}<section class="panel"><h2>Результат</h2><div class="result-score"><span class="score-circle">${Math.round(total/maximum*100)}%</span><div><strong>${pointLabel(total)} из ${maximum}</strong><p class="muted">Верных ответов: ${player.history.length-errors.length} из ${player.history.length}</p>${player.item.questions.some(q=>q.type==='game')?`<p class="muted">Лучшая серия · ${player.best}</p>`:''}</div></div>${player.item.criteria?`<p class="muted">${escape(player.item.criteria)}</p>`:''}
+  ${errors.length?'<p class="muted">Нажмите на задание с ошибкой, чтобы сравнить ответы.</p>':''}<ul class="result-list">${player.history.map(renderResultEntry).join('')}</ul><div class="actions">${errors.length?button('Повторить ошибки','retry','reset','primary'):''}${button('Пройти заново','restart','arrow',errors.length?'':'primary')}</div></section></div>`;
+}
+function assess() {
+  if (player.checked) return;
+  const q=currentQuestion();
+  if (!enough(q,player.answer)) { player.message='Сначала заполните ответ.'; return render(); }
+  player.message='';
+  const correct=answerCorrect(q,player.answer);
+  player.history.push({ index:player.indices[player.position], correct, points:correct?q.points:0, response:correct?'':responseText(q,player.answer) });
+  player.streak=correct?player.streak+1:0;
+  player.best=Math.max(player.best,player.streak);
+  player.checked=true;
+  render();
+  root.querySelector('[data-action="next-answer"]')?.focus({preventScroll:true});
+}
+function movePiece(index, target, bank = false) {
+  if (player.checked || !player.bank.includes(index)) return;
+  const answer=player.answer.filter(i=>i!==index);
+  if (!bank) { const pos=target===null?answer.length:answer.indexOf(target); answer.splice(pos<0?answer.length:pos,0,index); }
+  player.answer=answer;
+  player.message='';
+  render();
+}
+function changeOrder(index, offset) {
+  const values=player.answer;
+  const from=values.indexOf(index);
+  const to=from+offset;
+  if (player.checked || from<0 || to<0 || to>=values.length) return;
+  [values[from],values[to]]=[values[to],values[from]];
+  render();
+  root.querySelector(`[data-action="order-${offset<0?'up':'down'}"][data-index="${index}"]:not(:disabled)`)?.focus();
+}
+
+function currentDraft() {
+  return { ...draft, id:draft.id ?? identifier(), title:trim(draft.title), topic:trim(draft.topic), questions:draft.questions.map(questionFromEditor) };
+}
+function storeTrainer() {
+  const item=currentDraft();
+  db.items=[item,...db.items.filter(x=>x.id!==item.id)];
+  draft=null;
+  db.draft=null;
+  activeItem=item;
+  const saved=saveLocal();
+  openView('detail');
+  toast(saved?'Тренажёр сохранён.':'Тренажёр открыт. Хранилище браузера недоступно, скачайте резервную копию.',!saved);
+}
+function storeTemplate() {
+  if (!commitCount()) return;
+  const message=metaProblem();
+  if (message) { step=1; return wizardError(message); }
+  const template={ ...canonicalTrainer({...draft,questions:[]}), id:identifier(), count:draft.questions.length };
+  db.templates.unshift(template);
+  const saved=saveLocal();
+  toast(saved?'Шаблон сохранён.':'Шаблон добавлен на время сеанса. Скачайте резервную копию.',!saved);
+}
+function downloadBlob(blob, filename) {
+  const href=URL.createObjectURL(blob);
+  const link=document.createElement('a');
+  link.href=href;
+  link.download=filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(href),60000);
+}
+function standalone(payload) {
+  const page=document.documentElement.cloneNode(true);
+  page.querySelector('#app').textContent='';
+  page.querySelector('#notice').textContent='';
+  page.querySelector('#notice').hidden=true;
+  page.querySelector('#dialog').textContent='';
+  page.querySelector('#dialog').removeAttribute('open');
+  page.querySelector('#offline-data').textContent=JSON.stringify(pack(payload));
+  if (payload.mode==='student') page.querySelector('title').textContent=payload.item.title;
+  return new Blob(['<!doctype html>\n',page.outerHTML],{type:'text/html;charset=utf-8'});
+}
+function shareableItem(item) {
+  return canonicalTrainer(item);
+}
+function workspaceSnapshot() { return { items:db.items, templates:db.templates, draft }; }
+function offlineDialog(isStudent) {
+  dialog(isStudent?'Автономный тренажёр':'Автономный конструктор',`<p>${isStudent?'Скачайте HTML и передайте файл ученикам. Проверка работает без интернета в браузере.':'Скачайте HTML с текущими тренажёрами, шаблонами и черновиком. Откройте файл в браузере для работы без интернета.'}</p><div class="actions">${button('Скачать HTML',isStudent?'download-student':'download-teacher','download','primary')}${button('Открыть в браузере',isStudent?'open-student-offline':'open-teacher-offline','external')}${button('Закрыть','close-dialog',null,'quiet')}</div>`);
+}
+function makeOffline(isStudent, open) {
+  const payload=isStudent ? { mode:'student', item:shareableItem(activeItem) } : { mode:'teacher', workspace:workspaceSnapshot() };
+  const blob=standalone(payload);
+  if (!open) { downloadBlob(blob,isStudent?'Trenazher_uchenika.html':'Konstruktor_trenazherov.html'); toast('HTML подготовлен к скачиванию.'); return; }
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement('a');
+  link.href=url;
+  link.target='_blank';
+  link.rel='noopener';
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),60000);
+}
+async function share() {
+  if (!['http:','https:'].includes(location.protocol)) {
+    toast('Из локального файла поделитесь ученической HTML-версией.',true);
+    return offlineDialog(true);
+  }
+  const url=siteVisits ? new URL(pagesUrl) : new URL(location.pathname,location.origin);
+  url.hash=`student=${pack(shareableItem(activeItem))}`;
+  if (url.href.length>24000) { toast('Для этого объёма задания используйте HTML-файл.',true); return offlineDialog(true); }
+  const info='Отправьте эту ссылку ученикам. Для работы без интернета скачайте ученический HTML-файл.';
+  try { await navigator.clipboard.writeText(url.href); toast('Ссылка скопирована.'); } catch { /* The text field supports manual copying. */ }
+  dialog('Ссылка на режим ученика',`<p>${info}</p><label class="field"><span>Ссылка</span><input readonly value="${escape(url.href)}" data-share-url></label><div class="actions">${button('Выделить ссылку','select-link','copy')}${button('Скачать HTML для ученика','download-student','download')}${button('Закрыть','close-dialog',null,'quiet')}</div>`);
+}
+function openItem(id) {
+  activeItem=[...db.items,...samples].find(item=>item.id===id);
+  if (activeItem) openView('detail');
+}
+function setOptionAnswer(index, checked) {
+  const q=draft.questions[questionIndex];
+  if (q.type==='choice') q.answer=checked?[...new Set([...list(q.answer),index])]:list(q.answer).filter(i=>i!==index);
+  else if (checked) q.answer=index;
+}
+function removeOption(index) {
+  const q=draft.questions[questionIndex];
+  if (q.options.length<=2) return;
+  q.options.splice(index,1);
+  if (q.type==='choice') q.answer=list(q.answer).filter(i=>i!==index).map(i=>i>index?i-1:i);
+  else if (q.answer>=index) q.answer=q.answer===index?-1:q.answer-1;
+  rememberDraft();
+  render();
+}
+function changeQuestionType(q,type) {
+  if (q.type===type) return;
+  if (!q.options.length) q.options=['','',''];
+  if (type==='choice' && !Array.isArray(q.answer)) q.answer=q.answer>=0?[q.answer]:[];
+  if (type!=='choice' && Array.isArray(q.answer)) q.answer=q.answer.length===1?q.answer[0]:-1;
+  q.type=type;
+}
+function deleteItem(id,isTemplate) {
+  const key=isTemplate?'templates':'items';
+  const item=db[key].find(x=>x.id===id);
+  if (!item) return;
+  dialog(isTemplate?'Удалить шаблон?':'Удалить тренажёр?',`<p>${escape(item.title)}</p><div class="actions">${button('Удалить','confirm-remove','trash','danger')}${button('Отмена','close-dialog')}</div>`);
+  modal.querySelector('[data-action="confirm-remove"]').addEventListener('click',()=>{
+    db[key]=db[key].filter(x=>x.id!==id);
+    if (!isTemplate && draft?.id===id) { draft=null; db.draft=null; }
+    saveLocal(); modal.close(); openView(isTemplate?'templates':'library');
+    toast(isTemplate?'Шаблон удалён.':'Тренажёр удалён.');
+  },{once:true});
+}
+function appendQuestion() {
+  if (draft.questions.length>=100) return;
+  draft.questions.push(blankQuestion(draft.type));
+  questionIndex=draft.questions.length-1;
+  rememberDraft(); render();
+  root.querySelector('[data-question="text"]')?.focus();
+}
+function removeQuestion() {
+  if (draft.questions.length<=1) return;
+  const remove=()=>{
+    draft.questions.splice(questionIndex,1);
+    questionIndex=Math.min(questionIndex,draft.questions.length-1);
+    rememberDraft(); render();
+  };
+  if (!trim(draft.questions[questionIndex].text)) return remove();
+  dialog(`Удалить задание ${questionIndex+1}?`,`<div class="actions">${button('Удалить','confirm-remove','trash','danger')}${button('Отмена','close-dialog')}</div>`);
+  modal.querySelector('[data-action="confirm-remove"]').addEventListener('click',()=>{modal.close();remove();},{once:true});
+}
+function commitCount() {
+  const el=root.querySelector('[data-meta="count"]');
+  if (!el) return true;
+  const count=Number(el.value);
+  if (!Number.isInteger(count) || count<1 || count>100) {
+    wizardError('Укажите количество заданий от 1 до 100.');
+    return false;
+  }
+  if (count===draft.questions.length) return true;
+  const apply=()=>{
+    if (count<draft.questions.length) draft.questions.length=count;
+    else while (draft.questions.length<count) draft.questions.push(blankQuestion(draft.type));
+    questionIndex=Math.min(questionIndex,count-1);
+    rememberDraft();
+  };
+  if (!draft.questions.slice(count).some(q=>trim(q.text))) {apply();return true;}
+  el.value=draft.questions.length;
+  dialog('Уменьшить количество заданий?',`<p>С конца списка будут удалены задания ${count+1}–${draft.questions.length}.</p><div class="actions">${button('Удалить задания','confirm-remove','trash','danger')}${button('Отмена','close-dialog')}</div>`);
+  modal.querySelector('[data-action="confirm-remove"]').addEventListener('click',()=>{modal.close();apply();render();},{once:true});
+  return false;
+}
+async function importWorkspace(file) {
+  if (!file) return;
+  try {
+    const incoming=storageData(JSON.parse(await file.text()));
+    function merge(current, additions) {
+      const ids=new Set(current.map(item=>item.id));
+      for (const item of additions) {
+        const existing=current.find(x=>x.id===item.id);
+        if (existing && JSON.stringify(existing)===JSON.stringify(item)) continue;
+        if (ids.has(item.id)) item.id=identifier();
+        ids.add(item.id); current.push(item);
+      }
+    }
+    merge(db.items,incoming.items);
+    merge(db.templates,incoming.templates);
+    if (!draft && incoming.draft) { draft=incoming.draft; db.draft=draft; }
+    const saved=saveLocal();
+    render(); toast(saved?'Резервная копия импортирована.':'Данные импортированы на время сеанса.',!saved);
+  } catch { toast('Не удалось прочитать файл. Выберите резервную копию конструктора.',true); }
+}
+const actions = {
+  library:()=>openView('library'), templates:()=>openView('templates'),
+  stats:()=>{if(onlineVisits){openView('stats');refreshStats();}}, 'refresh-stats':refreshStats,
+  constructor:()=>{ if (draft) openView('wizard'); else newDraft(); },
+  new:()=>requestDraft(), resume:()=>{modal.close();openView('wizard');},
+  tab:el=>{tab=el.dataset.value;render();root.querySelector(`[data-action="tab"][data-value="${tab}"]`)?.focus();},
+  'reset-filters':()=>{filters=blankFilters();render();root.querySelector('[data-filter="grade"]')?.focus();},
+  detail:el=>openItem(el.dataset.id),
+  step:el=>changeStep(Number(el.dataset.index)),
+  'choose-format':el=>{
+    if (!commitCount()) return;
+    const type=el.dataset.value;
+    for (const q of draft.questions) if (!trim(q.text) && q.type===draft.type) changeQuestionType(q,type);
+    draft.type=type; rememberDraft(); render(); root.querySelector(`.format[data-value="${type}"]`)?.focus();
+  },
+  'select-question':el=>{questionIndex=Number(el.dataset.index);error='';render();root.querySelector('[data-question="text"]')?.focus();},
+  'add-question':appendQuestion, 'remove-question':removeQuestion,
+  'add-option':()=>{const options=draft.questions[questionIndex].options;if(options.length<12){options.push('');rememberDraft();render();root.querySelector(`[data-option="${options.length-1}"]`)?.focus();}},
+  'remove-option':el=>removeOption(Number(el.dataset.index)),
+  'save-trainer':storeTrainer, 'save-template':storeTemplate,
+  'use-template':el=>{const item=db.templates.find(x=>x.id===el.dataset.id);if(item)requestDraft(item);},
+  'remove-template':el=>deleteItem(el.dataset.id,true), 'remove-trainer':()=>deleteItem(activeItem.id,false),
+  'edit-item':()=>requestDraft(activeItem,true), duplicate:()=>requestDraft(activeItem),
+  preview:()=>play(currentDraft(),'wizard'), play:()=>play(activeItem,'detail'),
+  'leave-player':()=>openView(playerOrigin), hint:()=>{player.hint=true;render();root.querySelector('[data-action="check-answer"]')?.focus({preventScroll:true});},
+  'check-answer':assess,
+  'next-answer':()=>{player.position++;if(player.position<player.indices.length)resetAnswer();openView('player');},
+  retry:()=>play(player.item,playerOrigin,player.history.filter(x=>!x.correct).map(x=>x.index),true),
+  restart:()=>play(player.item,playerOrigin),
+  'order-add':el=>{movePiece(Number(el.dataset.index),null);root.querySelector('[data-action="order-add"]:not(:disabled),[data-action="check-answer"]')?.focus({preventScroll:true});},
+  'order-remove':el=>movePiece(Number(el.dataset.index),null,true),
+  'order-up':el=>changeOrder(Number(el.dataset.index),-1), 'order-down':el=>changeOrder(Number(el.dataset.index),1),
+  offline:()=>offlineDialog(false), 'student-offline':()=>offlineDialog(true),
+  'download-teacher':()=>makeOffline(false,false), 'download-student':()=>makeOffline(true,false),
+  'open-teacher-offline':()=>makeOffline(false,true), 'open-student-offline':()=>makeOffline(true,true),
+  'close-dialog':()=>modal.close(), share,
+  'select-link':()=>{const el=modal.querySelector('[data-share-url]');el.focus();el.select();},
+  backup:()=>downloadBlob(new Blob([JSON.stringify(workspaceSnapshot(),null,2)],{type:'application/json'}),'Trenazhery_rezervnaya_kopiya.json'),
+  import:()=>root.querySelector('#import-file')?.click()
+};
+document.addEventListener('click',event=>{
+  const el=event.target.closest('[data-action]');
+  if (el && !el.disabled && Object.hasOwn(actions,el.dataset.action)) actions[el.dataset.action](el);
+});
+root.addEventListener('input',event=>{
+  const el=event.target;
+  const data=el.dataset;
+  if (data.filter!==undefined) {filters[data.filter]=el.value;root.querySelector('#library-items').innerHTML=renderCards();}
+  if (data.meta!==undefined && data.meta!=='count') {draft[data.meta]=el.value;rememberDraft();}
+  if (data.question!==undefined && data.question!=='type') {draft.questions[questionIndex][data.question]=el.value;rememberDraft();}
+  if (data.option!==undefined) {draft.questions[questionIndex].options[Number(data.option)]=el.value;rememberDraft();}
+  if (data.play==='fill') {player.answer[Number(data.index)]=el.value;player.message='';}
+});
+root.addEventListener('change',event=>{
+  const el=event.target;
+  const data=el.dataset;
+  if (el.id==='import-file') importWorkspace(el.files[0]);
+  if (data.question==='type') {changeQuestionType(draft.questions[questionIndex],el.value);rememberDraft();render();root.querySelector('[data-question="type"]')?.focus();}
+  if (data.answer!==undefined) {setOptionAnswer(Number(data.answer),el.checked);rememberDraft();}
+  if (data.play==='choice') {
+    const value=Number(el.value);
+    player.answer=currentQuestion().type==='choice'?(el.checked?[...player.answer,value]:player.answer.filter(i=>i!==value)):value;
+    player.message='';
+  }
+  if (data.play==='match') {player.answer[Number(data.index)]=el.value===''?-1:Number(el.value);player.message='';}
+});
+root.addEventListener('dragstart',event=>{
+  const el=event.target.closest('[data-drag]');
+  if (!el || !player || player.checked) return;
+  dragIndex=Number(el.dataset.drag);
+  event.dataTransfer.setData('text/plain',String(dragIndex));
+  event.dataTransfer.effectAllowed='move';
+});
+root.addEventListener('dragover',event=>{
+  if (dragIndex!==null && event.target.closest('[data-drop]')) {event.preventDefault();event.dataTransfer.dropEffect='move';}
+});
+root.addEventListener('drop',event=>{
+  const zone=event.target.closest('[data-drop]');
+  if (dragIndex===null || !zone) return;
+  event.preventDefault();
+  const tile=event.target.closest('[data-drag]');
+  const target=tile?Number(tile.dataset.drag):null;
+  if (target!==dragIndex) movePiece(dragIndex,target,zone.dataset.drop==='bank');
+  dragIndex=null;
+});
+root.addEventListener('dragend',()=>{dragIndex=null;});
+function start() {
+  const isLink=location.hash.startsWith('#student=');
+  if (!isLink && offline?.mode!=='student') { render(); return; }
+  studentOnly=true;
+  try {
+    const item=canonicalTrainer(isLink?unpack(location.hash.slice(9)):offline.item);
+    if (!item.questions.length || !trim(item.title) || item.questions.some(problem)) throw new Error('Invalid exercise');
+    play(item,'shared');
+  } catch { openView('invalid'); }
+}
+window.addEventListener('hashchange',()=>{if (location.hash.startsWith('#student=')) start();else if (!offline && studentOnly) {studentOnly=false;openView('library');}});
+start();
+registerVisit();
+
+async function pagesCount(action, key) {
+  const response = await fetch(`${pagesCounter}${action}/${key}`, { cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer' });
+  if (response.status === 404 && action === 'get') return 0;
+  if (!response.ok) throw new Error('Visit statistics unavailable');
+  const data = await response.json();
+  if (!Number.isSafeInteger(data.value) || data.value < 0) throw new Error('Invalid statistics');
+  return data.value;
+}
+
+async function recordPagesVisit() {
+  const today = moscowDay.format(new Date());
+  const record = async (localKey, expected, counterKey) => {
+    if (localStorage.getItem(localKey) === expected) return;
+    await pagesCount('hit', counterKey);
+    localStorage.setItem(localKey, expected);
+  };
+  const track = () => Promise.allSettled([
+    record(`${pagesCounterKey}-total`, '1', pagesCounterKey),
+    record(`${pagesCounterKey}-day`, today, `${pagesCounterKey}-${today}`)
+  ]);
+  return navigator.locks ? navigator.locks.request(pagesCounterKey, track) : track();
+}
+
+function registerVisit() {
+  if (pagesVisits) {
+    visitRegistration = recordPagesVisit().catch(() => {});
+    return;
+  }
+  if (!siteVisits) return;
+  try {
+    const key = 'teacher-trainer-visitor-v1';
+    let visitor = localStorage.getItem(key);
+    if (!visitor) {
+      visitor = crypto.randomUUID();
+      localStorage.setItem(key, visitor);
+    }
+    visitRegistration = fetch('/api/visits', { method: 'POST', body: visitor, keepalive: true, credentials: 'omit' }).catch(() => {});
+  } catch {
+    // The app remains usable when the browser disables local storage.
+  }
+}
+
+function renderStats() {
+  return `<div class="page-head"><div><h1 tabindex="-1">Посещаемость</h1><p>Сколько браузеров открыли конструктор или ученическую ссылку.</p></div>${button('Обновить','refresh-stats','reset')}</div>
+  <section class="panel"><div id="visitor-stats" role="status" aria-live="polite"><p class="muted">Загружаю данные…</p></div><p class="muted">Повторные открытия из одного браузера считаются один раз. Другой браузер или очистка его данных могут изменить подсчёт. День считается по московскому времени.${pagesVisits?' Здесь учитываются только открытия версии на GitHub Pages.':''}</p></section>`;
+}
+
+async function refreshStats() {
+  const target = root.querySelector('#visitor-stats');
+  if (!target) return;
+  const request = ++statsRequest;
+  target.setAttribute('aria-busy','true');
+  try {
+    if (visitRegistration) await visitRegistration;
+    let data;
+    if (pagesVisits) {
+      const [total,today] = await Promise.all([
+        pagesCount('get',pagesCounterKey),
+        pagesCount('get',`${pagesCounterKey}-${moscowDay.format(new Date())}`)
+      ]);
+      data = { total, today };
+    } else {
+      const response = await fetch('/api/visits', { cache: 'no-store', credentials: 'omit' });
+      if (!response.ok) throw new Error('Visit statistics unavailable');
+      data = await response.json();
+    }
+    if (![data.today, data.total].every(number => Number.isSafeInteger(number) && number >= 0)) throw new Error('Invalid statistics');
+    if (request === statsRequest) target.innerHTML = `<div class="visit-metrics">${[[data.total,'Всего с момента включения счётчика'],[data.today,'Сегодня']].map(([value,label])=>`<div><strong>${value.toLocaleString('ru-RU')}</strong><span>${label}</span></div>`).join('')}</div>`;
+  } catch {
+    if (request === statsRequest) target.innerHTML = '<p class="error">Статистика временно недоступна. Попробуйте обновить.</p>';
+  } finally {
+    if (request === statsRequest) target.removeAttribute('aria-busy');
+  }
+}
+</script>
+</body>
+</html>
